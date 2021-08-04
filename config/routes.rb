@@ -14,6 +14,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
 
-
-
 end
