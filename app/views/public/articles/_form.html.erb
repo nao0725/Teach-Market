@@ -1,10 +1,10 @@
-<%= form_with(model: public_article, local: true) do |form| %>
-  <% if public_article.errors.any? %>
+<%= form_with(model: article, local: true) do |f| %>
+  <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(public_article.errors.count, "error") %> prohibited this public_article from being saved:</h2>
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
-      <% public_article.errors.full_messages.each do |message| %>
+      <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

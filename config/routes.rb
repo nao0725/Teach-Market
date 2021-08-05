@@ -14,8 +14,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
 
-  namespace :public do
+  
     resources :articles
-  end
 
 end
