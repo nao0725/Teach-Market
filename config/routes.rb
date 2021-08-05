@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root to: "public/homes#top"
 
   devise_for :admins, controllers: {
@@ -13,5 +13,8 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
 }
+
+  
+    resources :articles
 
 end
