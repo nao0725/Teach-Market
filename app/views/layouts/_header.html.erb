@@ -13,6 +13,12 @@
         <li class="nav-item active">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
+        
+      <% elsif admin_signed_in? %>
+        <li>管理者</li>
+        <li class="nav-item active">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+        </li>
 
       <% else %>
 
@@ -22,6 +28,11 @@
         <li class="nav-item">
           <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "使い方", public_help_path, class: "nav-link" %>
+        </li>
+        
+        
       <% end %>
     </ul>
   </div>
