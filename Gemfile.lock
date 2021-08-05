@@ -206,6 +206,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (2.3.0)
     refile-mini_magick (0.2.0)
       mini_magick (~> 4.0)
       refile (~> 0.5)
@@ -295,6 +296,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  coderay
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
@@ -308,6 +310,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.5)
+  redcarpet (~> 2.3.0)
   refile!
   refile-mini_magick
   sass-rails (~> 5.0)
