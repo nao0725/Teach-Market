@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
   root to: "public/homes#top"
   get 'public/help' => 'public/homes#help'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
 
-  
     resources :articles
+
 
 end
