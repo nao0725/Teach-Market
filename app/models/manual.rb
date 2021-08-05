@@ -1,5 +1,5 @@
 class Manual < ApplicationRecord
   
-  bekongs_to:user
+  bekongs_to :user
   
 end
