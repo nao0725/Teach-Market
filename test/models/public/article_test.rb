@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ManualTest < ActiveSupport::TestCase
+class Public::ArticleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

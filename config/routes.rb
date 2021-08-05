@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root to: "public/homes#top"
 
   devise_for :admins, controllers: {
@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
 
-  resources:manuals
+  namespace :public do
+    resources :articles
+  end
+
 end
