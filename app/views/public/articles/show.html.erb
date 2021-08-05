@@ -9,5 +9,5 @@
   <%= markdown(@article.body).html_safe %>
 </p>
 
-<%= link_to 'Edit', edit_public_article_path(@article) %> |
+<%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', public_articles_path %>
