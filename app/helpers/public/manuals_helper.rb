@@ -1,0 +1,2 @@
+module Public::ManualsHelper
+end
