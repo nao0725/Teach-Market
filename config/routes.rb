@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  
   root to: "public/homes#top"
+  get 'public/help' => 'public/homes#help'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -13,5 +15,8 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
 }
+
+    resources :articles
+
 
 end
