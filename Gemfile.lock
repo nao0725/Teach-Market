@@ -157,7 +157,7 @@ GEM
     mysql2 (0.5.3)
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.12.1)
+    nokogiri (1.12.2)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -206,6 +206,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.1)
     refile-mini_magick (0.2.0)
       mini_magick (~> 4.0)
       refile (~> 0.5)
@@ -295,6 +296,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  coderay
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
@@ -308,6 +310,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.5)
+  redcarpet
   refile!
   refile-mini_magick
   sass-rails (~> 5.0)
