@@ -22,3 +22,12 @@ body {
   background-image:image-url("hoge.jpg");
 }
 
+.top-visual {
+  width: 100%;
+  height: 650px;
+  text-align: center;
+  color: #FAFAFA;
+  background-image: url(top.jpg);
+  background-size: cover;
+  background-position: center;
+}
