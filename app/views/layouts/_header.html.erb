@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a class="navbar-brand" href="#!">TeachMarket</a>
+  <%= link_to "TeachMarket", "/", class: "navbar-brand" %>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
@@ -13,7 +13,7 @@
         <li class="nav-item active">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
-        
+
       <% elsif admin_signed_in? %>
         <li>管理者</li>
         <li class="nav-item active">
