@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
 }
 
-    resources :articles
+  scope module: :public do
+     resources :articles
+  end
+
 
 
 end
