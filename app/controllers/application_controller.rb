@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-   public_home_path(resource)
+   home_path(resource)
   end
 
   protected

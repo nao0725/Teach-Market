@@ -9,5 +9,11 @@
   <h2>手順４</h2>
   <p>学んだことをアウトプットして、自身への定着と他者に共有して情報交換</p>
 
-  <h3><%= link_to "Topへ！", root_path %></h3>
+  <h3>
+  <% if user_signed_in? %>
+    <%= link_to "Topに戻る", home_path, class: "navbar-brand" %>
+  <% else %>
+    <%= link_to "Topに戻る", root_path, class: "navbar-brand" %>
+  <% end %>
+  </h3>
 </div>
