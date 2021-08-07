@@ -1,13 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class = "container">
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <%= markdown(@article.body).html_safe %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @article.title %>
+  </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', public_articles_path %>
+  <p>
+    <strong>Text:</strong>
+    <%= markdown(@article.body).html_safe %>
+  </p>
+
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に削除しますか？' } %> |
+  <%= link_to 'Back', home_path %>
+</div>

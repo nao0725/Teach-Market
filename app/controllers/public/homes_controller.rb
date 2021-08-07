@@ -5,6 +5,7 @@ class Public::HomesController < ApplicationController
 
   def home
     @articles = Article.all
+    # @tag = @articles.tag_name
   end
 
   def help
