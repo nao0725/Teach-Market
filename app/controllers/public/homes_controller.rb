@@ -4,6 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
+    @articles = Article.all
   end
 
   def help
