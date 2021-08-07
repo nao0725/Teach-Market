@@ -21,13 +21,27 @@ class Public::ArticlesController < ApplicationController
     tag_list = params[:article][:tag_names].split(",")
     if @article.save
        @article.tags_save(tag_list)
-       redirect_to articles_path
+       redirect_to home_path
     else
       @user = current_user
       render :new
     end
   end
 
+  def update
+    if @article.update(article_params)
+      flash[:notice] = "You have updated article successfully."
+      redirect_to article_path
+    else
+      @user = current_user
+      render :edit
+    end
+  end
+
+  def destroy
+    @article.destroy
+    redirect_to home_path
+  end
 
   private
 
