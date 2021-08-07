@@ -20,13 +20,14 @@
 
 body {
   background-image:image-url("top.jpg");
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .top-visual {
   width: 100%;
   height: 650px;
   text-align: center;
-  color: #FAFAFA;
+  font-family: 'Quicksand', sans-serif;
   background-image: url(top.jpg);
   background-size: cover;
   background-position: center;

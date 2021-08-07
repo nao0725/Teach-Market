@@ -1,13 +1,15 @@
 class Article < ApplicationRecord
 
- belongs_to :user
+ has_many :article_tags
  has_many :tags, through: :article_tags
+ belongs_to :user
+
 
  #複数のタグ付け機能で実装
  def tags_save(tag_list)
    if self.tags != nil
     article_tags_records = ArticleTag.where(article_id:self.id)
-    article_tags_records.destroy.all
+    article_tags_records.destroy_all
    end
 
    tag_list.each do |tag|
