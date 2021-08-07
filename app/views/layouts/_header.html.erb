@@ -5,11 +5,25 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
+
+  <% if user_signed_in? %>
+    <%= link_to "TeachMarket", home_path, class: "navbar-brand" %>
+  <% else %>
+    <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
+  <% end %>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <% if user_signed_in? %>
+
+        <li class="nav-item">
+          <%= link_to "アウトプットする", new_article_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "使い方", help_path, class: "nav-link" %>
+        </li>
+
         <li class="nav-item active">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
@@ -29,10 +43,10 @@
           <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "使い方", public_help_path, class: "nav-link" %>
+          <%= link_to "使い方", help_path, class: "nav-link" %>
         </li>
-        
-        
+
+
       <% end %>
     </ul>
   </div>
