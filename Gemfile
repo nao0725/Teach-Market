@@ -72,10 +72,12 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-gem "devise"
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem 'redcarpet'
+gem 'coderay'
 group :production do
   gem 'mysql2'
 end

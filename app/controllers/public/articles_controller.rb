@@ -18,9 +18,13 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     tag_list = params[:article][:tag_names].split(",")
-    @article.save
-    @article.tags_save(tag_list)
-    redirect_to articles_path
+
+    if @article.save
+      @article.tags_save(tag_list)
+      redirect_to articles_path
+    else
+      render :new
+    end
   end
 
 
