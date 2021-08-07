@@ -2,14 +2,15 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1>みんなのノウハウ</h1>
 
 <table class = "table table-borderless">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Tag</th> 
+      <th>題名</th>
+      <th>この記事を見てできること</th>
+      <th>内容</th>
+      <th>タグ</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,18 +18,16 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
+        <td><%= link_to article.title, article %></td>
+        <td><%= article.sub_title %>
         <td><%= article.body %></td>
-        <td><%#= article.tag_name %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td>
+          <% article.tags.each do |tag| %>
+           <%= tag.tag_name %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
 </div>
