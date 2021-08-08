@@ -7,6 +7,18 @@
     <%= @article.title %>
   </p>
 
+    <p>
+    <strong>タグ:</strong>
+    <% @article.tags.each do |tag| %>
+      <%= tag.tag_name %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>目的:</strong>
+    <%= @article.sub_title %>
+  </p>
+
   <p>
     <strong>内容:</strong>
     <%= markdown(@article.body).html_safe %>
