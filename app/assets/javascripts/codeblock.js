@@ -1,4 +1,4 @@
-function markdownCode() {
+$(document).on('turbolinks:load', function markdownCode() {
   const codeInput = document.getElementById('user_answer_code');
   const codeMarkdown = document.getElementById('code_markdown');
   if (codeInput == null || codeMarkdown == null) {
@@ -13,6 +13,6 @@ function markdownCode() {
       hljs.highlightBlock(pre_code_nodes[i]);
     }
   });
-};
+});
 
 window.addEventListener("load", markdownCode);
