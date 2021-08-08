@@ -7,6 +7,18 @@
     <%= @article.title %>
   </p>
 
+    <p>
+    <strong>タグ:</strong>
+    <% @article.tags.each do |tag| %>
+      <%= tag.tag_name %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>目的:</strong>
+    <%= @article.sub_title %>
+  </p>
+
   <p>
     <strong>内容:</strong>
     <%= markdown(@article.body).html_safe %>
@@ -15,4 +27,7 @@
   <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Destroy', @article, method: :delete, data: { confirm: '本当に削除しますか？' } %> |
   <%= link_to 'Back', home_path %>
+  
+  <%= social_share_button_tag(@article.title) %>
+  
 </div>
