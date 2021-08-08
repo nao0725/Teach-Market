@@ -4,7 +4,7 @@ module ApplicationHelper
 
     class HTMLwithCoderay < Redcarpet::Render::HTML
         def block_code(code, language)
-            
+
             if language.nil?
                 language
             else
