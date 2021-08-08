@@ -17,3 +17,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// Markdownで使用
+require("../codeblock")
