@@ -18,7 +18,7 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    tag_list = params[:article][:tag_names].split(",")
+    tag_list = params[:article][:tag_name].split(",")
     if @article.save
        @article.tags_save(tag_list)
        redirect_to home_path
@@ -50,6 +50,6 @@ class Public::ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :body, :tag_name, :sub_title)
+      params.require(:article).permit(:title, :body, :sub_title)
     end
 end
