@@ -1,9 +1,14 @@
 class Article < ApplicationRecord
 
+ belongs_to :user
  has_many :article_tags
  has_many :tags, through: :article_tags, dependent: :destroy
- belongs_to :user
-
+ has_many :bookmarks, dependent: :destroy
+ 
+ #既にブックマークしていないか確認
+ def bookmarked_by?(user)
+   bookmarks.where(user_id: user).exists?
+ end
 
  #複数のタグ付け機能で実装
  def tags_save(tag_list)
