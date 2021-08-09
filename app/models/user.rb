@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+
 
   validates :name, presence: true, length: { minimum: 1 }
 
