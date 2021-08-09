@@ -32,6 +32,7 @@ class Public::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      @article.tags_save(tag_list)
       flash[:notice] = "You have updated article successfully."
       redirect_to article_path
     else
@@ -52,7 +53,7 @@ class Public::ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :body, :sub_title)
+      params.require(:article).permit(:title, :body, :sub_title, { :tag_name=> [] })
     end
 
 end
