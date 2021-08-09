@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 }
 
   scope module: :public do
-     resources :articles
+     resources :articles do
+       resource :bookmarks, only: [:create, :destroy]
+     end
   end
 
 
