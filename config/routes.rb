@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   scope module: :public do
      resources :articles do
        resource :bookmarks, only: [:show, :create, :destroy]
-       resource :comments, only: [:create, :destroy]
+       resources :comments, only: [:create, :destroy]
      end
   end
 

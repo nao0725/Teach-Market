@@ -1,29 +1,29 @@
 class Public::CommentsController < ApplicationController
-  
+
   def create
     @article = Article.find(params[:article_id])
-    @comment = current_user.comment.new(comment_params)
-    @comment.article = @article
-    if comment.save
-      render :show
+    @comment = @article.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+     redirect_to request.referer
     else
-      render :show
+     redirect_to request.referer
     end
   end
-  
+
   def destroy
-    @comment = Comment.find(params[:id]) 
+    @comment = Comment.find(params[:id])
     if @comment.destroy
-      render :show
+     redirect_to request.referer
     else
-      render :show
+     redirect_to request.referer
     end
   end
-  
+
   private
-  
+
   def comment_params
-    params.require(:comment).permit(:content, :article_id)
+    params.require(:comment).permit(:comment_content, :article_id, :user_id)
   end
-  
+
 end
