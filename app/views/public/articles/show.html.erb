@@ -30,10 +30,9 @@
 
   <%= social_share_button_tag(@article.title) %>
 
-  <% if @article.bookmarked_by?(current_user) %>
-    <%= link_to "ブックマークを外す", article_bookmarks_path(@article), method: :delete %></td>
-  <% else %>
-    <%= link_to "ブックマーク", article_bookmarks_path(@article), method: :post %></td>
-  <% end %>
-
+  <div id="bookmark_button_<%= @article.id %>">
+    <%= render "public/bookmarks/bookmark", article: @article  %>
+  </div>
 </div>
+
+
