@@ -1,0 +1,27 @@
+<table>
+  <caption>ブックマーク一覧</caption>
+   <thead>
+    <tr>
+      <th>題名</th>
+      <th>タグ</th>
+      <th>目的</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <td><%= link_to bookmark.article.title, article_path(@article) %></td>
+        <td>
+          <% article.tags.each do |tag| %>
+           <%= tag.tag_name %>
+          <% end %>
+        </td>
+        <td><%= article.sub_title %></td>
+        <td><%= markdown(article.body).html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
