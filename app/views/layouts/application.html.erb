@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>TeachMarket</title>
     <%= csrf_meta_tags %>
@@ -7,12 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <!--Markdownで使用-->
-     <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.1/marked.js'></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/monokai-sublime.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.1/marked.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/monokai-sublime.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script src="https://kit.fontawesome.com/f03fd448b3.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -22,7 +24,7 @@
   <main>
     <%= yield %>
   </main>
-  
+
     <%= render "layouts/footer" %>
 
   </body>
