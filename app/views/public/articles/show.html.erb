@@ -33,6 +33,15 @@
   <div id="bookmark_button_<%= @article.id %>">
     <%= render "public/bookmarks/bookmark", article: @article  %>
   </div>
-</div>
+
+  <div id = "comment_area", class="w-100 p-3" style="background-color: #eee;">
+    <% if user_signed_in? %>
+      <%= render "public/comments/form", comment: @comment %>
+    <% end %>
+  </div>
+
+  <div class="w-100 p-3" style="background-color: #eee;">
+     <%= render "public/comments/index", comment: @comment, article: @article %>
+  </div>
 
 

@@ -4,6 +4,7 @@ class Article < ApplicationRecord
  has_many :article_tags
  has_many :tags, through: :article_tags, dependent: :destroy
  has_many :bookmarks, dependent: :destroy
+ has_many :comments, dependent: :destroy
 
  #既にブックマークしていないか確認
  def bookmarked_by?(user)
@@ -22,8 +23,8 @@ class Article < ApplicationRecord
     self.tags << inspected_tag
    end
 
-  end
+ end
 
- validates :title, presence: true, length: { minimum: 20 }
+ validates :title, presence: true, length: { minimum: 1 }
  validates :body, presence: true
 end
