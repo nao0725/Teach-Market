@@ -24,8 +24,10 @@
           <% end %>
         </td>
         <td><%= bookmark.article.sub_title %></td>
-        <td><%= bookmark.markdown(article.body).html_safe %></td>
+        <td><%= markdown(bookmark.article.body).html_safe %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+  <p>User詳細ページに戻る</p>
