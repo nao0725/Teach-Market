@@ -1,9 +1,15 @@
 class Article < ApplicationRecord
 
+ belongs_to :user
  has_many :article_tags
  has_many :tags, through: :article_tags, dependent: :destroy
- belongs_to :user
+ has_many :bookmarks, dependent: :destroy
+ has_many :comments, dependent: :destroy
 
+ #既にブックマークしていないか確認
+ def bookmarked_by?(user)
+   bookmarks.where(user_id: user).exists?
+ end
 
  #複数のタグ付け機能で実装
  def tags_save(tag_list)
@@ -17,8 +23,8 @@ class Article < ApplicationRecord
     self.tags << inspected_tag
    end
 
-  end
+ end
 
- validates :title, presence: true, length: { minimum: 20 }
+ validates :title, presence: true, length: { minimum: 1 }
  validates :body, presence: true
 end

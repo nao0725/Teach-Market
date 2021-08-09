@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: "public/homes#top"
   get '/help' => 'public/homes#help'
   get '/home' => 'public/homes#home'
@@ -18,7 +17,10 @@ Rails.application.routes.draw do
 }
 
   scope module: :public do
-     resources :articles
+     resources :articles do
+       resource :bookmarks, only: [:show, :create, :destroy]
+       resources :comments, only: [:create, :destroy]
+     end
   end
 
 
