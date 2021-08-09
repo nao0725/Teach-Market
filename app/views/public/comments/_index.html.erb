@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+  <p><%= comment.comment_content %></p>
+  <% if comment.user == current_user %>
+      <p><%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %></p>
+  <% end %>
+<% end %>
