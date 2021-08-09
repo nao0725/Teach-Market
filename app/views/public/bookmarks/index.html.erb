@@ -13,14 +13,18 @@
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td><%= link_to bookmark.article.title, article_path(@article) %></td>
         <td>
-          <% article.tags.each do |tag| %>
+          <%= link_to article_path(bookmark.article) do %>
+            <% bookmark.article.title %>
+          <% end %>
+        </td>
+        <td>
+          <% bookmark.article.tags.each do |tag| %>
            <%= tag.tag_name %>
           <% end %>
         </td>
-        <td><%= article.sub_title %></td>
-        <td><%= markdown(article.body).html_safe %></td>
+        <td><%= bookmark.article.sub_title %></td>
+        <td><%= bookmark.markdown(article.body).html_safe %></td>
       </tr>
     <% end %>
   </tbody>
