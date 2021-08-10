@@ -15,35 +15,38 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <% if user_signed_in? %>
-
         <li class="nav-item">
-          <%= link_to "アウトプットする", new_article_path, class: "nav-link" %>
+          <%= link_to "", user_path(current_user), class: "nav-link far fa-user " %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "使い方", help_path, class: "nav-link" %>
+          <%= link_to "", new_article_path, class: "nav-link far fa-paper-plane" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "", help_path, class: "nav-link far fa-question-circle " %>
         </li>
 
         <li class="nav-item active">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
         </li>
 
       <% elsif admin_signed_in? %>
         <li>管理者</li>
         <li class="nav-item active">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
         </li>
 
       <% else %>
 
         <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "", new_user_registration_path, class: "nav-link fas fa-user-plus" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          <%= link_to "", new_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
         </li>
         <li class="nav-item">
-          <%= link_to "使い方", help_path, class: "nav-link" %>
+          <%= link_to "", help_path, class: "nav-link far fa-question-circle" %>
         </li>
 
 
