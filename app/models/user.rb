@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
-  #プロフィール画像編集で
+
+  #プロフィール画像編集で使用
   attachment :profile_image
-  
+
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }
 
