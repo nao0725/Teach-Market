@@ -1,33 +1,39 @@
-<div class="container">
-  <div class = "top-visual">
-    <h1>TeachMarketへようこそ！</h1>
-    <p>誰でも成果を上げる手段を知るSNS</p>
+<div class = "container-fluid">
+  <div class="jumbotron">
+    <h1 class="display-3">TeachMarketへようこそ！</h1>
+  <p class="lead">誰でも成果を上げる手段を知るSNS</p>
+  <p class="lead">
+    <%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm mb-3" %>
+    <%= link_to "Sign Up", new_user_registration_path,class:"btn btn-success btn-sm mb-3" %>
+  </p>
+  <div class="card">
+  <div class="card-body">
+    <h4 class="card-title">TeachMarketとは？</h4>
+    <p class="card-text">
+      社会に出ると、職種や業界によって様々な仕事があり、多種多様な仕事のやり方があります。</br>
+      しかし、学生の頃のように、座って講義や授業を受ける仕組みとは違って、  </br>
+      社会人になると、上司から教わったこと以外はすべて自ら勉強しなくてはなりません。  </br>
+
+      「どのようなやり方をすれば、成果が上がるかわからない」  </br>
+      「新しく配属された新人をどのように教育すべきか迷っている」  </br>
+
+      そのような悩みを抱えている方に向けて「Teach Market」を作成しました。</br>
+
+      このアプリは、以下の使い道があります。</br>
+
+      * 仕事術を学んで自身の職場で活かす  </br>
+      * うまくいったことをアウトプットする  </br>
+      * 問題の解決手段を共有し、解決へ導く  </br>
+    </p>
+
+    <h4>さあ、始めよう！！！</h4>
+
+    </p>
+    <%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm mb-3" %>
+    <%= link_to "Sign Up", new_user_registration_path,class:"btn btn-success btn-sm mb-3" %>
   </div>
+</div>
 
-
-<h2>TeachMarketとは？</h2>
-
-<p>
-社会に出ると、職種や業界によって様々な仕事があり、多種多様な仕事のやり方があります。</br>
-しかし、学生の頃のように、座って講義や授業を受ける仕組みとは違って、  </br>
-社会人になると、上司から教わったこと以外はすべて自ら勉強しなくてはなりません。  </br>
-
-「どのようなやり方をすれば、成果が上がるかわからない」  </br>
-「新しく配属された新人をどのように教育すべきか迷っている」  </br>
-
-そのような悩みを抱えている方に向けて「Teach Market」を作成しました。</br>
-
-このアプリは、以下の使い道があります。</br>
-
-* 仕事術を学んで自身の職場で活かす  </br>
-* うまくいったことをアウトプットする  </br>
-* 問題の解決手段を共有し、解決へ導く  </br>
-</p>
-
-<h4>さあ、始めよう！！！</h4>
-
-
-<%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm mb-3" %>
-<%= link_to "Sign Up", new_user_registration_path,class:"btn btn-success btn-sm mb-3" %>
+</div>
 
 </div>
