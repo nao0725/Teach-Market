@@ -4,8 +4,6 @@ class Public::CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @review = @comment.rate
-    @review.save
     if @comment.save
      redirect_to request.referer
     else
