@@ -1,5 +1,15 @@
 <% @comments.each do |comment| %>
   <p><%= comment.comment_content %></p>
+  <div id="star-rate-#{review.id}"></div>
+    <script>
+          $('#star-rate-<%= comment.id %>').raty({
+            size: 12,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+          });
+    </script>
   <% if comment.user == current_user %>
       <p><%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %></p>
   <% end %>
