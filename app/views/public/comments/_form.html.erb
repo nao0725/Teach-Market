@@ -8,19 +8,19 @@
 
 </div>
 
-<div class="form-group row" id="star">
-  <%= f.label :rate,"評価", class:"form-label" %>
-  <%= f.hidden_field :rate, id: :review_star %>
-</div>
+<div class="form-group" id="star">
+    <%= f.label :rate,"評価", class:"form-label" %>
+    <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+  </div>
 
-<script>
+  <script>
   $('#star').raty({
-    size     : 12,
-    starOff:  "<%= asset_path("star-off.png") %>",
-    starOn : "<%= asset_path("star-on.png") %>",
-    starHalf: "<%= asset_path("star-half.png") %>",
-    scoreName: "review[rate]",
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'comment[rate]',
     half: true,
   });
-</script>
+  </script>
  <% end %>
