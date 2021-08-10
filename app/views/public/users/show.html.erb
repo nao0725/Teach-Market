@@ -18,8 +18,8 @@
   <h5>フォロー数</h5>
   <h5>フォロワー数</h5>
 
-
   <% if @user == current_user %>
+    <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary"%>
     <%= link_to "", edit_user_path(current_user) , class:"btn btn-outline-secondary fas fa-user-cog"%>
   <% end %>
 
