@@ -1,7 +1,26 @@
-<%= form_with(model: [@article, @comment]) do |f| %>
-  <%= f.text_area :comment_content %>
-  <%= button_tag type: "submit", class: "btn btn-default" do %>
-    <i class="far fa-comment-alt"></i>
-  <% end %>
-<% end %>
+<div class="form-group row">
+  <%= form_with(model: [@article, @comment]) do |f| %>
+    <%= f.label :comment_content,"コメント", class:"form-label" %>
+    <%= f.text_area :comment_content %>
+    <%= button_tag type: "submit", class: "btn btn-default" do %>
+      <i class="far fa-comment-alt"></i>
+    <% end %>
 
+</div>
+
+<div class="form-group" id="star">
+    <%= f.label :rate,"評価", class:"form-label" %>
+    <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+  </div>
+
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'comment[rate]',
+    half: true,
+  });
+  </script>
+ <% end %>
