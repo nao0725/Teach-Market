@@ -48,12 +48,12 @@ class Public::ArticlesController < ApplicationController
 
   private
 
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    def article_params
-      params.require(:article).permit(:title, :body, :sub_title)
-    end
+  def article_params
+    params.require(:article).permit(:title, :body, :sub_title)
+  end
 
 end
