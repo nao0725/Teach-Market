@@ -1,23 +1,23 @@
 <div class = "container">
-  <h1>登録情報</h1>
-  
+  <h1>マイページ</h1>
+
   <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'40x50' %>
-  
+
   <h6>名前</h6>
   <%= @user.name %>
-  
+
   <h6>ニックネーム</h6>
   <%= @user.nickname %>
-  
+
   <h6>自己紹介</h6>
   <%= @user.introduction %>
-  
+
   <h6>投稿数</h6>
-  <%= @article.count%>
-  
+  <%= @articles.count%>
+
   <h6>フォロー数</h6>
   <h6>フォロワー数</h6>
-  
+
   <h3>自分の投稿一覧</h3>
   <table class = "table table-borderless">
   <thead>

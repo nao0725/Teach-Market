@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
    before_action :correct_user, only: [:edit, :update]
 
   def show
+    @articles = Article.where.not(body:nil, title:nil)
   end
 
   def edit
@@ -13,14 +14,14 @@ class Public::UsersController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to user_path(current_user) unless @user == current_user
   end
-  
+
 end
