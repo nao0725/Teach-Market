@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_054759) do
+ActiveRecord::Schema.define(version: 2021_08_10_090946) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 2021_08_09_054759) do
     t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
+=======
+    t.float "rate"
+>>>>>>> 49b3b726d22fdfad1abdfb50b4af754c4c64e60d
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
