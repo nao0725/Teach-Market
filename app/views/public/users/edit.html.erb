@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>マイページ編集</h1>
+
+   <%= form_with model: @user, local:true do |f| %>
+
+    <h5>画像</h5>
+     <%= f.attachment_field :profile_image %>
+
+    <h5>名前</h5>
+     <%= f.text_field :name, class: "form-control" %>
+
+    <h5>ニックネーム</h5>
+     <%= f.text_field :nikname, class: "form-control" %>
+
+    <h5>自己紹介</h5>
+    <%= f.text_area :introduction, class: "form-control" %>
+
+    <%= f.submit "更新", class: "btn btn-secondary bg-secondary text-white" %>
+  <% end %>
+</div>
