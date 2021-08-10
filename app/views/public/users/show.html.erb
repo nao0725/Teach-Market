@@ -1,1 +1,51 @@
-<h1>マイページ</h1>
+<div class = "container">
+  <h1>登録情報</h1>
+  
+  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'40x50' %>
+  
+  <h6>名前</h6>
+  <%= @user.name %>
+  
+  <h6>ニックネーム</h6>
+  <%= @user.nickname %>
+  
+  <h6>自己紹介</h6>
+  <%= @user.introduction %>
+  
+  <h6>投稿数</h6>
+  <%= @article.count%>
+  
+  <h6>フォロー数</h6>
+  <h6>フォロワー数</h6>
+  
+  <h3>自分の投稿一覧</h3>
+  <table class = "table table-borderless">
+  <thead>
+    <tr>
+      <th>題名</th>
+      <th>タグ</th>
+      <th>目的</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, article %></td>
+        <td>
+          <% article.tags.each do |tag| %>
+           <%= tag.tag_name %>
+          <% end %>
+        </td>
+        <td><%= article.sub_title %></td>
+        <td><%= markdown(article.body).html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+
+
