@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
     if @comment.save
      redirect_to request.referer
     else
+       p @comment.errors
      redirect_to request.referer
     end
   end

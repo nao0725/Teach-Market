@@ -5,13 +5,12 @@
     <%= button_tag type: "submit", class: "btn btn-default" do %>
       <i class="far fa-comment-alt"></i>
     <% end %>
-
-</div>
-
-<div class="form-group" id="star">
+    <div id="star">
     <%= f.label :rate,"評価", class:"form-label" %>
     <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
   </div>
+  <% end %>
+</div>
 
   <script>
   $('#star').raty({
@@ -23,4 +22,4 @@
     half: true,
   });
   </script>
- <% end %>
+
