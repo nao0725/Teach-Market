@@ -9,9 +9,9 @@
   <div class="card-body">
     <h4 class="card-title"><%= link_to article.title, article %></h4>
     <h6 class="card-subtitle mb-2 text-muted">
-          <% article.tags.each do |tag| %>
-           <%= tag.tag_name %>
-          <% end %>
+      <% article.tags.each do |tag| %>
+       <%= tag.tag_name %>
+      <% end %>
     </h6>
     <h6 class="card-subtitle mb-2 text-muted"><%= article.sub_title %></h6>
     <p class="card-text"><%= markdown(article.body).html_safe %></p>
