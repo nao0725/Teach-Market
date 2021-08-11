@@ -5,8 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    git <!--CSSを読み込む-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <!--javascriptを読み込む-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
     <!--Markdownで使用-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.1/marked.js'></script>
@@ -14,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     
+     <!--FontAwesomeを読み込む-->
     <script src="https://kit.fontawesome.com/f03fd448b3.js" crossorigin="anonymous"></script>
   </head>
 
