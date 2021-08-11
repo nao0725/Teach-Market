@@ -38,7 +38,8 @@
       <p class="card-text"><%= markdown(article.body).html_safe %></p>
     </div>
       <% end %>
-    <div class = "pagination-lg text-align">
-      <%= paginate @articles %>
-    </div>
   </div>
+  <div class = "pagination-sm">
+    <%= paginate @articles %>
+  </div>
+</div>

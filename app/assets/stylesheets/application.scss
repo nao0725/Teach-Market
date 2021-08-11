@@ -39,19 +39,12 @@ $size: 24px;
   }
 }
 
-// ページネーション自体のデザイン
-.pagination>li>a {
-  border: none;
-  color: #696969;
+// ページネーションを中央寄せする
+.pagination {
+  justify-content: center;
 }
 
-// 表示しているページ番号のデザイン
-.pagination>.active>a {
+// 背景色を変える
+.pagination>.active>a {     
   background: #93c9ff;
-  border-radius: 15px;
-}
-
-// ホバー時のデザイン*/
-.pagination>li>a:hover {
-  border-radius: 15px;
 }
