@@ -15,4 +15,15 @@ $(document).on('turbolinks:load', function markdownCode() {
   });
 });
 
-window.addEventListener("load", markdownCode);
+// if (markdownCode){
+//   window.addEventListener("load", markdownCode);
+// }
+
+  const codeInput = document.getElementById('user_answer_code');
+  const codeMarkdown = document.getElementById('code_markdown');
+  if (codeInput == null || codeMarkdown == null) {
+    // return;
+  } else {
+     window.addEventListener("load", markdownCode);
+  }
+

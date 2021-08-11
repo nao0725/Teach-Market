@@ -21,4 +21,4 @@
 //= require social-share-button
 
 // Markdownで使用
-require("../codeblock")
+// require("../codeblock")
