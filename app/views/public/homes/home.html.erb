@@ -1,28 +1,98 @@
 <div class="container">
-
   <p id="notice"><%= notice %></p>
 
   <h1>みんなのノウハウ</h1>
-  
-  <%= link_to "新しい順", home_path(sort: 'created_at DESC') %> |
-  <%= link_to "ブックマーク数順", home_path(sort: 'bookmark.count DESC') %> |
-  <%= link_to "評価の多い順", home_path(sort: 'rate DESC') %> |
 
-  <% @articles.each do |article| %>
-    <div class="card">
+  <div class="tab-area">
+    <div class="tab active">
+      新着投稿
+    </div>
+    <div class="tab">
+      ブックマーク数順
+    </div>
+    <div class="tab">
+      評価の高い順
+    </div>
+  </div>
+
+
+<div class="content-area">
+
+   <!--新規投稿順-->
+    <div class="content show">
+      <% @articles.each do |article| %>
+      <div class="card">
       <div class="card-body">
-        <h4 class="card-title"><%= link_to article.title, article %></h4>
-          <h6 class="card-subtitle mb-2 text-muted">
+        <h4 class="card-title">
+          <%= link_to article.title, article %>
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted">
           <% article.tags.each do |tag| %>
-          <%= tag.tag_name %>
+            <%= tag.tag_name %>
           <% end %>
-          </h6>
-          <h6 class="card-subtitle mb-2 text-muted"><%= article.sub_title %></h6>
-          <p class="card-text"><%= markdown(article.body).html_safe %></p>
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <%= article.sub_title %>
+        </h6>
+        <p class="card-text">
+          <%= markdown(article.body).html_safe %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+    <div class = "pagination-sm">
+      <%= paginate @articles %>
+    </div>
+  </div>
+
+  <!--ブックマーク数順-->
+  <div class="content">
+    <% @bookmark_ranks.each.with_index(1) do |article, i| %>
+      第<%= i %>位
+      <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to article.title, article %>
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <% article.tags.each do |tag| %>
+            <%= tag.tag_name %>
+          <% end %>
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <%= article.sub_title %>
+        </h6>
+        <p class="card-text">
+          <%= markdown(article.body).html_safe %>
+        </p>
       </div>
     </div>
   <% end %>
-  <div class = "pagination-sm">
-    <%= paginate @articles %>
+  </div>
+
+  <!--評価の高い順-->
+    <div class="content">
+      <% @review_ranks.each.with_index(1) do |article, i| %>
+        第<%= i %>位
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= link_to article.title, article %>
+            </h4>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <% article.tags.each do |tag| %>
+                <%= tag.tag_name %>
+              <% end %>
+            </h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <%= article.sub_title %>
+            </h6>
+            <p class="card-text">
+              <%= markdown(article.body).html_safe %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

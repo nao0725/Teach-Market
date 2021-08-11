@@ -37,8 +37,6 @@
   </div>
 
   <!--星評価の平均値-->
-   <div class="star-rating ml-2">
-     <div class="star-rating-front" style="width: <%= @article.avg_score_percentage %>%">
       <div id="rate_<%= @article.avg_score %>"></div>
         <script>
           $('#rate_<%= @article.id %>').raty({
@@ -51,14 +49,8 @@
             score: <%= @comment.rate %>,
           });
         </script>
-     </div>
-     <div class="star-rating-back"></div>
-   </div>
-   <div class="average-score-display">
      （<%= @article.avg_score %>点）
-   </div>
-
-
+     
   <!--コメント機能-->
   <div id = "comment_area", class="w-100 p-3">
     <% if user_signed_in? %>
