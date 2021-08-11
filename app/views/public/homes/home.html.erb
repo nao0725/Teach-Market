@@ -3,6 +3,10 @@
   <p id="notice"><%= notice %></p>
 
   <h1>みんなのノウハウ</h1>
+  
+  <%= link_to "新しい順", home_path(sort: 'created_at DESC') %> |
+  <%= link_to "ブックマーク数順", home_path(sort: 'bookmark.count DESC') %> |
+  <%= link_to "評価の多い順", home_path(sort: 'rate DESC') %> |
 
   <% @articles.each do |article| %>
     <div class="card">
