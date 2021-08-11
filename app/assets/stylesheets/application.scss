@@ -30,10 +30,21 @@ body {
 
 $size: 24px;
 
+// SNSシェアボタンのCSS
 .social-share-button {
   .ssb-icon {
     background-size: $size $size;
     height: $size;
     width: $size;
   }
+}
+
+// ページネーションを中央寄せする
+.pagination {
+  justify-content: center;
+}
+
+// 背景色を変える
+.pagination>.active>a {     
+  background: #93c9ff;
 }
