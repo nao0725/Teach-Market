@@ -24,8 +24,8 @@ class Article < ApplicationRecord
    end
 
  end
- 
- #星の平均値を表示している
+
+ #星評価の平均値を表示
  def avg_score
     unless self.comments.empty?
       comments.average(:rate).round(1)
@@ -34,15 +34,7 @@ class Article < ApplicationRecord
     end
  end
 
- def avg_score_percentage
-   unless self.comments.empty?
-     comments.average(:rate).round(1).to_f*100/5
-   else
-     0.0
-   end
- end
-
  validates :title, presence: true, length: { minimum: 1 }
  validates :body, presence: true
- 
+
 end
