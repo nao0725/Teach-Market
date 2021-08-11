@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-    @articles = Article.where.not(body:nil, title:nil)
+    @articles = Article.all.page(params[:page]).per(3)
   end
 
   def help
