@@ -25,6 +25,7 @@ class Article < ApplicationRecord
 
  end
  
+ #星の平均値を表示している
  def avg_score
     unless self.comments.empty?
       comments.average(:rate).round(1)

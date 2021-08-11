@@ -28,33 +28,45 @@
   <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
   <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
 
+  <!--SNSシェアボタン機能-->
   <%= social_share_button_tag(@article.title) %>
 
+  <!--ブックマーク機能-->
   <div id="bookmark_button_<%= @article.id %>">
     <%= render "public/bookmarks/bookmark", article: @article  %>
   </div>
 
-
-  <div class="average-score mb-3">
+  <!--星評価の平均値-->
    <div class="star-rating ml-2">
      <div class="star-rating-front" style="width: <%= @article.avg_score_percentage %>%">
-      <%= @comment.rate %>
+      <div id="rate_<%= @article.avg_score %>"></div>
+        <script>
+          $('#rate_<%= @article.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @comment.rate %>,
+          });
+        </script>
      </div>
      <div class="star-rating-back"></div>
    </div>
    <div class="average-score-display">
      （<%= @article.avg_score %>点）
    </div>
-  </div>
 
 
-
+  <!--コメント機能-->
   <div id = "comment_area", class="w-100 p-3">
     <% if user_signed_in? %>
       <%= render "public/comments/form", comment: @comment %>
     <% end %>
   </div>
 
+  <!--コメント一覧-->
   <div class="w-100 p-3">
      <%= render "public/comments/index", comments: @comments, article: @article %>
   </div>
