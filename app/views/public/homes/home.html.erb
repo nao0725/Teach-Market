@@ -1,22 +1,24 @@
 <div class="container">
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>みんなのノウハウ</h1>
+  <h1>みんなのノウハウ</h1>
 
-<% @articles.each do |article| %>
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title"><%= link_to article.title, article %></h4>
-    <h6 class="card-subtitle mb-2 text-muted">
-      <% article.tags.each do |tag| %>
-       <%= tag.tag_name %>
-      <% end %>
-    </h6>
-    <h6 class="card-subtitle mb-2 text-muted"><%= article.sub_title %></h6>
-    <p class="card-text"><%= markdown(article.body).html_safe %></p>
+  <% @articles.each do |article| %>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= link_to article.title, article %></h4>
+          <h6 class="card-subtitle mb-2 text-muted">
+          <% article.tags.each do |tag| %>
+          <%= tag.tag_name %>
+          <% end %>
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= article.sub_title %></h6>
+          <p class="card-text"><%= markdown(article.body).html_safe %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="float-right ">
+    <%= paginate @articles %>
   </div>
 </div>
-<% end %>
-
-  <%= paginate @articles %>
