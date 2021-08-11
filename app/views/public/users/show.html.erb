@@ -15,8 +15,13 @@
   <h5>投稿数</h5>
   <%= @articles.count %>
 
+  <p><%= render "public/relationships/follow_btn", user: @user %></p>
+
   <h5>フォロー数</h5>
+  <p><%= link_to @user.followings.count, user_followings_path(@user.id) %></p>
+  
   <h5>フォロワー数</h5>
+  <p><%= link_to @user.followers.count, user_followers_path(@user.id) %></p>
 
   <% if @user == current_user %>
     <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary"%>
