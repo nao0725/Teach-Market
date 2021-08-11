@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-    @articles = Article.page(params[:page]).reverse_order
+    @articles = Article.all.page(params[:page]).per(3)
   end
 
   def help
