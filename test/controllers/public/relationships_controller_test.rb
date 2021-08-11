@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RelationshipsControllerTest < ActionDispatch::IntegrationTest
+class Public::RelationshipsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
