@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
    before_action :correct_user, only: [:edit, :update]
 
   def show
-    @articles = Article.where.not(body:nil, title:nil)
+    @articles = Article.page(params[:page]).per(5)
   end
 
   def edit
