@@ -21,7 +21,11 @@ Rails.application.routes.draw do
        resource :bookmarks, only: [:show, :create, :destroy]
        resources :comments, only: [:create, :destroy]
      end
-     resources :users, only: [:show, :edit, :update ]
+     resources :users, only: [:show, :edit, :update ] do
+       resource :relationships, only: [:create, :destroy]
+       get "followings" => "relationships#followings", as: "followings"
+       get "followers" => "relationships#followers", as: "followers"
+     end 
   end
 
 
