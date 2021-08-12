@@ -30,16 +30,14 @@
 
   <!--ブックマーク数順-->
   <div class="content">
-    <% @bookmark_ranks.each.with_index(1) do |article, i| %>
-      第<%= i %>位
+    <% @bookmarks.each.with_index(1) do |article, i| %>
       <%= render "public/articles/index", article: article %>
     <% end %>
   </div>
 
   <!--評価の高い順-->
     <div class="content">
-      <% @review_ranks.each.with_index(1) do |article, i| %>
-        第<%= i %>位
+      <% @reviews.each.with_index(1) do |article, i| %>
         <%= render "public/articles/index", article: article %>
       <% end %>
     </div>
