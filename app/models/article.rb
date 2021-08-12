@@ -33,11 +33,13 @@ class Article < ApplicationRecord
       0.0
     end
  end
- 
+
  #複数検索できるように設定
- def Article.search(search_word)
-  Article.where(["title LIKE ?", "#{search_word}"])
+ def self.search(search_word)
+  Article.where(["title LIKE(?) OR body LIKE(?) OR sub_title LIKE(?)", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%"])
+  Tag.where(["tag_name LIKE(?)", "%#{search_word}%"])
  end
+
 
  validates :title, presence: true, length: { minimum: 1 }
  validates :body, presence: true
