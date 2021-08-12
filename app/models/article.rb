@@ -37,7 +37,6 @@ class Article < ApplicationRecord
  #複数検索できるように設定
  def self.search(search_word)
   Article.where(["title LIKE(?) OR body LIKE(?) OR sub_title LIKE(?)", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%"])
-  Tag.where(["tag_name LIKE(?)", "%#{search_word}%"])
  end
 
 
