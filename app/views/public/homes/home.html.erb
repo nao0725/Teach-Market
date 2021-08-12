@@ -3,6 +3,7 @@
 
   <h1>みんなのノウハウ</h1>
 
+  <%= link_to "ユーザーランキングはこちら", ranks_path %>
   <div class="tab-area">
     <div class="tab active">
       新着投稿
@@ -15,30 +16,12 @@
     </div>
   </div>
 
-
 <div class="content-area">
 
    <!--新規投稿順-->
-    <div class="content show">
-      <% @articles.each do |article| %>
-      <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
-          <%= link_to article.title, article %>
-        </h4>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <% article.tags.each do |tag| %>
-            <%= tag.tag_name %>
-          <% end %>
-        </h6>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <%= article.sub_title %>
-        </h6>
-        <p class="card-text">
-          <%= markdown(article.body).html_safe %>
-        </p>
-      </div>
-    </div>
+  <div class="content show">
+    <% @articles.each do |article| %>
+      <%= render "public/articles/index", article: article %>
     <% end %>
     <div class = "pagination-sm">
       <%= paginate @articles %>
@@ -47,51 +30,15 @@
 
   <!--ブックマーク数順-->
   <div class="content">
-    <% @bookmark_ranks.each.with_index(1) do |article, i| %>
-      第<%= i %>位
-      <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
-          <%= link_to article.title, article %>
-        </h4>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <% article.tags.each do |tag| %>
-            <%= tag.tag_name %>
-          <% end %>
-        </h6>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <%= article.sub_title %>
-        </h6>
-        <p class="card-text">
-          <%= markdown(article.body).html_safe %>
-        </p>
-      </div>
-    </div>
-  <% end %>
+    <% @bookmarks.each.with_index(1) do |article, i| %>
+      <%= render "public/articles/index", article: article %>
+    <% end %>
   </div>
 
   <!--評価の高い順-->
     <div class="content">
-      <% @review_ranks.each.with_index(1) do |article, i| %>
-        第<%= i %>位
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= link_to article.title, article %>
-            </h4>
-            <h6 class="card-subtitle mb-2 text-muted">
-              <% article.tags.each do |tag| %>
-                <%= tag.tag_name %>
-              <% end %>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-              <%= article.sub_title %>
-            </h6>
-            <p class="card-text">
-              <%= markdown(article.body).html_safe %>
-            </p>
-          </div>
-        </div>
+      <% @reviews.each.with_index(1) do |article, i| %>
+        <%= render "public/articles/index", article: article %>
       <% end %>
     </div>
   </div>
