@@ -33,6 +33,11 @@ class Article < ApplicationRecord
       0.0
     end
  end
+ 
+ #複数検索できるように設定
+ def Article.serach(serach_word)
+  Article.where(["title LIKE ?", "#{search_word}"])
+ end
 
  validates :title, presence: true, length: { minimum: 1 }
  validates :body, presence: true

@@ -11,5 +11,10 @@ class Public::HomesController < ApplicationController
 
   def help
   end
+  
+  def serach
+    @article = Article.new
+    @articles = Article.serach(params[:keyword])
+  end 
 
 end

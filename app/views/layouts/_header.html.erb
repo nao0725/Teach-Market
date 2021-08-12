@@ -30,6 +30,11 @@
         <li class="nav-item active">
           <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
         </li>
+        
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword %>
+          <%= f.submit "SEARCH", class: "btn btn-primary"  %>
+        <% end %>
 
       <% elsif admin_signed_in? %>
         <li>管理者</li>
