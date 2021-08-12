@@ -1,6 +1,10 @@
 <div class = "container">
-  <h1>マイページ</h1>
-
+  <% if @user == current_user %>
+    <h1>マイページ</h1>
+  <% else %>
+    <h1><%= @user.nickname %>さんの詳細ページ</h1>
+  <% end %>
+  
   <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"200x200", class: "rounded-circle" %>
 
   <h5>名前</h5>

@@ -19,6 +19,14 @@
 @import 'font-awesome';
 @import "social-share-button";
 
+
+// リセットCSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 p {
   font-size: 16px;
 }
@@ -26,6 +34,12 @@ p {
 body {
   background-image:image-url("top.jpg");
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+// リンクの色を統一
+.link {
+  text-decoration: none;
+  color: black ; 
 }
 
 // HOMEのタブ切り替え表示

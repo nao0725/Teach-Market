@@ -6,7 +6,7 @@
         </h4>
         <h6 class="card-subtitle mb-2 text-muted">
           <% article.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name %>
           <% end %>
         </h6>
         <h6 class="card-subtitle mb-2 text-muted">
