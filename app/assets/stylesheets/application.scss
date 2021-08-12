@@ -19,6 +19,14 @@
 @import 'font-awesome';
 @import "social-share-button";
 
+
+// リセットCSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 p {
   font-size: 16px;
 }
