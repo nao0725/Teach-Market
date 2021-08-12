@@ -33,7 +33,7 @@
         
         <%= form_with url: search_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword %>
-          <%= f.submit "SEARCH", class: "btn btn-primary"  %>
+          <%= f.submit "SEARCH", class: "btn-sm btn-primary"  %>
         <% end %>
 
       <% elsif admin_signed_in? %>

@@ -35,7 +35,7 @@ class Article < ApplicationRecord
  end
  
  #複数検索できるように設定
- def Article.serach(serach_word)
+ def Article.search(search_word)
   Article.where(["title LIKE ?", "#{search_word}"])
  end
 

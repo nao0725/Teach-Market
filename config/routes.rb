@@ -4,19 +4,19 @@ Rails.application.routes.draw do
     get "/help" => "homes#help"
     get "/home" => "homes#home"
     get "/search" => "homes#search"
-    get "ranks" => "ranks#rank"
-    
+    get "/rank" => "ranks#rank"
+
    resources :articles do
      resource :bookmarks, only: [:show, :create, :destroy]
      resources :comments, only: [:create, :destroy]
    end
-   
+
    resources :users, only: [:show, :edit, :update ] do
      resource :relationships, only: [:create, :destroy]
      get "followings" => "relationships#followings", as: "followings"
      get "followers" => "relationships#followers", as: "followers"
    end
-   
+
  end
 
   devise_for :users, controllers: {
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 }
 
   devise_for :admins, controllers: {
-    sessions:      "admins/sessions,
+    sessions:      "admins/sessions",
     passwords:     "admins/passwords",
     registrations: "admins/registrations"
 }

@@ -3,7 +3,8 @@
 
   <h1>みんなのノウハウ</h1>
 
-  <%= link_to "ユーザーランキングはこちら", rank_path %>
+  <% if @articles.exists? %>
+
   <div class="tab-area">
     <div class="tab active">
       新着投稿
@@ -42,4 +43,11 @@
       <% end %>
     </div>
   </div>
+
+  <% else %>
+  <p>該当する記事は見つかりませんでした。</p>
+  <% end %>
+  
+  <%= link_to "HOME", home_path %>
 </div>
+
