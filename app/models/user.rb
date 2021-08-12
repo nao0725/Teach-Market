@@ -13,23 +13,23 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
-  
-  # フォローする
+
+  # フォローするときのメソッド
   def follow(user_id)
-    relationships.create(follow_id: user_id)
+    relationships.create(followed_id: user_id)
   end
-  
-  # 既存のフォロワーならフォロー解除できる
+
+  # フォローを外すメソッド
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
-  
-  # フォローしたユーザーが既にフォロー済かどうか
+
+  # 既にフォロー済かどうか確認するメソッド
   def following?(user)
     followings.include?(user)
   end
 
-  #プロフィール画像編集で使用
+  #プロフィール画像で使用
   attachment :profile_image
 
   # バリデーション
