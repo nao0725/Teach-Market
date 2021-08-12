@@ -1,6 +1,56 @@
 
-<% post_ranks.each.with_index(1) do |post, i| %>
-  第<%= i %>位
-  <div class="content show">
-    <%= render "public/articles/index", articles: @articles %>
-<% end %>
+<div class = "container">
+ <h1>ユーザーのアウトプット数ランキング</h1>
+
+  <div class="tab-area">
+    <div class="tab active">
+      今日
+    </div>
+    <div class="tab">
+      今週
+    </div>
+    <div class="tab">
+      今月
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="content show">
+      
+    <table>
+      <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= render "public/ranks/index", user: user, i: i %></td>
+        </tr>
+      <% end %>
+    </table>
+  
+    </div>
+  
+    <div class="content">
+      
+     <table>
+      <% @week_user_post_ranks.each.with_index(1) do |user, i| %>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= render "public/ranks/index", user: user, i: i %></td>
+        </tr>
+      <% end %>
+     </table>
+      
+    </div>
+  
+    <div class="content">
+      
+      <table>
+        <% @month_user_post_ranks.each.with_index(1) do |user, i| %>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= render "public/ranks/index", user: user, i: i %></td>
+        </tr>
+        <% end %>
+       </table>
+    </div>
+  </div>
+</div>
