@@ -1,7 +1,7 @@
 <div class = "container">
   <h1>マイページ</h1>
 
-  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'200x200' %>
+  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"200x200", class: "rounded-circle" %>
 
   <h5>名前</h5>
   <%= @user.name %>
@@ -15,11 +15,15 @@
   <h5>投稿数</h5>
   <%= @articles.count %>
 
-  <p><%= render "public/relationships/follow_btn", user: @user %></p>
+  <% unless @user == current_user %>
+  <div id = "follow_btn">
+    <p><%= render "public/relationships/follow_btn", user: @user %></p>
+  </div>
+  <% end %>
 
   <h5>フォロー数</h5>
   <p><%= link_to @user.followings.count, user_followings_path(@user.id) %></p>
-  
+
   <h5>フォロワー数</h5>
   <p><%= link_to @user.followers.count, user_followers_path(@user.id) %></p>
 
@@ -29,20 +33,10 @@
   <% end %>
 
 
-  <h3>自分の投稿一覧</h3>
-  <% @articles.each do |article| %>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title"><%= link_to article.title, article %></h4>
-      <h6 class="card-subtitle mb-2 text-muted">
-        <% article.tags.each do |tag| %>
-         <%= tag.tag_name %>
-        <% end %>
-      </h6>
-      <h6 class="card-subtitle mb-2 text-muted"><%= article.sub_title %></h6>
-      <p class="card-text"><%= markdown(article.body).html_safe %></p>
-    </div>
-      <% end %>
+  <h3>投稿一覧</h3>
+    <% @articles.each do |article| %>
+     <%= render "public/articles/index", article: article %>
+    <% end %>
   </div>
   <div class = "pagination-sm">
     <%= paginate @articles %>
