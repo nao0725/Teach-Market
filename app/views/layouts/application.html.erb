@@ -28,8 +28,14 @@
   <main>
     <%= yield %>
   </main>
+  
+  <span id="back">
+    <a href="">
+      <%= image_tag asset_path("arrow.jpg"), data: {"turbolinks"=>false}, class: "arrow" %>
+    </a>
+  </span>
 
-    <%= render "layouts/footer" %>
+  <%= render "layouts/footer" %>
 
   </body>
 </html>
