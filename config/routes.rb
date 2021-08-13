@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-    devise_for :users, controllers: {
+
+  devise_for :users, controllers: {
     sessions:      "users/sessions",
     passwords:     "users/passwords",
     registrations: "users/registrations"
@@ -11,13 +11,14 @@ Rails.application.routes.draw do
     passwords:     "admins/passwords",
     registrations: "admins/registrations"
 }
-  
+
   scope module: :public do
     root to: "homes#top"
     get "/help" => "homes#help"
     get "/home" => "homes#home"
     get "/search" => "homes#search"
     get "/rank" => "ranks#rank"
+    post "/homes/guest_sign_in" => "homes#guest_sign_in"
 
    resources :articles do
      resource :bookmarks, only: [:show, :create, :destroy]
