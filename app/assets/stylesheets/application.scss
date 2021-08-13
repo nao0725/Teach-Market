@@ -39,14 +39,14 @@ body {
 // リンクの色を統一
 .link {
   text-decoration: none;
-  color: black ; 
+  color: black ;
 }
 
 // トップへ戻るボタン
 #back {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 30px;
 }
 .arrow{
   width:      50px;
@@ -102,6 +102,6 @@ $size: 24px;
 }
 
 // 背景色を変える
-.pagination>.active>a {     
+.pagination>.active>a {
   background: #93c9ff;
 }
