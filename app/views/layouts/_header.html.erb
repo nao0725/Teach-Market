@@ -15,6 +15,15 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <% if user_signed_in? %>
+      
+      <!--検索窓の設置-->
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword,placeholder: "キーワードで検索" %>
+          <%= button_tag type: "submit", class: "btn btn-default" do %>
+            <i class="fas fa-search"></i>
+           <% end %>
+        <% end %>
+      
         <li class="nav-item">
           <%= link_to "", user_path(current_user), class: "nav-link far fa-user " %>
         </li>
@@ -30,13 +39,6 @@
         <li class="nav-item active">
           <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
         </li>
-
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword,placeholder: "検索" %>
-           <%= button_tag type: "submit", class: "btn btn-default" do %>
-              <i class="fas fa-search"></i>
-           <% end %>
-        <% end %>
 
       <% elsif admin_signed_in? %>
         <li>管理者</li>
@@ -55,7 +57,6 @@
         <li class="nav-item">
           <%= link_to "", help_path, class: "nav-link far fa-question-circle" %>
         </li>
-
 
       <% end %>
     </ul>
