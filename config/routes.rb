@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/search" => "homes#search"
     get "/rank" => "ranks#rank"
     post "/homes/guest_sign_in" => "homes#guest_sign_in"
+    resources :notifications, only: [:index]
 
    resources :articles do
      resource :bookmarks, only: [:show, :create, :destroy]
