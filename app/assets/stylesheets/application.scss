@@ -42,6 +42,17 @@ body {
   color: black ; 
 }
 
+// トップへ戻るボタン
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.arrow{
+  width:      50px;
+  height:     50px;
+}
+
 // HOMEのタブ切り替え表示
 .tab-area {
   display: flex;
