@@ -1,68 +1,64 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <% if user_signed_in? %>
+      <%= link_to "TeachMarket", home_path, class: "navbar-brand" %>
+    <% else %>
+      <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
+    <% end %>
 
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword,placeholder: "キーワードで検索" %>
+      <%= button_tag type: "submit", class: "btn btn-default" do %>
+        <i class="fas fa-search"></i>
+       <% end %>
+    <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to "TeachMarket", home_path, class: "navbar-brand" %>
-  <% else %>
-    <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
-  <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0 ">
-      <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "", user_path(current_user), class: "nav-link far fa-user " %>
+          </li>
 
-      <!--検索窓の設置-->
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword,placeholder: "キーワードで検索" %>
-          <%= button_tag type: "submit", class: "btn btn-default" do %>
-            <i class="fas fa-search"></i>
-           <% end %>
+          <li class="nav-item">
+            <%= link_to "", new_article_path, class: "nav-link fas fa-pencil-alt" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "", help_path, class: "nav-link far fa-question-circle " %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "", notifications_path, class: "nav-link far fa-bell" %> <!--通知が来たらオレンジ色にアイコンが表示されるように設定する-->
+          </li>
+
+          <li class="nav-item active">
+            <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+          </li>
+
+        <% elsif admin_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+          </li>
+
+        <% else %>
+
+          <li class="nav-item">
+            <%= link_to "", new_user_registration_path, class: "nav-link fas fa-user-plus" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "", new_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "", help_path, class: "nav-link far fa-question-circle" %>
+          </li>
+
         <% end %>
-
-        <li class="nav-item">
-          <%= link_to "", user_path(current_user), class: "nav-link far fa-user " %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "", new_article_path, class: "nav-link far fa-paper-plane" %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "", help_path, class: "nav-link far fa-question-circle " %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "", notifications_path, class: "nav-link far fa-bell" %> <!--通知が来たらオレンジ色にアイコンが表示されるように設定する-->
-        </li>
-
-        <li class="nav-item active">
-          <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
-        </li>
-
-      <% elsif admin_signed_in? %>
-        <li>管理者</li>
-        <li class="nav-item active">
-          <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
-        </li>
-
-      <% else %>
-
-        <li class="nav-item">
-          <%= link_to "", new_user_registration_path, class: "nav-link fas fa-user-plus" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "", new_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "", help_path, class: "nav-link far fa-question-circle" %>
-        </li>
-
-      <% end %>
-    </ul>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
