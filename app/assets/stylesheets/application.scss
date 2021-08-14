@@ -42,6 +42,7 @@ body {
   color: black ;
 }
 
+
 // トップへ戻るボタン
 #back {
   position: fixed;
@@ -100,8 +101,15 @@ $size: 24px;
 .pagination {
   justify-content: center;
 }
-
-// 背景色を変える
 .pagination>.active>a {
   background: #93c9ff;
 }
+
+.n-circle {
+  font-size : 1px;
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
