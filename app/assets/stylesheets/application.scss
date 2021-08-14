@@ -100,8 +100,11 @@ $size: 24px;
 .pagination {
   justify-content: center;
 }
-
-// 背景色を変える
 .pagination>.active>a {
   background: #93c9ff;
+}
+
+// ベルマークの色
+.n-circle {
+  color: #efa04c;
 }
