@@ -104,7 +104,10 @@ $size: 24px;
   background: #93c9ff;
 }
 
-// ベルマークの色
 .n-circle {
+  font-size : 1px;
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
   color: #efa04c;
 }

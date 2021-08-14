@@ -37,15 +37,15 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to notification_path do %>
-            <% if unchecked_notifications.any? %>
+          <%= link_to notifications_path do %>
+            <%# if @notification.any? %>
               <span class = "fa-stack">
-                <i class="far fa-bell fa-lg fa-stack-2x"></i>
+                <i class="far fa-bell fa-sm fa-stack-2x"></i>
                 <i class="fas fa-bell fa-circle n-circle fa-stack-1x"></i>
               </span>
-            <% else %>
-              <i class="far fa-bell fa-lg"></i>
-            <% end %>
+            <%# else %>
+              <!--<i class="far fa-bell fa-lg"></i>-->
+            <%# end %>
           <% end %>
         </li>
 
