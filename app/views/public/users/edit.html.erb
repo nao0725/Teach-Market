@@ -17,4 +17,7 @@
 
     <%= f.submit "更新", class: "btn btn-secondary bg-secondary text-white" %>
   <% end %>
+
+  <div><%= link_to "My Page", user_path(@user) %></div>
+  <div><%= link_to "退会をご希望の方はこちら", confirm_unsubscribe_path(@user) %></div>
 </div>

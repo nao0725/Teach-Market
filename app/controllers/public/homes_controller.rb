@@ -37,13 +37,13 @@ class Public::HomesController < ApplicationController
     sign_in user
     redirect_to root_path
   end
-  
+
   def unsubscribe
-    @user = User.find_by(name: params[:name])
+    @user = current_user
   end
-  
+
   def withdraw
-    @user = User.find_by(name: params[:name])
+    @user = current_user
     @user.update(is_valid: false)
     reset_session
     redirect_to root_path
