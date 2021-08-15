@@ -1,39 +1,42 @@
 
-    <div class="container">
-      <div class="panel panel-default">
-        
-        <div class="panel-body">
+  <div class="panel panel-default">
+    <div class="panel-body">
 
-            <%= form_with(model: article, local: true) do |f| %>
-            <div class="form-group">
-              <label class="control-label">題名</label>
-             　<%= f.text_field :title, class: "form-control" %>
-            </div>
+      <%= form_with(model: article, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
+        </div>
 
-            <div class="form-group">
-               <label class="control-label">タグ</label>
-              <%= f.text_field :tag_name, placeholder:",で区切ってください", class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.text_field :tag_name, placeholder:"タイトルに関連するタグごとに / で区切って入力しよう", class: "form-control" %>
+        </div>
 
-                 <div class="form-group">
-              <label class="control-label">目的</label>
-              <%= f.text_field :sub_title, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.text_field :sub_title, placeholder: "この記事を書く目的を明確にしよう", class: "form-control" %>
+        </div>
 
+        <div class = "row">
+          <div class = "col-6">
             <div class="form-group code-block">
-              <label class="control-label">内容</label>
-              <%= f.text_area :body, id: 'user_answer_code', placeholder: "あなたの仕事のノウハウをアウトプットして情報共有しよう！" , class: "form-control" %>
+              <label class="control-label">本文</label>
+              <%= f.text_area :body, id: 'user_answer_code',
+                  placeholder: "あなたの仕事のノウハウをMarkdown記法を使ってアウトプットしよう!" ,
+                  class: "form-control", size:'10x30' %>
             </div>
-
+          </div>
+          <div class = "col-6">
             <div class="form-group code-block">
               <label class="control-label">プレビュー</label>
               <div id="code_markdown">
-               <%= f.text_area :body, id: 'user_answer_code' %>
+                <%= f.text_area :body, id: "user_answer_code", class: "form-control", size:'10x30' %>
               </div>
-
-            <div class="actions">
-              <%= f.submit %>
             </div>
-            <% end %>
-      </div>
+          </div>
+        </div>
+
+        <div class="actions">
+        <%= f.submit "アウトプット", class: "btn-sm btn-secondary" %>
+        </div>
+      <% end %>
     </div>
+  </div>

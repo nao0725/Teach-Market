@@ -43,60 +43,6 @@ body {
 }
 
 
-// トップへ戻るボタン
-#back {
-  position: fixed;
-  right: 20px;
-  bottom: 30px;
-}
-.arrow{
-  width:      50px;
-  height:     50px;
-}
-
-// HOMEのタブ切り替え表示
-.tab-area {
-  display: flex;
-  justify-content: space-around;
-  background-color: black;
-  cursor: pointer;
-  .tab {
-    width: 300px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    color: white;
-    border-right: 1px solid #50637b;
-    border-left: 1px solid #222e3e;
-  }
-  .tab.active {
-    background-color: #ccc;
-    color: #222e3e;
-    border: none;
-  }
-}
-.content-area {
-  font-size: 30px;
-  .content {
-    display: none;
-  }
-  .content.show {
-    margin-top: 50px;
-    display: block;
-  }
-}
-
-
-// SNSシェアボタンのCSS
-$size: 24px;
-.social-share-button {
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-  }
-}
-
 // ページネーションを中央寄せする
 .pagination {
   justify-content: center;
@@ -105,6 +51,7 @@ $size: 24px;
   background: #93c9ff;
 }
 
+// 通知未確認を知らせるアイコン
 .n-circle {
   font-size : 1px;
   position: absolute;

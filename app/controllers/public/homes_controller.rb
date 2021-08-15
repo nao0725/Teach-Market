@@ -3,6 +3,9 @@ class Public::HomesController < ApplicationController
   def top
   end
 
+  def help
+  end
+
   def home
     @articles = Article.all.page(params[:page]).per(10)
     @bookmarks = Article.find(Bookmark.group(:article_id)
@@ -11,9 +14,6 @@ class Public::HomesController < ApplicationController
     @reviews = Article.find(Comment.group(:article_id)
                       .order(Arel.sql("avg(rate) desc"))
                       .pluck(:article_id))
-  end
-
-  def help
   end
 
   def search
@@ -27,7 +27,7 @@ class Public::HomesController < ApplicationController
                       .order(Arel.sql("avg(rate) desc"))
                       .pluck(:article_id))
   end
-  
+
   def guest_sign_in
     user = User.find_or_create_by!(email:"guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -35,6 +35,17 @@ class Public::HomesController < ApplicationController
       user.nickname = "ゲスト"
     end
     sign_in user
+    redirect_to root_path
+  end
+
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = current_user
+    @user.update(is_valid: false)
+    reset_session
     redirect_to root_path
   end
 

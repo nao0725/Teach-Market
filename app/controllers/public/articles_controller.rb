@@ -20,7 +20,7 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    tag_list = params[:article][:tag_name].split(",")
+    tag_list = params[:article][:tag_name].split("/")
     if @article.save
        @article.tags_save(tag_list)
        redirect_to home_path
@@ -32,6 +32,7 @@ class Public::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      tag_list = params[:article][:tag_name].split(",")
       @article.tags_save(tag_list)
       flash[:notice] = "You have updated article successfully."
       redirect_to article_path
