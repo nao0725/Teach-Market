@@ -20,7 +20,7 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    tag_list = params[:article][:tag_name].split(",")
+    tag_list = params[:article][:tag_name].split("/")
     if @article.save
        @article.tags_save(tag_list)
        redirect_to home_path
