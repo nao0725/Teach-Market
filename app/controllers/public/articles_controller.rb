@@ -32,6 +32,7 @@ class Public::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      tag_list = params[:article][:tag_name].split(",")
       @article.tags_save(tag_list)
       flash[:notice] = "You have updated article successfully."
       redirect_to article_path
