@@ -2,17 +2,20 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <% if user_signed_in? %>
+    
       <%= link_to "TeachMarket", home_path, class: "navbar-brand" %>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword,placeholder: "キーワードで検索" %>
+        <%= button_tag type: "submit", class: "btn btn-default" do %>
+          <i class="fas fa-search"></i>
+         <% end %>
+      <% end %>
+      
     <% else %>
       <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
     <% end %>
 
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword,placeholder: "キーワードで検索" %>
-      <%= button_tag type: "submit", class: "btn btn-default" do %>
-        <i class="fas fa-search"></i>
-       <% end %>
-    <% end %>
+
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
