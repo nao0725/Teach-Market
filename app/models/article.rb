@@ -28,11 +28,11 @@ class Article < ApplicationRecord
 
  #星評価の平均値を表示
  def avg_score
-    unless self.comments.empty?
-      comments.average(:rate).round(1)
-    else
-      0.0
-    end
+   unless self.comments.empty?
+     comments.average(:rate).round(1)
+   else
+     0.0
+   end
  end
 
  #複数検索できるように設定
@@ -83,7 +83,7 @@ def save_notification_comment!(current_user, comment_id, visited_id)
   notification.save if notification.valid?
 end
   
- validates :title, presence: true, length: { minimum: 1 }
- validates :body, presence: true
+validates :title, presence: true, length: { minimum: 1 }
+validates :body, presence: true
 
 end
