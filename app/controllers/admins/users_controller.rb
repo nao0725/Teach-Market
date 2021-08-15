@@ -1,14 +1,14 @@
 class Admins::UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-  
    before_action :authenticate_user!
    before_action :set_user
    before_action :correct_user, only: [:edit, :update]
 
+  def index
+    @users = User.all.page(params[:page]).per(10)
+  end
+
   def show
-    @articles = @user.articles.page(params[:page]).per(3)
+    @articles = @user.articles.page(params[:page]).per(5)
   end
 
   def edit
