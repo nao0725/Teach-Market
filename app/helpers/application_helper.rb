@@ -44,14 +44,11 @@ module ApplicationHelper
             strikethrough: true,        #2つの~で囲まれた箇所を取り消し線にできる
             highlight: true,            #==でハイライトを作成できる
             safe_links_only: true,      #安全なリンクのみ生成する
-
-            lax_spacing: true,
-            superscript: true,
-            underline: true,
-            quote: true,
-            footnotes: true,
+            quote: true,                #引用符を解析する
+            lax_spacing: true,          #HTMLブロックはMarkdown標準のように空行で囲む必要はありません。
+            superscript: true,          #文字の後に上付き文字を解析する^
+            underline: true,            #下線の強調を強調する
             
-
         }
         markdown = Redcarpet::Markdown.new(html_render, options)
         markdown.render(text)

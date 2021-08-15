@@ -4,7 +4,7 @@
 
       <%= form_with(model: article, local: true) do |f| %>
         <div class="form-group">
-        　<%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+          <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
         </div>
 
         <div class="form-group">
@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.text_field :sub_title, class: "form-control", placeholder: "この記事を書く目的を明確にしよう" %>
+          <%= f.text_field :sub_title, placeholder: "この記事を書く目的を明確にしよう", class: "form-control" %>
         </div>
 
         <div class = "row">
