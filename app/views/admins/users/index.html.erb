@@ -15,7 +15,7 @@
       <td><%= link_to user.name, admin_user_path(user) %></td>
       <td><%= user.email %></td>
       <td>
-        <% if user.is_delete == true %>
+        <% if user.is_valid == true %>
           <p>退会</p>
         <% else %>
           <p>有効</p>
