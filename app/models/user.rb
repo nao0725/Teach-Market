@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable, :authentication_keys => [:nickname]
 
   # 各モデルとのアソシエーション
   has_many :articles, dependent: :destroy
@@ -42,11 +42,11 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   #SNS認証時に使用
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider:auth.provider).first
-    
+
     unless user
       user = User.create(
         uid: auth.uid,
@@ -55,7 +55,7 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0,20]
         )
     end
-    
+
     user
   end
 
@@ -68,9 +68,9 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
-  
+
   private
-  
+
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end
