@@ -34,6 +34,7 @@ p {
 body {
   background-image:image-url("top.jpg");
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  font-family: 'Roboto', sans-serif;
 }
 
 // リンクの色を統一
@@ -60,32 +61,9 @@ body {
   color: #efa04c;
 }
 
-
-
 /*検索窓のエリア*/
  #search-wrap {
-     position: absolute;
-   z-index: 2;
+   position: absolute;
    top:10px;
    right:10px;
 }
-
-// /*テキスト入力input設定*/
-// #search-text{
-//   -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
-//   width: 60px;/*テキスト入力エリアが伸びる前の横幅*/
-//   height: 60px;
-//     padding: 20px;
-//   border: none;
-//   background-size: 25px 25px;
-//   transition: all 0.5s;/*transitionを使ってスムースに伸ばす*/
-//   outline: none;
-//   cursor: pointer;/*カーソルを指マークに*/
-// }
-
-// /*テキスト入力inputにフォーカスした時の形状*/
-// #search-text:focus {
-//   width: 250px;/*テキスト入力エリアが伸びる後の横幅*/
-//   padding: 20px 0 20px 60px;
-//   box-shadow: 0 2px rgba(6,0,1,.26);
-// }

@@ -1,36 +1,19 @@
-<div class = "container-fluid">
-  <div class="jumbotron">
-    <h1 class="display-3">TeachMarketへようこそ！</h1>
-      <p class="lead">誰でも成果を上げる手段を知るSNS</p>
-      <p class="lead">
-        <%= link_to "Log in", new_user_session_path, class:"btn btn-primary btn-sm mb-3" %>
-        <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-success btn-sm mb-3" %>
-        <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"btn btn-info btn-sm mb-3" %>
+<div class = "container">
+  <div class = "row">
+    <div class = "top-visual col-7">
+      <h1 class = "top-title">TeachMarket</h1>
+      <p>社会人のための仕事術共有SNS</p>
+    </div>
+
+    <div class = "col-5">
+      <p class = "top-btn">
+        <%= link_to "既に会員の方はこちら", new_user_session_path, class:"btn btn-outline-primary btn-sm mb-3 d-flex flex-sm-column" %>
+        <%= link_to "今すぐ始めよう", new_user_registration_path, class:"btn btn-outline-success btn-sm mb-3 d-flex flex-sm-column" %>
+        <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"btn btn-outline-info btn-sm mb-3 d-flex flex-sm-column" %>
       </p>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">TeachMarketとは？</h4>
-          <p class="card-text">
-            社会に出ると、職種や業界によって様々な仕事があり、多種多様な仕事のやり方があります。</br>
-            しかし、学生の頃のように、座って講義や授業を受ける仕組みとは違って、  </br>
-            社会人になると、上司から教わったこと以外はすべて自ら勉強しなくてはなりません。  </br>
 
-            「どのようなやり方をすれば、成果が上がるかわからない」  </br>
-            「新しく配属された新人をどのように教育すべきか迷っている」  </br>
+    <div class = "top-txt">
 
-            そのような悩みを抱えている方に向けて「Teach Market」を作成しました。</br>
-
-            このアプリは、以下の使い道があります。</br>
-
-            * 仕事術を学んで自身の職場で活かす  </br>
-            * うまくいったことをアウトプットする  </br>
-            * 問題の解決手段を共有し、解決へ導く  </br>
-          </p>
-
-        <h4>さあ、始めよう！！！</h4>
-          <%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm mb-3" %>
-          <%= link_to "Sign Up", new_user_registration_path,class:"btn btn-success btn-sm mb-3" %>
-      </div>
     </div>
   </div>
 </div>

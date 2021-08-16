@@ -308,4 +308,6 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  config.omniauth :twitter, "970140417797734402-MKJAFVRLFKFpF8NyV8HcfO8SWyK0lzZ", "25GnYQieveEyRhWOmo4A6oVehuzboDoevT1ABZw8e4U4P"
+  
 end

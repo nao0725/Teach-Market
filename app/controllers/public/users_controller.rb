@@ -1,7 +1,11 @@
 class Public::UsersController < ApplicationController
-   before_action :authenticate_user!
-   before_action :set_user
+   before_action :authenticate_user!, except: [:index]
+   before_action :set_user, except: [:index]
    before_action :correct_user, only: [:edit, :update]
+
+  def index
+    redirect_to new_user_registration_path
+  end
 
   def show
     @articles = @user.articles.page(params[:page]).per(5)
