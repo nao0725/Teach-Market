@@ -19,14 +19,19 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def new_guest
+    user = User.guest
+    sign_in user
+    redirect_to home_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
 
-
    #退会後のログインを阻止
    def reject_user
-    @user = User.find_by(email: params[:user][:email])
+    @user = User.find_by(nickname: params[:user][:nickname])
     if @user
       if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
         flash[:error] = "退会済みです。"
