@@ -14,6 +14,11 @@ class Public::HomesController < ApplicationController
     @reviews = Article.find(Comment.group(:article_id)
                       .order(Arel.sql("avg(rate) desc"))
                       .pluck(:article_id))
+    @user = User.find(current_user.id)
+    @follow_users = @user.all_following
+    @follow_articles = Article.where(user_id:@follow_users)
+                              .order(created_at "DESK")
+                              .page(params[:page]).per(10)
   end
 
   def search

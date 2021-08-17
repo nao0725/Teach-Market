@@ -9,6 +9,9 @@
       新着投稿
     </div>
     <div class="tab">
+       タイムライン
+    </div>
+    <div class="tab">
       ブックマーク数順
     </div>
     <div class="tab">
@@ -17,7 +20,7 @@
   </div>
 
 <div class="content-area">
-  
+
    <!--新規投稿順-->
   <div class="content show">
     <% @articles.each do |article| %>
@@ -26,6 +29,13 @@
     <div class = "pagination-sm">
       <%= paginate @articles %>
     </div>
+  </div>
+
+  <!--タイムライン順-->
+  <div class="content">
+    <% @@follow_articles.each do |article| %>
+      <%= render "public/articles/index", article: article %>
+    <% end %>
   </div>
 
   <!--ブックマーク数順-->
