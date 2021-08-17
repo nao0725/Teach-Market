@@ -1,27 +1,29 @@
-<table class = "table table-bordered">
-  <thead>
-    <tr>
-      <th>ユーザーID</th>
-      <th>プロフィール画像</th>
-      <th>ユーザー名</th>
-      <th>メールアドレス</th>
-      <th>退会ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= link_to user.name, admin_user_path(user) %></td>
-      <td><%= user.email %></td>
-      <td>
-        <% if user.is_valid == true %>
-          <p>退会</p>
-        <% else %>
-          <p>有効</p>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <%= paginate @users %>
-</table>
+<div class = "container">
+  <table class = "table table-bordered">
+    <thead>
+      <tr>
+        <th>ユーザーID</th>
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th>退会ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, admins_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.is_valid == true %>
+            <p>退会</p>
+          <% else %>
+            <p>有効</p>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    <%= paginate @users %>
+  </table>
+</div>

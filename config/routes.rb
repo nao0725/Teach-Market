@@ -38,7 +38,7 @@ Rails.application.routes.draw do
    end
  end
 
- namespace :admin do
+ namespace :admins do
    resources :users, except: [:new, :create]
  end
 

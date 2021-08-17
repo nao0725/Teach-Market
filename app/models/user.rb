@@ -62,6 +62,13 @@ class User < ApplicationRecord
   #プロフィール画像で使用
   attachment :profile_image
 
+
+  # 退会したユーザーの再ログインを防止
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
+
+
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }
   validates :nickname, presence: true, length: { minimum: 1 }

@@ -1,6 +1,6 @@
 class Admins::UsersController < ApplicationController
-   before_action :authenticate_user!
-   before_action :set_user
+  before_action :authenticate_user!, except: [:index, :show, :edit]
+   before_action :set_user, except: [:index]
    before_action :correct_user, only: [:edit, :update]
 
   def index
@@ -25,7 +25,7 @@ class Admins::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :name, :nickname, :introduction)
+    params.require(:user).permit(:profile_image, :name, :nickname, :introduction, :email)
   end
 
   def set_user
