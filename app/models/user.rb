@@ -68,6 +68,13 @@ class User < ApplicationRecord
     super && (self.is_valid == true)
   end
 
+  # ゲストログインの設定
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }

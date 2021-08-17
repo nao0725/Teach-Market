@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     passwords:     "users/passwords",
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
+    post "users/guest_sign_in', to: 'users/sessions#new_guest"
 }
 
   devise_for :admins, controllers: {
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
     get "/home" => "homes#home"
     get "/search" => "homes#search"
     get "/rank" => "ranks#rank"
-    post "/homes/guest_sign_in" => "homes#guest_sign_in"
+    # post "/homes/guest_sign_in" => "homes#guest_sign_in"
     get "unsubscribe/:name" => "homes#unsubscribe", as: "confirm_unsubscribe"
     patch ":id/withdraw/:name" => "homes#withdraw", as: "withdraw_user"
     put "withdraw/:name" => "users#withdraw"
