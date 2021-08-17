@@ -75,7 +75,6 @@ class User < ApplicationRecord
     end
   end
 
-
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }
   validates :nickname, presence: true, length: { minimum: 1 }
