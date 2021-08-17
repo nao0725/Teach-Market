@@ -25,10 +25,10 @@ class Users::SessionsController < Devise::SessionsController
    def configure_sign_in_params
      devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname])
    end
-   
+
    #退会後のログインを阻止
    def reject_inactive_user
-     @user = User.find_by(name: params[:user][:name])
+     @user = User.find_by(name: params[:user][:nickname])
      if @user
        if @user.valid_password?(params[:user][:password]) && !user.is_valid
          redirect_to new_user_session_path
