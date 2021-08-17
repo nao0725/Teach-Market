@@ -61,6 +61,9 @@ class User < ApplicationRecord
 
   #プロフィール画像で使用
   attachment :profile_image
+  
+  # 退会したユーザーのログインを阻止
+  
 
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }

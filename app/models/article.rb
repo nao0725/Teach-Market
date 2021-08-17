@@ -23,7 +23,6 @@ class Article < ApplicationRecord
     inspected_tag = Tag.where(tag_name:tag).first_or_create
     self.tags << inspected_tag
    end
-
  end
 
  #星評価の平均値を表示
@@ -56,7 +55,7 @@ class Article < ApplicationRecord
    notification.save if notification.valid?
   end
  end
- 
+
  #自分以外のコメントしている人を取得し、全員に通知を送る
 def create_notification_comment!(current_user, comment_id)
  #selectのとこfindでも行ける？？？
@@ -75,14 +74,14 @@ def save_notification_comment!(current_user, comment_id, visited_id)
   visited_id: visited_id,
   action: "comment"
   )
- 
+
  #自分の投稿に対するコメントは通知済扱い
   if notification.visitor_id == notification.visited_id
     notification.checked = true
   end
   notification.save if notification.valid?
 end
-  
+
 validates :title, presence: true, length: { minimum: 1 }
 validates :body, presence: true
 
