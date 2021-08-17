@@ -71,13 +71,15 @@ class User < ApplicationRecord
   # ゲストログインの設定
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
+      user.nickname = "guest"
+      user.name = "guest"
       user.password = SecureRandom.urlsafe_base64
     end
   end
 
   # バリデーション
   validates :name, presence: true, length: { minimum: 1 }
-  validates :nickname, presence: true, length: { minimum: 1 }
+  validates :nickname, presence: true, length: { minimum: 1 }, uniqueness: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}

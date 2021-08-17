@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     sessions:      "users/sessions",
     passwords:     "users/passwords",
     registrations: "users/registrations",
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: "users/omniauth_callbacks",
 }
 
-  # devise_scope :user do
-  #   post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-  # end
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 
   # devise_scope :admins do
   #   get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get "/home" => "homes#home"
     get "/search" => "homes#search"
     get "/rank" => "ranks#rank"
-    post "/homes/guest_sign_in" => "homes#guest_sign_in"
+    
     get "unsubscribe/:name" => "homes#unsubscribe", as: "confirm_unsubscribe"
     patch ":id/withdraw/:name" => "homes#withdraw", as: "withdraw_user"
     put "withdraw/:name" => "users#withdraw"
