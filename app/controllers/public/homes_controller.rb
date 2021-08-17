@@ -43,7 +43,7 @@ class Public::HomesController < ApplicationController
   end
 
   def withdraw
-    @user = current_user
+    @user = User.find(params[:id])
     @user.update(is_valid: false)
     reset_session
     redirect_to root_path
