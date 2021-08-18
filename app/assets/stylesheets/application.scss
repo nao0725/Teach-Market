@@ -32,18 +32,13 @@ p {
 }
 
 body {
-  background-image:image-url("top.jpg");
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   font-family: 'Roboto', sans-serif;
 }
 
 .link {
     text-decoration: none;
-    color: black ; 
-}
-
-.title{
-  font-size: 64;
+    color: black ;
 }
 
 
@@ -67,15 +62,15 @@ body {
 // レスポンシブデザイン
 // PC
 @media screen and (min-width: 1024px) {
-    
+
 }
 
 // タブレット
 @media screen and (min-width: 768px) {
-    
+
 }
 
 // スマホ
 @media screen and (max-width: 480px) {
-    
+
 }

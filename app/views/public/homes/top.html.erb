@@ -1,25 +1,68 @@
 
-<div class = "container">
-  <div class = "row">
-    <div class = "top-visual col-9">
-      <h1 class = "top-title">TeachMarket</h1>
-      <p>社会人のための仕事術共有SNS</p>
-    </div>
-
-    <div class = "col-3">
-      <p class = "top-btn">
-        <%= link_to "既に会員の方はこちら", new_user_session_path, class:"btn btn-outline-primary btn-sm mb-3 d-flex flex-sm-column" %>
-        <%= link_to "今すぐ始めよう", new_user_registration_path, class:"btn btn-outline-success btn-sm mb-3 d-flex flex-sm-column" %>
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-info btn-sm mb-3 d-flex flex-sm-column" %>
+  
+    <div class = "row top-img">
+      <div class = "top-visual col-7">
+        <h1 class = "top-title">TeachMarket</h1>
+        <p>社会人のための仕事術共有SNS</p>
+      </div>
+      <p class = "col-5 top-btn">
+        <%= link_to "今すぐ始める", new_user_registration_path, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
+        <%= link_to "既に会員の方はこちら", new_user_session_path, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
       </p>
+      </div>
     </div>
-  </div>
 
-  <div class = "display: flex">
-    <div class = "top-heading">TeachMarketとは？</div>
-    <div class = "top-txt">
-      TeachMarketは、 仕事に関する知識を記録・共有するためのサービスです。</br>
-      業種、職種問わず,今日から使える仕事のノウハウを吸収し、発信していきましょう!
+  <div class = "container">
+    <div class = "display: flex">
+      <div class = "top-heading">TeachMarketとは？</div>
+      <div class = "top-txt text-muted">
+        TeachMarketは、 仕事に関する知識を記録・共有するためのサービスです。</br>
+        業種、職種問わず,今日から使える仕事のノウハウを吸収し、発信していきましょう!
+      </div>
     </div>
-  </div>
 
+    <div class="top-heading">このアプリでできること</div>
+      <div class = "top-section">
+        <div class="row text-center">
+
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x "></i>
+              <i class="fas fas fa-search fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="my-3">気になる記事を見つける</h4>
+            <p class="text-muted">タイトルやタグを自由に入力してあなたの気になる記事を検索をすることができます。</p>
+          </div>
+
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fas fas fa-folder-plus fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="my-3">ユーザーや記事を保存する</h4>
+            <p class="text-muted">後で読みたい記事をブックマークする事ができます。 また、ユーザーをフォローし、フォロワーの投稿のみを表示することができます。</p>
+          </div>
+
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x "></i>
+            <i class="fas fas fa-pen fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="my-3">学んだことを共有する</h4>
+            <p class="text-muted">投稿フォームからMarkdown記法で仕事で得た知識やノウハウをアウトプットすることができます。</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class = "display: flex">
+        <div class = "top-heading">さあ、始めよう！！</div>
+        <p class = "text-center">登録は１分で完了します</p>
+        <div class = "top-txt">
+          <%= link_to "新規会員登録", new_user_registration_path, class:"btn btn-outline-success btn-sm mb-3 d-flex flex-sm-column" %>
+          <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary btn-sm mb-3 d-flex flex-sm-column" %>
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-info btn-sm mb-3 d-flex flex-sm-column" %>
+        </div>
+      </div>
+  </div>
