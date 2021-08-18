@@ -31,18 +31,6 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  #フォローされた際の通知を送る
-  def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: "follow"
-        )
-      notification.save if notification.valid?
-    end
-  end
-
   #SNS認証時に使用
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider:auth.provider).first

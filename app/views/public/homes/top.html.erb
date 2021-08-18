@@ -1,11 +1,11 @@
 
   
     <div class = "row top-img">
-      <div class = "top-visual col-7">
+      <div class = "top-visual col-lg-8">
         <h1 class = "top-title">TeachMarket</h1>
         <p>社会人のための仕事術共有SNS</p>
       </div>
-      <p class = "col-5 top-btn">
+      <p class = "top-btn">
         <%= link_to "今すぐ始める", new_user_registration_path, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
         <%= link_to "既に会員の方はこちら", new_user_session_path, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
         <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
