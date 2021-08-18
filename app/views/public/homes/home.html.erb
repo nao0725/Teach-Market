@@ -1,8 +1,5 @@
 <div class="container">
-  <p id="notice"><%= notice %></p>
-
-  <h1>みんなのノウハウ</h1>
-
+  <div class = "title tcd ext-center">HOME</div>
   <%= link_to "ユーザーランキングはこちら", rank_path %>
   <div class="tab-area">
     <div class="tab active">
@@ -35,6 +32,7 @@
   <div class="content">
     <% @follow_articles.each do |article| %>
       <%= render "public/articles/index", article: article %>
+  </div>
     <% end %>
   </div>
 
