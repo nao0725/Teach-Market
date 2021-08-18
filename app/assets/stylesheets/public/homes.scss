@@ -3,19 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.top-img {
+  background-image: image-url('top.png');
+  background-position: center;
+  height: 800px;
+  background-size: cover;
+}
+
 .top-visual{
   width: 100%;
   height: 650px;
   text-align: center;
+  color: white;
 }
 
 .top-title{
-  padding-top: 200px;
-  font-size: 64px;
+  padding-top: 250px;
+  font-size: 78px;
+ 
 }
 
 .top-btn{
-  padding-top: 200px;
+   padding-top: 250px;
+   text-align: center;
+   padding-right: 250px;
 }
 
 .top-heading{
@@ -28,6 +39,19 @@
   padding: 30px;
   text-align: center;
   font-size: 16px;
+}
+
+.top-section{
+  padding: 30px;
+}
+
+.home-footer{
+  display: flex;
+  font-size: 16px;
+}
+
+.bookmark{
+  padding-right: 15px;
 }
 
 

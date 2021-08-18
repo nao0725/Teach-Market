@@ -4,22 +4,25 @@
     <title>TeachMarket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <!--レシポンシブ対応-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!--CSSを読み込む-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+
     <!--javascriptを読み込む-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <!--Markdownで使用-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.1/marked.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/monokai-sublime.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    
+
      <!--FontAwesomeを読み込む-->
     <script src="https://kit.fontawesome.com/f03fd448b3.js" crossorigin="anonymous"></script>
-    
+
     <!--Fontを読み込む-->
     <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');</style>
   </head>
@@ -29,9 +32,10 @@
     <%= render "layouts/header" %>
 
   <main>
+    <p id="notice"><%= notice %></p>
     <%= yield %>
   </main>
-  
+
   <span id="back">
     <a href="">
       <%= image_tag asset_path("arrow.png"), data: {"turbolinks"=>false}, class: "arrow" %>

@@ -3,6 +3,7 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @user = User.find(params[:id])
   end
 
   def show

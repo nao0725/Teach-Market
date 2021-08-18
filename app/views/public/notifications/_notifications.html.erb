@@ -1,14 +1,11 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
-
 <div class = container>
   <div class = "form-inline">
     <span>
-      <%= link_to user_path(visitor) do%>
+      <%= link_to user_path(notification.visitor) do%>
         <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"10x10", class: "rounded-circle" %>
       <% end %>
     </span>
-      <strong><%= visitor.name %></strong>さんが
+      <strong><%= notification.visitor.name %></strong>さんが
       <% case notification.action %>
       <% when "follow" then %>
        <p>あなたをフォローしました</p>
@@ -18,7 +15,7 @@
           をブックマークしました
         </p>
       <% when "comment" then %>
-        <% if notification.article.user_id = visited.id %>
+        <% if notification.article.user_id = current_user.id %>
           <%= link_to "あなたの投稿", notification.article, class:"font-weight: bold" %>
         <% else %>
           <span>

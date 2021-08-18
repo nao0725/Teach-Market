@@ -1,31 +1,30 @@
-<div class = "container">
-
-  <h2>Log in</h2>
-
+<div class = "container pt-5">
+  <div class = "text-center">
+    <div class = "title pb-4">TeachMarketへログイン</div>
+  </div>
+  <div class = "shadow text-center">
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-    <div class="field">
-      <%= f.label :nickname %><br />
-      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+    <div class="field py-2">
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ユーザー名" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+    <div class="field py-2">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field">
+      <div class="field py-2">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+         <label for="remember_me">ログイン情報を保存</label>
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+    <div class="actions pb-2">
+      <%= f.submit "TeachMarket にログイン", class: "btn btn-success" %>
     </div>
   <% end %>
 
   <%= render "devise/shared/links" %>
-
+ </div>
 </div>
