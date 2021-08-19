@@ -27,9 +27,6 @@
   box-sizing: border-box;
 }
 
-p {
-  font-size: 16px;
-}
 
 body {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -55,6 +52,20 @@ body {
   height: 1px;
   margin: 8px auto 20px auto;
   background-color: #DEDEDE;
+}
+
+// フラッシュメッセージ
+.notifications {
+  color: $white;
+  text-align: center;  
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: alert_orange;
+  }
 }
 
 

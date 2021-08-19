@@ -24,9 +24,10 @@ class Public::ArticlesController < ApplicationController
     tag_list = params[:article][:tag_name].split("/")
     if @article.save
        @article.tags_save(tag_list)
-       redirect_to home_path
+       redirect_to home_path, notice: "投稿されました"
     else
       @user = current_user
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
