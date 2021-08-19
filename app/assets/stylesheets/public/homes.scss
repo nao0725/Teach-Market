@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// TOPページレイアウト
 .top-img {
   background-image: image-url('top.png');
   background-position: center;
@@ -20,7 +20,7 @@
 .top-title{
   padding-top: 250px;
   font-size: 78px;
- 
+
 }
 
 .top-btn{
@@ -45,15 +45,28 @@
   padding: 30px;
 }
 
-.home-footer{
-  display: flex;
+// HELPレイアウト
+.box{
+  
+}
+
+.help-title{
+  font-size: 32px;
+}
+
+.help-txt{
   font-size: 16px;
 }
 
-.bookmark{
-  padding-right: 15px;
+.help-img{
+  height: 180px;
+  width: 200px;
+  float: right;
 }
 
+.textbox{
+  padding-right: 20px;
+}
 
 // トップへ戻るボタン
 #back {

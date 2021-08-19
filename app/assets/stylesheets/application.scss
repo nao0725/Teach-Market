@@ -36,15 +36,18 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+// 各リンク
 .link {
     text-decoration: none;
     color: black ;
 }
 
+// 見出し
 .title {
-  font-size: 32px;
+  font-size: 40px;
 }
 
+// タイトル下線
 .title::after {
   content: "";
   display: block;
