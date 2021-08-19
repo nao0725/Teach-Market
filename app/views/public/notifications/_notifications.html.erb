@@ -1,32 +1,21 @@
-<div class = container>
-  <div class = "form-inline">
-    <span>
-      <%= link_to user_path(notification.visitor) do%>
-        <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"10x10", class: "rounded-circle" %>
-      <% end %>
-    </span>
-      <strong><%= notification.visitor.name %></strong>さんが
-      <% case notification.action %>
+
+<div class = "text-center">
+    <% case notification.action %>
       <% when "follow" then %>
-       <p>あなたをフォローしました</p>
+       <p class = "notification-txt">
+         <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんがあなたをフォローしました。
+       </p>
+       
       <% when "bookmark" then %>
-        <p>
-          <%= link_to "あなたの投稿", notification.article, class: "font-weight: bold" %>
-          をブックマークしました
+        <p  "notification-txt">
+         <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+         <%= link_to notification.article.title, notification.article %>をブックマークしました。
         </p>
+       
       <% when "comment" then %>
-        <% if notification.article.user_id = current_user.id %>
-          <%= link_to "あなたの投稿", notification.article, class:"font-weight: bold" %>
-        <% else %>
-          <span>
-            <%= link_to article_path(notification.article) do %>
-              <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"10x10", class: "rounded-circle" %>
-            <% end %>
-           </span>
-           <strong><%= notification.article.user.name %>さんの投稿にコメントしました</strong>
-           <p><%= Comment.find_by(id: notification.comment_id)&.comment_content %></p>
-      　<% end %>
-      <% end %>
-      <p><%= time_ago_in_words(notification.created_at).upcase %></p>
-  </div>
+        <p  "notification-txt">
+          <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+          <%= link_to notification.article.title, notification.article %>にコメントしました。
+        </p>
+    <% end %>
 </div>
