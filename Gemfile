@@ -79,6 +79,7 @@ gem 'coderay'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'social-share-button'
+gem 'counter_culture', '~> 2.0'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
