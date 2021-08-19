@@ -90,6 +90,9 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
+    counter_culture (2.8.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -362,6 +365,7 @@ DEPENDENCIES
   chromedriver-helper
   coderay
   coffee-rails (~> 4.2)
+  counter_culture (~> 2.0)
   devise
   dotenv-rails
   factory_bot_rails (~> 5.0)

@@ -4,7 +4,7 @@
     <title>TeachMarket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <!--レシポンシブ対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
@@ -31,18 +31,22 @@
 
     <%= render "layouts/header" %>
 
-  <main>
-    <p id="notice"><%= notice %></p>
-    <%= yield %>
-  </main>
+    <main>
+      <div class = "notification">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: key) %>
+        <% end %>
+       </div>
+       <%= yield %>
+    </main>
 
-  <span id="back">
-    <a href="">
-      <%= image_tag asset_path("arrow.png"), data: {"turbolinks"=>false}, class: "arrow" %>
-    </a>
-  </span>
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path("arrow.png"), data: {"turbolinks"=>false}, class: "arrow" %>
+      </a>
+    </span>
 
-  <%= render "layouts/footer" %>
+    <%= render "layouts/footer" %>
 
   </body>
 </html>

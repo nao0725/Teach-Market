@@ -23,13 +23,11 @@ class Public::HomesController < ApplicationController
     @article = Article.new
     @articles = Article.search(params[:keyword])
                        .page(params[:page]).per(10)
-    @bookmarks = Article.search(params[:keyword])
-                        .find(Bookmark.group(:article_id)
-                        .order(Arel.sql("count(article_id) desc"))
-                        .pluck(:article_id))
-    @reviews = Article.find(Comment.group(:article_id)
+    @bookmarks = Article.search(params[:keyword]) 
+
+    @reviews = Article.search(params[:keyword])
                       .order(Arel.sql("avg(rate) desc"))
-                      .pluck(:article_id))
+                      
   end
 
   def unsubscribe
