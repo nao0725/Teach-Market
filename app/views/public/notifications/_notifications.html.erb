@@ -9,13 +9,13 @@
       <% when "bookmark" then %>
         <p  "notification-txt">
          <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-         <%= link_to notification.article.title, notification.article %>をブックマークしました。
+         <%= link_to notification.article.title, notification.article %>の記事をブックマークしました。
         </p>
        
       <% when "comment" then %>
         <p  "notification-txt">
           <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-          <%= link_to notification.article.title, notification.article %>にコメントしました。
+          <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
         </p>
     <% end %>
 </div>
