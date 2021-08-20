@@ -1,7 +1,4 @@
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-
       <%= form_with(model: article, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
@@ -17,7 +14,7 @@
 
         <div class = "row">
           <div class = "col-6">
-            <div class="form-group code-block">
+            <div class="form-group code-block text-center">
               <label class="control-label">本文</label>
               <%= f.text_area :body, id: 'user_answer_code',
                   placeholder: "あなたの仕事のノウハウをMarkdown記法を使ってアウトプットしよう!" ,
@@ -25,7 +22,7 @@
             </div>
           </div>
           <div class = "col-6">
-            <div class="form-group code-block">
+            <div class="form-group code-block text-center">
               <label class="control-label">プレビュー</label>
               <div id="code_markdown">
                 <%= f.text_area :body, id: "user_answer_code", class: "form-control", size:'10x30' %>
@@ -34,9 +31,7 @@
           </div>
         </div>
 
-        <div class="actions">
-        <%= f.submit "アウトプット", class: "btn-sm btn-secondary" %>
+        <div class="actions pb-5 d-inline-block">
+          <%= f.submit "アウトプット", class: "btn btn-secondary pl-3" %>
         </div>
       <% end %>
-    </div>
-  </div>
