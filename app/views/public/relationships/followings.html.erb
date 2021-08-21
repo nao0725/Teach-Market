@@ -1,24 +1,25 @@
-<h2>フォロー</h2>
-<% if @users.exists? %>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class = "container">
+  <div class = "title text-center">Follow</div>
+  <% if @users.exists? %>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-      </tr>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to user_path(user), class: "link" do %>
+            <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", size:"50x50", class: "rounded-circle" %>
+            <%= user.nickname %>
+          <% end %>
+        </h4>
+        <p class="card-text">
+          <%= user.introduction %>
+        </p>
+       <div id = "follow_btn">
+        <p><%= render "public/relationships/follow_btn", user: user %></p>
+      </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
-
-<%= link_to "BACK", user_path(@user) %>
+  <% else %>
+    <p class = "text-center">ユーザーはいません</p>
+  <% end %>
+</div>
