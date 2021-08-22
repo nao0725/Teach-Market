@@ -17,9 +17,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    redirect_to root_url
+  end
 
   # protected
 
