@@ -44,6 +44,8 @@ body {
   font-size: 40px;
 }
 
+
+
 // タイトル下線
 .title::after {
   content: "";
@@ -57,7 +59,7 @@ body {
 // フラッシュメッセージ
 .notifications {
   color: $white;
-  text-align: center;  
+  text-align: center;
 
   .notice {
     background-color: lightBlue;
