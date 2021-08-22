@@ -4,10 +4,13 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_user, only: [:create]
 
+
+
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    session.delete('devise.omniauth_data')
+    super
+  end
 
   # POST /resource/sign_in
   # def create

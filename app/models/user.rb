@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :authentication_keys => [:nickname]
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:twitter], :authentication_keys => [:nickname]
 
   # 各モデルとのアソシエーション
   has_many :articles, dependent: :destroy
@@ -32,19 +32,34 @@ class User < ApplicationRecord
   end
 
   #SNS認証時に使用
-  def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
-    end
+  # def self.find_for_oauth(auth)
+  #   user = User.where(uid: auth.uid, provider: auth.provider).first
+  #   unless user
+  #     user = User.create(
+  #       uid:      auth.uid,
+  #       provider: auth.provider,
+  #       email:    User.dummy_email(auth),
+  #       password: Devise.friendly_token[0, 20]
+  #     )
+  #   end
 
-    user
+  #   user
+  # end
+
+  def self.from_omniauth(auth)
+    where(uid: auth.uid).first
   end
+
+  def self.new_with_session(_, session)
+    super.tap do |user|
+      if (data = session['devise.omniauth_data'])
+        user.email = data['email'] if user.email.blank?
+        user.provider = data['provider'] if data['provider'] && user.provider.blank?
+        user.uid = data['uid'] if data['uid'] && user.uid.blank?
+      end
+    end
+  end
+
 
   #プロフィール画像で使用
   attachment :profile_image
