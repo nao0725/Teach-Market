@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-    @articles = Article.all.page(params[:page]).per(10)
+    @articles = Article.all.page(params[:page]).per(10).order(created_at: "desc")
     @bookmarks = Article.find(Bookmark.group(:article_id)
                         .order(Arel.sql("count(article_id) desc"))
                         .pluck(:article_id))
@@ -23,11 +23,14 @@ class Public::HomesController < ApplicationController
     @article = Article.new
     @articles = Article.search(params[:keyword])
                        .page(params[:page]).per(10)
-    @bookmarks = Article.search(params[:keyword]) 
-
-    @reviews = Article.search(params[:keyword])
+    @bookmarks = Article.joins(:bookmarks)
+                        .search(params[:keyword])
+                        .where(Bookmark.group(:articles)
+                          .order(Arel.sql("bookmark_count desc"))
+                          .pluck(:article_id))
+    @reviews = Article.find(Comment.group(:article_id)
                       .order(Arel.sql("avg(rate) desc"))
-                      
+                      .pluck(:article_id))
   end
 
   def unsubscribe
