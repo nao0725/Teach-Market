@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
      redirect_to request.referer
-     NotificationController.create_comment_notification(current_user, comment_id)
+     NotificationsController.create_comment_notification(current_user, comment_id)
     else
      redirect_to request.referer
     end
