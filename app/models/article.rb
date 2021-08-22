@@ -4,8 +4,10 @@ class Article < ApplicationRecord
  has_many :article_tags
  has_many :tags, through: :article_tags, dependent: :destroy
  has_many :notifications, dependent: :destroy
- has_many :bookmarks, dependent: :destroy
  has_many :comments, dependent: :destroy
+ has_many :bookmarks, dependent: :destroy
+ counter_culture :bookmark, column_name: "bookmark_count"
+
 
  #既にブックマークしていないか確認
  def bookmarked_by?(user)
@@ -39,7 +41,6 @@ class Article < ApplicationRecord
   Article.joins(:tags).where(["title LIKE(?) OR body LIKE(?) OR sub_title LIKE(?) OR tag_name LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%"]).distinct
  end
-
 
 validates :title, presence: true, length: { minimum: 1 }
 validates :body, presence: true
