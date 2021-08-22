@@ -76,7 +76,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'devise'
 gem 'redcarpet'
 gem 'coderay'
-gem 'omniauth'
+gem 'omniauth', "~> 1.9.1"
 gem 'omniauth-twitter'
 gem 'social-share-button'
 gem 'counter_culture', '~> 2.0'
