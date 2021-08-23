@@ -7,6 +7,7 @@ class Public::HomesController < ApplicationController
   end
 
   def home
+    @user = current_user
     @articles = Article.all.page(params[:page]).per(10).order(created_at: "desc")
     @bookmarks = Article.find(Bookmark.group(:article_id)
                         .order(Arel.sql("count(article_id) desc"))
