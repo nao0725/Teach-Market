@@ -37,19 +37,8 @@
   </div>
 
   <!--星評価の平均値-->
-      <div id="rate_<%= @article.id %>"></div>
-        <script>
-          $('#rate_<%= @article.id %>').raty({
-            size: 20,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @article.avg_score %>,
-          });
-        </script>
-     （<%= @article.avg_score %>点）
+  <%= render "public/articles/rate", article: @article %>
+  <%= @article.avg_score %>点
 
   <!--コメント機能-->
   <div id = "comment_area", class="w-100 p-3">

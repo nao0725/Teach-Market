@@ -6,7 +6,7 @@ class Article < ApplicationRecord
  has_many :notifications, dependent: :destroy
  has_many :comments, dependent: :destroy
  has_many :bookmarks, dependent: :destroy
- counter_culture :bookmark, column_name: "bookmark_count"
+ # counter_culture :bookmarks, column_name: "bookmark_count"
 
 
  #既にブックマークしていないか確認

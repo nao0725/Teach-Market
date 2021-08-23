@@ -1,0 +1,43 @@
+<div class = "card">
+  <div class = text-center>
+    <div class = "my-3"><%= attachment_image_tag user, :profile_image, fallback: "no-image.png", size:'80x80', class: "rounded-circle"%></div>
+    <div class = "username"><%= user.nickname %></div>
+    <div class = "info-border"></div>
+    <div class = "d-flex justify-content-around ml-4 pb-3">
+      <div class= "info-box">
+        <div><%= user.articles.count %></div>
+        <div class = "text-muted">投稿数</div>
+      </div>
+      <div class = "info-box">
+        <div><%= link_to user.followings.count, user_followings_path(user.id), class: "link" %></div>
+        <div class = "text-muted">フォロー</div>
+      </div>
+      <div class = "info-box">
+        <div><%= link_to user.followers.count, user_followers_path(user.id), class: "link"  %></div>
+        <div class = "text-muted">フォロワー</div>
+        </div>
+    </div>
+    <div class = "my-3"><%= user.introduction %></div>
+    <div>
+      <% if user == current_user %>
+        <%= link_to "マイページへ", user_path(user) , class:"btn btn-outline-secondary btn-block"%>
+      <% else %>
+        <div id = "follow_btn">
+          <%= render "public/relationships/follow_btn", user: user %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,26 +1,17 @@
 <div class="container">
-
   <div class = "title text-center">HOME</div>
-  <div class = "row">
-    <div class = "col-8">
-      <div class="tab-area">
-        <div class="tab active">
-          新着投稿
-        </div>
-        <div class="tab">
-           タイムライン
-        </div>
-        <div class="tab">
-          ブックマーク数順
-        </div>
-        <div class="tab">
-          評価の高い順
-        </div>
+  <div class = "row pb-5">
+    <div class = "col-2">
+      <div class="tab-area text-muted">
+        <div class="tab active">新着投稿</div>
+        <div class="tab">タイムライン</div>
+        <div class="tab">ブックマーク数順</div>
+        <div class="tab">評価の高い順</div>
       </div>
-
+    </div>
+    <div class = "col-7">
       <div class="content-area">
-
-         <!--新規投稿順-->
+        <!--新規投稿順-->
         <div class="content show">
           <% @articles.each do |article| %>
             <%= render "public/articles/index", article: article %>
@@ -29,35 +20,42 @@
             <%= paginate @articles %>
           </div>
         </div>
-
+        
         <!--タイムライン順-->
         <div class="content">
           <% @follow_articles.each do |article| %>
             <%= render "public/articles/index", article: article %>
-        </div>
           <% end %>
+          <div class = "pagination-sm">
+            <%= paginate @articles %>
+          </div>
         </div>
-
-      <!--ブックマーク数順-->
-      <div class="content">
-        <% @bookmarks.each.with_index(1) do |article, i| %>
-          <%= render "public/articles/index", article: article %>
-        <% end %>
-      </div>
-
-      <!--評価の高い順-->
+        
+        <!--ブックマーク数順-->
+        <div class="content">
+          <% @bookmarks.each.with_index(1) do |article, i| %>
+            <%= render "public/articles/index", article: article %>
+          <% end %>
+          <div class = "pagination-sm">
+            <%= paginate @articles %>
+          </div>
+        </div>
+        
+        <!--評価の高い順-->
         <div class="content">
           <% @reviews.each.with_index(1) do |article, i| %>
             <%= render "public/articles/index", article: article %>
           <% end %>
+          <div class = "pagination-sm">
+            <%= paginate @articles %>
+          </div>
         </div>
+      </div>
+    </div>    
+    
+    <div class = "col-3">
+      <%= render "public/users/info", user: @user %>
     </div>
-    <div class = "col-4">
-    　<%= link_to "ユーザーランキングはこちら", rank_path %>
-    　    <div>
-      User info
-    </div>
-    </div>
-
+    
   </div>
 </div>
