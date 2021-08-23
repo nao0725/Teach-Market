@@ -1,18 +1,18 @@
-
 <div class="card">
   <div class="card-body">
+  
     <div class = "home-header">
       <h6 class="card-subtitle mb-2 text-muted">
         <%=link_to article.user.name, user_path(article.user.id), class: "link text-muted"%>さんが
         <%= article.user.created_at.strftime("%Y年%m月%d日") %>に投稿
       <h6>
     </div>
-
+    
     <div class = "home-main">
       <h4 class="card-title">
         <strong><%= link_to article.title, article, class: "link" %></strong>
       </h4>
-      <h6 class="card-subtitle mb-2 text-muted">
+      <h6 class="card-subtitle mb-2">
         <%= article.sub_title %>
       </h6>
       <h6 class="card-subtitle mb-2 text-muted fas fa-tags">
@@ -20,13 +20,15 @@
           <%= tag.tag_name %>
         <% end %>
       </h6>
-
-    <div class = "home-footer float-right">
-      <div id="bookmark_button_<%= article.id %>"  class = "bookmark">
+      
+      <div class = "home-footer">
+        <div id="bookmark_button_<%= article.id %>"  class = "mb-1 d-flex">
         <%= render "public/bookmarks/bookmark", article: article %>
+        <div class ="ml-2"><%= article.bookmarks.count %>件</div>
+        </div>
+        <div class = "d-flex"><%= render "public/articles/rate", article: article %></div>
       </div>
-      <div class = "bc-count"><%= article.bookmarks.count %>件</div>
     </div>
-    </div>
+    
   </div>
 </div>

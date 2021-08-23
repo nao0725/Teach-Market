@@ -34,29 +34,39 @@
         <div class="content">
           <% @follow_articles.each do |article| %>
             <%= render "public/articles/index", article: article %>
-        </div>
           <% end %>
+          <div class = "pagination-sm">
+            <%= paginate @articles %>
+          </div>
         </div>
-
+      
       <!--ブックマーク数順-->
       <div class="content">
         <% @bookmarks.each.with_index(1) do |article, i| %>
           <%= render "public/articles/index", article: article %>
         <% end %>
+        <div class = "pagination-sm">
+          <%= paginate @articles %>
+        </div>
       </div>
 
       <!--評価の高い順-->
-        <div class="content">
-          <% @reviews.each.with_index(1) do |article, i| %>
-            <%= render "public/articles/index", article: article %>
-          <% end %>
+      <div class="content">
+        <% @reviews.each.with_index(1) do |article, i| %>
+          <%= render "public/articles/index", article: article %>
+        <% end %>
+        <div class = "pagination-sm">
+          <%= paginate @articles %>
         </div>
+      </div>
+      
     </div>
+    
     <div class = "col-4">
     　<%= link_to "ユーザーランキングはこちら", rank_path %>
-    　    <div>
-      User info
-    </div>
+       <div>
+        User info
+      </div>
     </div>
 
   </div>
