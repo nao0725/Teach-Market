@@ -2,7 +2,7 @@
         <script>
           $('#rate_<%= article.id %>').empty();
           $('#rate_<%= article.id %>').raty({
-            size: 16,
+            size: 14,
             starOff:  '<%= asset_path('star-off.png') %>',
             starOn : '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
@@ -11,4 +11,3 @@
             score: <%= article.avg_score %>,
           });
         </script>
-     （<%= article.avg_score %>点）

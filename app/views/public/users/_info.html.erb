@@ -1,0 +1,33 @@
+!--ログインしているユーザー情報-->
+ <h2>User info</h2>
+    <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size:'80x80' %>
+  <table class="table">
+    <tbody>
+
+      <tr>
+	      <th>name</th>
+	      <th><%= user.name %></th>
+      </tr>
+
+      <tr>
+	      <th>introduction</th>
+	      <th><%= user.introduction %></th>
+      </tr>
+
+      <tr>
+        <!--フォロー・フォロワー欄　クリックするとエラーになる-->
+        <th>follows</th>
+        <th><%= link_to user.followings.count, relationship_follow_users_path(follow_id: user.id) %></th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th><%= link_to user.followers.count, relationship_follower_users_path(follow_id: user.id) %></th>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class="row">
+    <% if user == current_user %>
+      <%= link_to "", edit_user_path(user) , class:"btn btn-outline-secondary btn-block fas fa-user-cog"%>
+    <% end %>
+  </div>
