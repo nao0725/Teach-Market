@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: "User", foreign_key: "visited_idgit ", optional: true
   
    #フォローされた際の通知を送る
-  def create_follow_notification(current_user)
+  def create_follow_notification(current_user, id)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -37,7 +37,7 @@ class Notification < ApplicationRecord
   end
  
  #自分以外のコメントしている人を取得し、全員に通知を送る
-def create_comment_notification(current_user, comment_id)
+def create_comment_notification(current_user, comment_id, user_id)
  temp_ids = Comment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct
  temp_ids.each do |temp_id|
   save_comment_notification(current_user, comment_id, temp_id["user_id"])

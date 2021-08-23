@@ -13,7 +13,8 @@ class Public::RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     current_user.follow(params[:user_id])
-    Notification.create_follow_notification(current_user)
+    notification = Notification.new()==
+    notification.create_follow_notification(current_user, @user.id)
     redirect_to request.referer
   end
 
