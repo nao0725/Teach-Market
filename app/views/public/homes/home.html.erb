@@ -1,17 +1,16 @@
 <div class="container">
   <div class = "title text-center">HOME</div>
   <div class = "row pb-5">
-    <div class = "col-1"></div>
-    <div class = "col-6">
-      <div class="tab-area">
+    <div class = "col-2">
+      <div class="tab-area text-muted">
         <div class="tab active">新着投稿</div>
         <div class="tab">タイムライン</div>
         <div class="tab">ブックマーク数順</div>
         <div class="tab">評価の高い順</div>
       </div>
-      
+    </div>
+    <div class = "col-7">
       <div class="content-area">
-        
         <!--新規投稿順-->
         <div class="content show">
           <% @articles.each do |article| %>

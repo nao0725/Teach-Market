@@ -10,20 +10,21 @@ class Public::BookmarksController < ApplicationController
     @bookmark = @article.bookmarks.new(user_id: current_user.id)
     if @bookmark.save
       redirect_to request.referer
-      NotificationsController.create_bookmark_notification(current_user)
+      notification = Notification.new()
+      notification.create_bookmark_notification(current_user, @article.user_id, @article.id)
     else
       redirect_to request.referer
     end
+  end
 
-    def destroy
-      @article = Article.find(params[:article_id])
-      @bookmark = @article.bookmarks.find_by(user_id: current_user.id)
-      if @bookmark.present?
-        @bookmark.destroy
-        redirect_to request.referer
-      else
-        redirect_to request.referer
-      end
+  def destroy
+    @article = Article.find(params[:article_id])
+    @bookmark = @article.bookmarks.find_by(user_id: current_user.id)
+    if @bookmark.present?
+      @bookmark.destroy
+      redirect_to request.referer
+    else
+      redirect_to request.referer
     end
   end
 end
