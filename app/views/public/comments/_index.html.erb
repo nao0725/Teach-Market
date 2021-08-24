@@ -1,18 +1,31 @@
 <% @comments.each do |comment| %>
-  <p><%= comment.comment_content %></p>
-  <div id="rate_<%= comment.id %>"></div>
-    <script>
-      $('#rate_<%= comment.id %>').raty({
-        size: 20,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= comment.rate %>,
-      });
-    </script>
-  <% if comment.user == current_user %>
-      <p><%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %></p>
-  <% end %>
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-sub_title text-muted">
+      <%= link_to comment.user.name, user_path(comment.user), class: "text-muted" %>さんのコメント
+    </h6>
+    <p class="card-text">
+      <%= comment.comment_content %>
+    </p>
+    <div class = "d-flex float-right">
+      <div id="rate_<%= comment.id %>"></div>
+        <script>
+          $('#rate_<%= comment.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= comment.rate %>,
+          });
+        </script>
+      <div class = "ml-3 mt-1">
+       <% if comment.user == current_user %>
+        <%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %>
+       <% end %>
+      </div>
+     </div>
+  </div>
+</div>
 <% end %>

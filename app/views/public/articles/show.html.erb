@@ -1,8 +1,8 @@
 <div class = "container">
   <div class = "title text-center">Detail</div>
   <div class = "row pb-5">
-    <div class = "col-2">
-      
+    <div class = "col-3">
+
     </div>
     <div class = "col-9">
       <div class = "article-text rounded-lg border-dark">
@@ -12,14 +12,28 @@
         </div>
         <div class = "article-title font-weight-bold"><%= @article.title %></div>
         <div class = "py-1"><%= @article.sub_title %></div>
-        <div class = "article-header mb-2 text-muted">
-          <i class = "fas fa-tags"></i>
-          <% @article.tags.each do |tag| %>
-            <%= tag.tag_name %>
-          <% end %>
+        <div class = "article-header text-muted">
+          <div class = "mt-2">
+            <i class = "fas fa-tags"></i>
+            <% @article.tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </div>
+          <div class = "d-flex float-right">
+            <%= render "public/articles/rate", article: @article %>
+            <div class = "mt-1 ml-2"><%= @article.avg_score %>点</div>
+          </div>
         </div>
-        <div><%= markdown(@article.body).html_safe %></div>
+        <div class = "mt-5"><%= markdown(@article.body).html_safe %></div>
       </div>
+      <div id = "comment_area" class = "py-5" >
+        <% if user_signed_in? %>
+          <%= render "public/comments/form", comment: @comment %>
+        <% end %>
+      </div>
+      <div class="w">
+        <%= render "public/comments/index", comments: @comments, article: @article %>
+      </div>    
     </div>
   </div>
 </div>
