@@ -15,7 +15,7 @@
       <% when "comment" then %>
         <p class = "notification-txt">
           <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-          <%= link_to notification.comment, notification.article %>の記事にコメントしました。
+          <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
         </p>
     <% end %>
 </div>
