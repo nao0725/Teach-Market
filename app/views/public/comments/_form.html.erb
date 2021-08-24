@@ -1,4 +1,4 @@
-<h5 class = "mb-4">コメント</h5>
+<h5 class = "mb-4">コメント：<%= @comments.count %> 件</h5>
   <%= form_with(model: [@article, @comment]) do |f| %>
     <div class = "form-group">
       <%= f.text_area :comment_content, placeholder: "コメントを入力", class: "form-control" %>
