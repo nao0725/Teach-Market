@@ -90,13 +90,18 @@
 
 
 // HOMEのタブ切り替え表示
+.tab-position{
+  position: sticky;
+  top: 10px;
+  font-size: 12px;
+}
+
 .tab-area {
   background-color: white;
   cursor: pointer;
   .tab {
     width: 100%;
     line-height: 30px;
-    text-align: center;
   }
   .tab.active {
     background-color: #ccc;

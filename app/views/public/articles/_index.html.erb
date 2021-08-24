@@ -15,7 +15,8 @@
       <h6 class="card-subtitle">
         <%= article.sub_title %>
       </h6>
-      <h6 class="card-subtitle mb-2 text-muted fas fa-tags">
+      <h6 class="card-subtitle text-muted">
+        <i class = "fas fa-tags mt-3"></i>
         <% article.tags.each do |tag| %>
           <%= tag.tag_name %>
         <% end %>
