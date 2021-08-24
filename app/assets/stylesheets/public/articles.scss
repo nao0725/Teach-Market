@@ -24,4 +24,26 @@ $size: 24px;
   display: flex;
 }
 
+.article-header{
+  font-size: 14px;
+}
+
+.article-title{
+  font-size: 36px;
+}
+
+.article-text{
+  background-color: white;
+  padding: 40px;
+}
+
+
+.detail-font{
+    position: sticky;
+    top: calc(56px + 24px + 16px);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    font-size: 28px;
+}
 

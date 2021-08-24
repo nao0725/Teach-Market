@@ -1,55 +1,52 @@
 <div class = "container">
-
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <strong>題名:</strong>
-    <%= @article.title %>
-  </p>
-
-    <p>
-    <strong>タグ:</strong>
-    <% @article.tags.each do |tag| %>
-      <%= tag.tag_name %>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>目的:</strong>
-    <%= @article.sub_title %>
-  </p>
-
-  <p>
-    <strong>内容:</strong>
-    <%= markdown(@article.body).html_safe %>
-  </p>
-
-  <%= link_to "", home_path, class: "fas fa-arrow-circle-left" %>
-  <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
-  <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
-
-  <!--SNSシェアボタン機能-->
-  <%= social_share_button_tag(@article.title) %>
-
-  <!--ブックマーク機能-->
-  <div id="bookmark_button_<%= @article.id %>">
-    <%= render "public/bookmarks/bookmark", article: @article  %>
+  <div class = "title text-center">Detail</div>
+  <div class = "row pb-5 ">
+    <div class = "col-2">
+      <div class = "text-center detail-font">
+        <div class = "py-2">
+          <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
+        </div>
+        <div class = "py-2">
+          <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
+        </div>
+        <div id="bookmark_button_<%= @article.id %>" class = "pt-2 pt-1">
+          <%= render "public/bookmarks/bookmark", article: @article  %>
+        </div>
+        <div class = "py-2">
+          <%= social_share_button_tag(@article.title) %>
+        </div>
+      </div>
+    </div>
+    <div class = "col-10">
+      <div class = "article-text rounded-lg border-dark">
+        <div class  = "text-muted article-header">
+          <%= link_to @article.user.name, user_path(@article.user.id), class: "link text-muted"%>さんが
+          <%= @article.user.created_at.strftime("%Y年%m月%d日") %>に投稿
+        </div>
+        <div class = "article-title font-weight-bold"><%= @article.title %></div>
+        <div class = "py-1"><%= @article.sub_title %></div>
+        <div class = "article-header text-muted">
+          <div class = "mt-2">
+            <i class = "fas fa-tags"></i>
+            <% @article.tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </div>
+          <div class = "d-flex float-right">
+            <%= render "public/articles/rate", article: @article %>
+            <div class = "mt-1 ml-2"><%= @article.avg_score %>点</div>
+          </div>
+        </div>
+        <div class = "mt-5"><%= markdown(@article.body).html_safe %></div>
+      </div>
+      <div id = "comment_area" class = "py-5" >
+        <% if user_signed_in? %>
+          <%= render "public/comments/form", comment: @comment %>
+        <% end %>
+      </div>
+      <div class="w">
+        <%= render "public/comments/index", comments: @comments, article: @article %>
+      </div>
+    </div>
   </div>
-
-  <!--星評価の平均値-->
-  <%= render "public/articles/rate", article: @article %>
-  <%= @article.avg_score %>点
-
-  <!--コメント機能-->
-  <div id = "comment_area", class="w-100 p-3">
-    <% if user_signed_in? %>
-      <%= render "public/comments/form", comment: @comment %>
-    <% end %>
-  </div>
-
-  <!--コメント一覧-->
-  <div class="w-100 p-3">
-     <%= render "public/comments/index", comments: @comments, article: @article %>
-  </div>
-
-
+</div>

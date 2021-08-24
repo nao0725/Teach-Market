@@ -14,7 +14,7 @@
 
         <div class = "row">
           <div class = "col-6">
-            <div class="form-group code-block text-center">
+            <div class="form-group code-block">
               <label class="control-label">本文</label>
               <%= f.text_area :body, id: 'user_answer_code',
                   placeholder: "あなたの仕事のノウハウをMarkdown記法を使ってアウトプットしよう!" ,
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class = "col-6">
-            <div class="form-group code-block text-center">
+            <div class="form-group code-block">
               <label class="control-label">プレビュー</label>
               <div id="code_markdown">
                 <%= f.text_area :body, id: "user_answer_code", class: "form-control", size:'10x30' %>

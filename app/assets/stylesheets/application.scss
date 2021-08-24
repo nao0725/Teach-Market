@@ -39,11 +39,19 @@ body {
     color: black ;
 }
 
+// fontawesomeの色の変更
+.fas{
+  color: #516C9D ;
+}
+
+.far{
+   color: #516C9D ;
+}
+
 // 見出し
 .title {
   font-size: 40px;
 }
-
 
 
 // タイトル下線
@@ -87,6 +95,21 @@ body {
   padding-top: 0rem;
   color: #efa04c;
 }
+
+// SNSシェアボタン
+$size: 28px;
+.social-share-button {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    margin: 10px 0;
+  }
+}
+
 
 // レスポンシブデザイン
 // PC
