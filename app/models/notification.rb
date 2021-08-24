@@ -37,16 +37,16 @@ class Notification < ApplicationRecord
   end
 
   #自分以外のコメントしている人を取得し、全員に通知を送る
-  def create_comment_notification(current_user, comment_id, user_id, id )
-   temp_ids = Comment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct
+  def create_comment_notification(current_user, comment_id, user_id, article_id)
+   temp_ids = Comment.select(:user_id).where(article_id: article_id).where.not(user_id: current_user.id).distinct
    temp_ids.each do |temp_id|
-    save_comment_notification(current_user, comment_id, id, temp_id["user_id"])
+    save_comment_notification(current_user, comment_id, temp_id["user_id"])
    end
-   save_comment_notification(current_user, comment_id, id, user_id) if temp_ids.blank?
+   save_comment_notification(current_user, comment_id, user_id, article_id) if temp_ids.blank?
   end
 
   #１つの投稿に対して複数回通知を送る
-  def save_comment_notification(current_user, comment_id, visited_id)
+  def save_comment_notification(current_user, comment_id, visited_id, id)
    notification = current_user.active_notifications.new(
     article_id: id,
     comment_id: comment_id,
