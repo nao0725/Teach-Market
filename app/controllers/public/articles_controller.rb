@@ -24,10 +24,11 @@ class Public::ArticlesController < ApplicationController
     tag_list = params[:article][:tag_name].split("/")
     if @article.save
        @article.tags_save(tag_list)
-       redirect_to home_path, notice: "投稿されました"
+       flash.now[:notice] =  "投稿されました"
+       redirect_to home_path
     else
       @user = current_user
-      flash.now[:alert] = "投稿に失敗しました。"
+      flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end
@@ -36,7 +37,7 @@ class Public::ArticlesController < ApplicationController
     if @article.update(article_params)
       tag_list = params[:article][:tag_name].split(",")
       @article.tags_save(tag_list)
-      flash[:notice] = "You have updated article successfully."
+      flash[:notice] = "投稿が更新されました"
       redirect_to article_path
     else
       @user = current_user
