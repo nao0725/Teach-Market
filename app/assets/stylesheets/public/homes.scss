@@ -92,7 +92,7 @@
 // HOMEのタブ切り替え表示
 .tab-position{
   position: sticky;
-  top: 10px;
+  top: calc(56px + 24px + 16px);
   font-size: 12px;
 }
 

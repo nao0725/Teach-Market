@@ -1,23 +1,23 @@
 <div class = "container">
   <div class = "title text-center">Detail</div>
-  <div class = "row pb-5">
-    <div class = "col-3">
+  <div class = "row pb-5 ">
+    <div class = "col-2">
       <div class = "text-center detail-font">
-        <div>
+        <div class = "py-2">
           <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
         </div>
-        <div>
+        <div class = "py-2">
           <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
         </div>
-        <div id="bookmark_button_<%= @article.id %>">
+        <div id="bookmark_button_<%= @article.id %>" class = "pt-2 pt-1">
           <%= render "public/bookmarks/bookmark", article: @article  %>
         </div>
-        <div>
+        <div class = "py-2">
           <%= social_share_button_tag(@article.title) %>
         </div>
       </div>
     </div>
-    <div class = "col-9">
+    <div class = "col-10">
       <div class = "article-text rounded-lg border-dark">
         <div class  = "text-muted article-header">
           <%= link_to @article.user.name, user_path(@article.user.id), class: "link text-muted"%>さんが
