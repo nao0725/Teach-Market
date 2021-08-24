@@ -46,9 +46,9 @@ class Notification < ApplicationRecord
   end
 
   #１つの投稿に対して複数回通知を送る
-  def save_comment_notification(current_user, comment_id, visited_id, id)
+  def save_comment_notification(current_user, comment_id, visited_id, article_id)
    notification = current_user.active_notifications.new(
-    article_id: id,
+    article_id: article_id,
     comment_id: comment_id,
     visited_id: visited_id,
     action: "comment"
