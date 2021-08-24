@@ -37,7 +37,7 @@ class Public::ArticlesController < ApplicationController
     if @article.update(article_params)
       tag_list = params[:article][:tag_name].split(",")
       @article.tags_save(tag_list)
-      flash[:notice] = "投稿が更新されました"
+      flash.now[:notice] = "投稿が更新されました"
       redirect_to article_path
     else
       @user = current_user
