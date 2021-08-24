@@ -2,7 +2,20 @@
   <div class = "title text-center">Detail</div>
   <div class = "row pb-5">
     <div class = "col-3">
-
+      <div class = "text-center detail-font">
+        <div>
+          <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
+        </div>
+        <div>
+          <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
+        </div>
+        <div id="bookmark_button_<%= @article.id %>">
+          <%= render "public/bookmarks/bookmark", article: @article  %>
+        </div>
+        <div>
+          <%= social_share_button_tag(@article.title) %>
+        </div>
+      </div>
     </div>
     <div class = "col-9">
       <div class = "article-text rounded-lg border-dark">
@@ -33,7 +46,7 @@
       </div>
       <div class="w">
         <%= render "public/comments/index", comments: @comments, article: @article %>
-      </div>    
+      </div>
     </div>
   </div>
 </div>
