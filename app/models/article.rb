@@ -6,7 +6,7 @@ class Article < ApplicationRecord
  has_many :notifications, dependent: :destroy
  has_many :comments, dependent: :destroy
  has_many :bookmarks, dependent: :destroy
- # counter_culture :bookmarks, column_name: "bookmark_count"
+
 
 
  #既にブックマークしていないか確認
@@ -36,9 +36,14 @@ class Article < ApplicationRecord
    end
  end
 
+  # ユーザーの投稿数ランキング
+ scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
+ scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) } #今週
+ scope :created_this_month, -> { where(created_at: time.beginning_of_month..time.end_of_month) } # 前週
+
  #複数検索できるように設定
  def self.search(search_word)
-  Article.joins(:tags).where(["title LIKE(?) OR body LIKE(?) OR sub_title LIKE(?) OR tag_name LIKE(?)",
+  Article.joins(:tags).where(["articles.title LIKE(?) OR articles.body LIKE(?) OR articles.sub_title LIKE(?) OR tags.tag_name LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%"]).distinct
  end
 

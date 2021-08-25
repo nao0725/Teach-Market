@@ -1,77 +1,94 @@
 <div class="container">
   <div class = "title text-center">HOME</div>
-  <div class = "row pb-5">
-    <div class = "col-2">
-      <div class = "tab-position">
+    <div class = "row pb-5">
+      <div class = "col-2">
+        <div class = "tab-position">
+          <div class = "card">
+            <div class="tab-area text-muted">
+              <div class="tab active ">
+                <i class = "fas fa-home mr-1"></i>
+                新着投稿
+              </div>
+              <div class="tab">
+                <i class="fas fa-users mr-1"></i>
+                フォロワーの投稿
+              </div>
+              <div class="tab">
+                <i class="far fa-bookmark mr-2"></i>
+                ブックマーク数
+              </div>
+              <div class="tab">
+                <i class="far fa-star mr-1"></i>
+                レビュー評価
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "col-7">
+        <div class="content-area">
+          <!--新規投稿順-->
+          <div class="content show">
+            <% @articles.each do |article| %>
+              <%= render "public/articles/index", article: article %>
+            <% end %>
+            <div class = "pagination-sm">
+              <%= paginate @articles %>
+            </div>
+          </div>
+  
+          <!--タイムライン順-->
+          <div class="content">
+            <% @follow_articles.each do |article| %>
+              <%= render "public/articles/index", article: article %>
+            <% end %>
+            <div class = "pagination-sm">
+              <%= paginate @articles %>
+            </div>
+          </div>
+  
+          <!--ブックマーク数順-->
+          <div class="content">
+            <% @bookmarks.each.with_index(1) do |article, i| %>
+              <%= render "public/articles/index", article: article %>
+            <% end %>
+            <div class = "pagination-sm">
+              <%= paginate @articles %>
+            </div>
+          </div>
+  
+          <!--評価の高い順-->
+          <div class="content">
+            <% @reviews.each.with_index(1) do |article, i| %>
+              <%= render "public/articles/index", article: article %>
+            <% end %>
+            <div class = "pagination-sm">
+              <%= paginate @articles %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class = "col-3">
+      <div class = "pb-3"><%= render "public/users/info", user: @user %></div>
         <div class = "card">
-          <div class="tab-area text-muted">
-            <div class="tab active ">
-              <i class = "fas fa-home mr-1"></i>
-              新着投稿
-            </div>
-            <div class="tab">
-              <i class="fas fa-users mr-1"></i>
-              フォロワーの投稿
-            </div>
-            <div class="tab">
-              <i class="far fa-bookmark mr-2"></i>
-              ブックマーク数
-            </div>
-            <div class="tab">
-              <i class="far fa-star mr-1"></i>
-              レビュー評価
-            </div>
-          </div>
+          <div class = "rank-title text-center">本日のアウトプットランキング</div>
+          <% if @today_user_post_ranks.exists? %>
+            <table class = "p-2">
+              <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
+              <tr>
+                <td >第<%= i %>位</td>
+                <td><%= link_to user.name, user_path(user), class: "link"%></td>
+                <td><%= user.articles.count %></td>
+                <td class = "text-muted">投稿</td>
+              </tr>
+              <% end %>
+            </table>
+          <% else %>
+            <p class = "text-center rank-text">投稿者はいません。</p>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class = "col-7">
-      <div class="content-area">
-        <!--新規投稿順-->
-        <div class="content show">
-          <% @articles.each do |article| %>
-            <%= render "public/articles/index", article: article %>
-          <% end %>
-          <div class = "pagination-sm">
-            <%= paginate @articles %>
-          </div>
-        </div>
-
-        <!--タイムライン順-->
-        <div class="content">
-          <% @follow_articles.each do |article| %>
-            <%= render "public/articles/index", article: article %>
-          <% end %>
-          <div class = "pagination-sm">
-            <%= paginate @articles %>
-          </div>
-        </div>
-
-        <!--ブックマーク数順-->
-        <div class="content">
-          <% @bookmarks.each.with_index(1) do |article, i| %>
-            <%= render "public/articles/index", article: article %>
-          <% end %>
-          <div class = "pagination-sm">
-            <%= paginate @articles %>
-          </div>
-        </div>
-
-        <!--評価の高い順-->
-        <div class="content">
-          <% @reviews.each.with_index(1) do |article, i| %>
-            <%= render "public/articles/index", article: article %>
-          <% end %>
-          <div class = "pagination-sm">
-            <%= paginate @articles %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class = "col-3">
-      <%= render "public/users/info", user: @user %>
-    </div>
-
   </div>
 </div>

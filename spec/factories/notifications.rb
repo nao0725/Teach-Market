@@ -3,6 +3,6 @@ FactoryBot.define do
     association :bookmark
     association :comment
     association :visitor
-    application :visited
+    association :visited
   end
 end

@@ -1,16 +1,16 @@
 <h5 class = "mb-4">コメント：<%= @comments.count %> 件</h5>
   <%= form_with(model: [@article, @comment]) do |f| %>
     <div class = "form-group">
-      <%= f.text_area :comment_content, placeholder: "コメントを入力", class: "form-control" %>
+      <%= f.text_area :comment_content, placeholder: "評価を付けてコメントを入力", class: "form-control" %>
     </div>
     <div class = "d-flex float-right">
       <div id="star" class = "mt-1">
         <%= f.label :rate,"評価", class: "mr-2" %>
         <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
       </div>
-      <div class = "">
+      <div class = "ml-2">
         <%= button_tag type: "submit", class: "btn btn-default" do %>
-          <i class="far fa-comment-alt"></i>
+          <i class="far fa-comment-alt"> コメントする</i>
         <% end %>
       </div>
     </div>

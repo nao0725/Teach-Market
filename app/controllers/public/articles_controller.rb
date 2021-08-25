@@ -57,7 +57,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title)
+    params.require(:article).permit(:title, :body, :sub_title, :tag_name)
   end
 
 end

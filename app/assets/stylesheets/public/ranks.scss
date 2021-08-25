@@ -1,3 +1,20 @@
 // Place all the styles related to the public/ranks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rank-title{
+  font-size: 14px;
+}
+
+.rank-title::after{
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  margin: 14px auto 20px auto;
+  background-color: #DEDEDE;
+}
+
+.rank-text{
+  font-size: 10px;
+}
