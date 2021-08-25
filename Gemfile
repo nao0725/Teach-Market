@@ -76,6 +76,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'devise'
 gem 'devise-i18n'
+gem 'rails-i18n'
 gem 'redcarpet'
 gem 'coderay'
 gem 'omniauth', "~> 1.9.1"

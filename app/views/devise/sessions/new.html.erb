@@ -5,6 +5,8 @@
   <div class = "shadow text-center">
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
+    <%= render "layouts/error_messages", model: f.object %>
+
     <div class="field py-2">
       <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ユーザー名" %>
     </div>
@@ -26,8 +28,8 @@
     <div class = "py-2">
       <%=link_to "Twitterでログインする", user_twitter_omniauth_authorize_path, class: "btn btn-primary fa fa-twitter"%>
     </div>
-    
-    
+
+
   <% end %>
 
   <%= render "devise/shared/links" %>
