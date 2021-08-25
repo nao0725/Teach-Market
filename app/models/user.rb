@@ -69,7 +69,7 @@ class User < ApplicationRecord
   end
 
   # バリデーション
-  validates :name, presence: true, length: { minimum: 1 }
+  validates :name, presence: true, length: {in: 2..10}, uniqueness: { case_sensitive: true }
   validates :nickname, presence: true, length: { minimum: 1 }, uniqueness: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
