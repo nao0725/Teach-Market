@@ -3,18 +3,19 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
    describe "モデルのテスト" do
 
-     it "有効なuserの場合は保存されるか" do
+    subject { user.valid? } 
+      
+    it "有効なuserの場合は保存されるか" do
        expect(build(:user)).to be_valid
-     end
+    end
 
-     let!(:other_user){ create(:user)}
-     let(:user){build(:user)}
+    let!(:other_user){ create(:user)}
+    let(:user){build(:user)}
 
      context "nameカラムのテスト" do
        it "空白の場合エラーメッセージが返ってくるか" do
-         user.name = ""
+          user.name = ""
           is_expected.to eq false
-         
        end
 
        it "長さが1文字以下の場合エラーメッセージが返ってくるか" do
