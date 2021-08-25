@@ -372,7 +372,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
-  factory_bot_rails (~> 5.0)
+  factory_bot_rails
   faker
   font-awesome-sass (~> 5.13)
   jbuilder (~> 2.5)
@@ -389,7 +389,7 @@ DEPENDENCIES
   redcarpet
   refile!
   refile-mini_magick
-  rspec-rails (~> 3.8)
+  rspec-rails
   rubocop-airbnb
   sass-rails (~> 5.0)
   selenium-webdriver
