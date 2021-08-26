@@ -71,21 +71,17 @@
 
       <div class = "col-3">
       <div class = "pb-3"><%= render "public/users/info", user: @user %></div>
-        <div class = "card">
-          <div class = "rank-title text-center">本日のアウトプットランキング</div>
+        <div class = "card text-center">
+          <div class = "rank-title">本日のアウトプットランキング</div>
           <% if @today_user_post_ranks.exists? %>
-            <table class = "p-2">
+            <table class = "text-center table table-bordered p-2">
               <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
-              <tr>
-                <td >第<%= i %>位</td>
-                <td><%= link_to user.name, user_path(user), class: "link"%></td>
-                <td><%= user.articles.count %></td>
-                <td class = "text-muted">投稿</td>
-              </tr>
+                 <%= render "public/ranks/index", user: user, i: i %>
               <% end %>
             </table>
+            <div class = "rank-link py-3"><%= link_to "週間・月間のランキングはこちら", rank_path, class: "link"%></div>
           <% else %>
-            <p class = "text-center rank-text">投稿者はいません。</p>
+            <p class = "rank-text">投稿者はいません。</p>
           <% end %>
         </div>
       </div>
