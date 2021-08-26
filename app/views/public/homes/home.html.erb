@@ -53,30 +53,22 @@
 
           <!--ブックマーク数順-->
           <div class="content">
-            <% if @bookmarks.exists? %>
-              <% @bookmarks.each.with_index(1) do |article, i| %>
-                <%= render "public/articles/index", article: article %>
-              <% end %>
-              <div class = "pagination-sm py-3">
-                <%= paginate @articles %>
-              </div>
-             <% else %>
-              <h6 class = "text-center py-5">フォローしているユーザーはいません。</h6>
+            <% @bookmarks.each.with_index(1) do |article, i| %>
+              <%= render "public/articles/index", article: article %>
             <% end %>
+            <div class = "pagination-sm py-3">
+              <%= paginate @articles %>
+            </div>
           </div>
 
           <!--評価の高い順-->
           <div class="content">
-            <% if @bookmarks.exists? %>
-              <% @reviews.each.with_index(1) do |article, i| %>
-                <%= render "public/articles/index", article: article %>
-              <% end %>
-              <div class = "pagination-sm py-3">
-                <%= paginate @articles %>
-              </div>
-            <% else %>
-              <h6 class = "text-center py-5">フォローしているユーザーはいません。</h6>
+            <% @reviews.each.with_index(1) do |article, i| %>
+              <%= render "public/articles/index", article: article %>
             <% end %>
+            <div class = "pagination-sm py-3">
+              <%= paginate @articles %>
+            </div>
           </div>
         </div>
       </div>

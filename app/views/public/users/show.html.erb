@@ -1,11 +1,11 @@
 <div class = "container">
-  
+
   <% if @user == current_user %>
      <div class = "title text-center">マイページ</div>
   <% else %>
     <div class = "title text-center"><%= @user.nickname %>さんのマイページ</div>
   <% end %>
-  
+
   <div class = "card">
     <div class = "text-center">
       <div class = "my-3"><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'200x200', class: "rounded-circle"%></div>
@@ -36,7 +36,7 @@
           </div>
         <% else %>
           <div id = "follow_btn">
-            <%= render "public/relationships/follow_btn", user: user %>
+            <%= render "public/relationships/follow_btn", user: @user %>
           </div>
         <% end %>
       </div>
