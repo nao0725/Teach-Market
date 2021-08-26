@@ -41,6 +41,7 @@ class Public::ArticlesController < ApplicationController
       redirect_to article_path
     else
       @user = current_user
+       flash.now[:notice] = "投稿の更新に失敗しました"
       render :edit
     end
   end
@@ -57,7 +58,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title, :tag_name)
+    params.require(:article).permit(:title, :body, :sub_title)
   end
 
 end

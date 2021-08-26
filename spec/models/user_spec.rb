@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-   describe "モデルのテスト" do
+RSpec.describe Article, type: :model do
+  
+  let!(:other_user){ create(:user)}
+  let(:user){build(:user)}
+   describe "バリデーションのテスト" do
 
     subject { user.valid? } 
       
@@ -9,8 +12,7 @@ RSpec.describe User, type: :model do
        expect(build(:user)).to be_valid
     end
 
-    let!(:other_user){ create(:user)}
-    let(:user){build(:user)}
+
 
      context "nameカラムのテスト" do
        it "空白の場合エラーメッセージが返ってくるか" do
@@ -109,6 +111,13 @@ RSpec.describe User, type: :model do
          is_expected.to eq false
        end
      end
-
    end
+   
+   describe "アソシエーションのテスト" do
+     context "Articleモデルとの関係" do
+       it "1:Nとなっている" do
+        expect(User.reflect_on_association(:articles).macro).to eq :has_many
+      end
+    end
+  end
 end

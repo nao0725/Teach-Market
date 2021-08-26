@@ -47,7 +47,7 @@ class Article < ApplicationRecord
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%"]).distinct
  end
 
-validates :title, presence: true, length: { minimum: 1 }
+validates :title, presence: true, length: { in: 2..20 }
 validates :body, presence: true
 
 end
