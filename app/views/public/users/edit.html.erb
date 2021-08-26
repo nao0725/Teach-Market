@@ -25,6 +25,9 @@
             <%= f.submit "更新", class: "btn btn-secondary bg-secondary text-white" %>
            </div>
          <% end %>
+         <div class = "float-right">
+           <div><%= link_to "退会をご希望の方はこちら", confirm_unsubscribe_path(@user), class: "link mr-2" %></div>
+         </div>
       </div>
     </div>
   </div>
