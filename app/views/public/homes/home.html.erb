@@ -42,7 +42,7 @@
             <% @follow_articles.each do |article| %>
               <%= render "public/articles/index", article: article %>
             <% end %>
-            <div class = "pagination-sm">
+            <div class = "pagination-sm pt-3">
               <%= paginate @articles %>
             </div>
           </div>
@@ -52,7 +52,7 @@
             <% @bookmarks.each.with_index(1) do |article, i| %>
               <%= render "public/articles/index", article: article %>
             <% end %>
-            <div class = "pagination-sm">
+            <div class = "pagination-sm pt-3">
               <%= paginate @articles %>
             </div>
           </div>
@@ -62,7 +62,7 @@
             <% @reviews.each.with_index(1) do |article, i| %>
               <%= render "public/articles/index", article: article %>
             <% end %>
-            <div class = "pagination-sm">
+            <div class = "pagination-sm pt-3">
               <%= paginate @articles %>
             </div>
           </div>
