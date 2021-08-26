@@ -45,6 +45,7 @@
         <% end %>
       </div>
       <div class="w">
+        <h5 class = "mb-2">コメント：<%= @comments.count %> 件</h5>
         <%= render "public/comments/index", comments: @comments, article: @article %>
       </div>
     </div>

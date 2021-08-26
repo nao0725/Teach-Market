@@ -1,45 +1,68 @@
 <div class = "container">
+
   <% if @user == current_user %>
-    <h1>マイページ</h1>
+     <div class = "title text-center">マイページ</div>
   <% else %>
-    <h1><%= @user.nickname %>さんの詳細ページ</h1>
+    <div class = "title text-center"><%= @user.nickname %>さんのマイページ</div>
   <% end %>
 
-  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:"200x200", class: "rounded-circle" %>
-
-  <h5>ニックネーム</h5>
-  <%= @user.nickname %>
-
-  <h5>自己紹介</h5>
-  <%= @user.introduction %>
-
-  <h5>投稿数</h5>
-  <%= @articles.count %>
-
-  <% unless @user == current_user %>
-  <div id = "follow_btn">
-    <p><%= render "public/relationships/follow_btn", user: @user %></p>
+  <div class = "card">
+    <div class = "text-center">
+      <div class = "my-3"><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'200x200', class: "rounded-circle"%></div>
+      <div class = "user-nickname"><%= @user.nickname %></div>
+      <div class = "info-border"></div>
+      <div class = "d-flex justify-content-around ml-4 pb-3">
+        <div class= "user-box">
+          <div><%= @user.articles.count %></div>
+          <div class = "text-muted">投稿数</div>
+        </div>
+        <div class = "user-box">
+          <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
+          <div class = "text-muted">フォロー</div>
+        </div>
+        <div class = "user-box">
+          <div><%= link_to @user.followers.count, user_followers_path(@user.id), class: "link"  %></div>
+          <div class = "text-muted">フォロワー</div>
+          </div>
+      </div>
+      <div class = "my-3 user-text"><%= @user.introduction %></div>
+      <div>
+        <% if @user == current_user %>
+          <div class = "py-2">
+            <%= link_to "プロフィールを編集する", edit_user_path(@user) , class:"btn btn-outline-secondary btn-block"%>
+          </div>
+          <div class = "py-2">
+            <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary btn-block"%>
+          </div>
+        <% else %>
+          <div id = "follow_btn">
+            <%= render "public/relationships/follow_btn", user: @user %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <% end %>
-
-  <h5>フォロー数</h5>
-  <p><%= link_to @user.followings.count, user_followings_path(@user.id) %></p>
-
-  <h5>フォロワー数</h5>
-  <p><%= link_to @user.followers.count, user_followers_path(@user.id) %></p>
-
-  <% if @user == current_user %>
-    <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary"%>
-    <%= link_to "", edit_user_path(current_user) , class:"btn btn-outline-secondary fas fa-user-cog"%>
-  <% end %>
-
-
-  <h3>投稿一覧</h3>
-    <% @articles.each do |article| %>
-     <%= render "public/articles/index", article: article %>
-    <% end %>
-  </div>
-  <div class = "pagination-sm">
-    <%= paginate @articles %>
+  <div class = "sub_title text-center py-4">投稿一覧</div>
+  <div class = "row">
+    <div class = "col-2"></div>
+    <div class = "col-8">
+      <% @articles.each do |article| %>
+        <%= render "public/articles/index", article: article %>
+      <% end %>
+      <div class = "pagination-sm pt-3">
+        <%= paginate @articles %>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+

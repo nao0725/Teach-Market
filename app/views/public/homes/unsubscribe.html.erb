@@ -1,10 +1,21 @@
 <div class = "container">
-  <h2>本当に退会しますか？</h2>
-  <div>
-    <p>退会する場合は『退会する』をクリックしてください</p>
-  </div>
-  <div>
-    <%= link_to "退会する", withdraw_user_path(@user), method: :patch%>
-    <%= link_to "退会しない", user_path(@user) %>
-  </div>
+   <div class = "title text-center">本当に退会しますか？</div>
+   <div class = "card unsub-text">
+     <div class = "row justify-content-center">
+       <div class = "text-center">
+         <p class = "py-3">
+           退会すると、会員登録情報が閲覧できなくなります。<br>
+           退会する場合は『退会する』をクリックしてください。
+          </p>
+          <div class = "row unsub-text mt-3">
+          <div class = "no-delete">
+            <%= link_to "退会する", withdraw_user_path(@user), method: :patch, data: { confirm: '本当に退会しますか？' }, class: "btn btn-outline-danger btn-sm " %>
+          </div>
+          <div class = "float-right">
+            <%= link_to "退会しない", user_path(@user), class: "btn btn-outline-primary btn-sm" %>
+          </div>
+          </div>
+       </div>
+     </div>
+   </div>
 </div>

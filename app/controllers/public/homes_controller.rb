@@ -50,7 +50,7 @@ class Public::HomesController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_valid: false)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, alert: "ご利用誠にありがとうございました。"
   end
 
 end

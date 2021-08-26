@@ -3,7 +3,7 @@
 
     <div class = "home-header">
       <h6 class="card-subtitle mb-2 text-muted">
-        <%=link_to article.user.name, user_path(article.user.id), class: "link text-muted"%>さんが
+        <%=link_to article.user.nickname, user_path(article.user.id), class: "link text-muted"%>さんが
         <%= article.created_at.strftime("%Y年%m月%d日") %>に投稿
       <h6>
     </div>

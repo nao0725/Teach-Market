@@ -1,2 +1,11 @@
- 第<%= i %>位
- <%= link_to user.name, user_path(user) %>
+
+
+    <tr>
+     <td class = "pt-4">第<%= i %>位</td>
+     <td class = "pt-4"><%= link_to user.nickname, user_path(user), class: "link"%></td>
+     <td>
+      <div class = "rank-count"><%= user.articles.count %></div>
+      <div class = "text-muted rank-text m-1">投稿</div>
+     </td>
+   </tr>
+

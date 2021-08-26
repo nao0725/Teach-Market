@@ -1,33 +1,27 @@
-<div class = "container">
-  <h2>管理者Sign up</h2>
+<div class = container>
+  <div class = "text-center">
+    <div class = "title">管理者Sign up</div>
+  </div>
+  <div class = "shadow text-center">
+     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    
+      <%= render "layouts/error_messages", model: f.object %>
+      
+      <div class="field py-2">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+      </div>
+      <div class="field py-2">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード"  %>
+      </div>
+      <div class="field py-2">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）"  %>
+      </div>
+      <div class="actions py-2">
+        <%= f.submit "登録する" ,class: "btn btn-success" %>
+      </div>
+    <% end %>
+    
+    <%= render "admins/shared/links" %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "admins/shared/error_messages", resource: resource %>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "admins/shared/links" %>
-
+  </div>
 </div>
-

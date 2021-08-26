@@ -1,10 +1,9 @@
 <div class="container">
   <div class = "title text-center">Bookmark</div>
-
+  <% if @bookmarks.exists? %>
     <% @bookmarks.each do |bookmark| %>
       <div class="card">
         <div class="card-body">
-
           <div class = "home-header">
             <h6 class="card-subtitle mb-2 text-muted">
               <%=link_to bookmark.article.user.name, user_path(bookmark.article.user.id), class: "link text-muted"%>さんが
@@ -40,5 +39,8 @@
         </div>
       </div>
     <% end %>
-  </div>
+  <% else %>
+    <h5 class = "text-center py-5">Bookmarkした投稿はありません</h5>
+  <% end %>
+</div>
 

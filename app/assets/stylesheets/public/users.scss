@@ -24,4 +24,46 @@
   background-color: #DEDEDE;
 }
 
+.user-nickname{
+  font-size: 36px;
+}
+
+.user-box{
+  font-size: 24px;
+}
+
+.user-text{
+  font-size: 20px;
+}
+
+.sub_title{
+  font-size: 30px;
+}
+
+// タイトル下線
+.sub_title::after {
+  content: "";
+  display: block;
+  width: 1000px;
+  height: 1px;
+  margin: 8px auto 20px auto;
+  background-color: #DEDEDE;
+}
+
+// 退会機能
+
+.unsub-text {
+    text-align: center;
+    margin: 50px;
+}
+
+.no-delete {
+    margin-left: 50px;
+    margin-right: 100px;
+    text-align: center;
+}
+
+.come {
+    text-align: center;
+}
 

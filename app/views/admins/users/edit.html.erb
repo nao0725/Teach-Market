@@ -1,0 +1,34 @@
+<div class = "container">
+  <div class = "title text-center">
+    <div>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'55x55', class: "rounded-circle"%>
+      <%= @user.nickname %> プロフィール編集
+    </div>
+  </div>
+  <div class = "card">
+    <div class ="row justify-content-center">
+      <div class = "col-8">
+        <%= form_with model: @user, local:true do |f| %>
+          <h6 class = "text-muted pb-1 pt-3">画像</h5>
+          <%= f.attachment_field :profile_image %>
+
+          <h6 class = "text-muted pb-1 pt-3">名前</h5>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <h6 class = "text-muted pb-1 pt-3">ニックネーム</h5>
+          <%= f.text_field :nickname, class: "form-control" %>
+
+          <h6 class = "text-muted pb-1 pt-3">自己紹介</h5>
+          <%= f.text_area :introduction, class: "form-control" %>
+
+           <div class = "pb-1 pt-3">
+            <%= f.submit "更新", class: "btn btn-secondary bg-secondary text-white" %>
+           </div>
+         <% end %>
+         <div class = "float-right">
+           <div><%= link_to "退会をご希望の方はこちら", confirm_unsubscribe_path(@user), class: "link mr-2" %></div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
