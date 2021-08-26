@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get "/home" => "homes#home"
     get "/search" => "homes#search"
     get "/rank" => "ranks#rank"
-    
+
     get "unsubscribe/:name" => "homes#unsubscribe", as: "confirm_unsubscribe"
     patch ":id/withdraw/:name" => "homes#withdraw", as: "withdraw_user"
     put "withdraw/:name" => "users#withdraw"
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
  namespace :admins do
    resources :users, except: [:new, :create]
  end
- 
+
  get "admins" => "admins/users#admins"
- 
+
 end
