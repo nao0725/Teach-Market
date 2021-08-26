@@ -45,5 +45,7 @@ Rails.application.routes.draw do
  namespace :admins do
    resources :users, except: [:new, :create]
  end
-
+ 
+ get "admins" => "admins/users#admins"
+ 
 end
