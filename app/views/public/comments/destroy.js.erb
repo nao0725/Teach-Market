@@ -1,2 +1,1 @@
-$("#comments_area").html("<%= j( render "public/comments/form", comment: @comment ) %>")
-$("textarea").val('')
+$("#comments_index").html("<%= j( render "public/comments/index", comments: @comments, article: @article ) %>");
