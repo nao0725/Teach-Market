@@ -15,9 +15,6 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit
-  end
-
   def create
     @article = Article.new(article_params)
     @article.user = current_user
@@ -33,9 +30,12 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @article.update(article_params)
-      tag_list = params[:article][:tag_name].split(",")
+      tag_list = params[:article][:tag_name].split("/")
       @article.tags_save(tag_list)
       flash.now[:notice] = "投稿が更新されました"
       redirect_to article_path
@@ -54,11 +54,11 @@ class Public::ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.includes(:tags).find(params[:id])
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title)
+    params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
   end
 
 end

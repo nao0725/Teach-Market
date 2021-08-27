@@ -23,7 +23,7 @@
         </script>
       <div class = "ml-3 mt-1">
        <% if comment.user == current_user %>
-        <%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %>
+        <%= link_to  "", article_comment_path(comment.article_id, comment.id), method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true, class: "far fa-trash-alt" %>
        <% end %>
       </div>
      </div>

@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <p>TeachMarket アカウントを持っている場合は<%= link_to "ログイン", new_session_path(resource_name) %>から<br /></p>
+  <p>アカウントを持っている場合は<%= link_to "ログイン", new_session_path(resource_name) %>から<br /></p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p>TeachMarket のアカウントを持っていない場合は<%= link_to "新規登録", new_registration_path(resource_name) %>から<br /></p>
+  <p class = "pt-2">登録は<%= link_to "こちら", new_registration_path(resource_name) %>から<br /></p>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
