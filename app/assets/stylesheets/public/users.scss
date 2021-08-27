@@ -36,22 +36,16 @@
   font-size: 20px;
 }
 
-.sub_title{
-  font-size: 30px;
+.user_article{
+  padding: 20px ;
 }
 
-// タイトル下線
-.sub_title::after {
-  content: "";
-  display: block;
-  width: 1000px;
-  height: 1px;
-  margin: 8px auto 20px auto;
-  background-color: #DEDEDE;
+.sub_title{
+  font-size: 30px;
+  padding-left: 280px;
 }
 
 // 退会機能
-
 .unsub-text {
     text-align: center;
     margin: 50px;
