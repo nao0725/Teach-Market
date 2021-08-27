@@ -4,6 +4,9 @@
   <div class="card-body">
     <h6 class="card-sub_title text-muted">
       <%= link_to comment.user.name, user_path(comment.user), class: "text-muted" %>さんのコメント
+      <div class = "text-muted float-right">
+        <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </div>
     </h6>
     <p class="card-text">
       <%= comment.comment_content %>
