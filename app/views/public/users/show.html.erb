@@ -1,68 +1,64 @@
-<div class = "container">
+<% if @user == current_user %>
+  <div class = "title text-center">マイページ</div>
+<% else %>
+  <div class = "title text-center"><%= @user.nickname %>さんのマイページ</div>
+<% end %>
 
-  <% if @user == current_user %>
-     <div class = "title text-center">マイページ</div>
-  <% else %>
-    <div class = "title text-center"><%= @user.nickname %>さんのマイページ</div>
-  <% end %>
-
-  <div class = "card">
-    <div class = "text-center">
-      <div class = "my-3"><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'200x200', class: "rounded-circle"%></div>
-      <div class = "user-nickname"><%= @user.nickname %></div>
-      <div class = "info-border"></div>
-      <div class = "d-flex justify-content-around ml-4 pb-3">
-        <div class= "user-box">
-          <div><%= @user.articles.count %></div>
-          <div class = "text-muted">投稿数</div>
-        </div>
-        <div class = "user-box">
-          <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
-          <div class = "text-muted">フォロー</div>
-        </div>
-        <div class = "user-box">
-          <div><%= link_to @user.followers.count, user_followers_path(@user.id), class: "link"  %></div>
-          <div class = "text-muted">フォロワー</div>
-          </div>
-      </div>
-      <div class = "my-3 user-text"><%= @user.introduction %></div>
-      <div>
-        <% if @user == current_user %>
-          <div class = "py-2">
-            <%= link_to "プロフィールを編集する", edit_user_path(@user) , class:"btn btn-outline-secondary btn-block"%>
-          </div>
-          <div class = "py-2">
-            <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary btn-block"%>
-          </div>
-        <% else %>
-          <div id = "follow_btn">
-            <%= render "public/relationships/follow_btn", user: @user %>
-          </div>
+<dvi class = "container">
+  <div class = "sub_title pb-3">
+    <% if @user == current_user %>
+      <h3>自分の投稿記事</h3>
+    <% else %>
+      <h3><%= @user.nickname %>さんの投稿記事</h3>
+    <% end %>
+  </div>
+  <div class = "row px-5 justify-content-center">
+    <div class = "col-6">
+        <% @articles.each do |article| %>
+          <%= render "public/articles/index", article: article %>
         <% end %>
+        <div class = "pagination-sm pt-3">
+          <%= paginate @articles %>
       </div>
     </div>
-  </div>
-  <div class = "sub_title text-center py-4">投稿一覧</div>
-  <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-8">
-      <% @articles.each do |article| %>
-        <%= render "public/articles/index", article: article %>
-      <% end %>
-      <div class = "pagination-sm pt-3">
-        <%= paginate @articles %>
+    <div class = "col-3">
+      <div class = "card pt-5">
+        <div class = "text-center">
+          <div class = "my-3"><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'200x200', class: "rounded-circle"%></div>
+          <div class = "user-nickname"><%= @user.nickname %></div>
+          <div class = "info-border"></div>
+          <div class = "d-flex justify-content-around ml-4 pb-3">
+            <div class= "user-box">
+              <div><%= @user.articles.count %></div>
+              <div class = "text-muted">投稿数</div>
+            </div>
+            <div class = "user-box">
+              <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
+              <div class = "text-muted">フォロー</div>
+            </div>
+            <div class = "user-box">
+              <div><%= link_to @user.followers.count, user_followers_path(@user.id), class: "link"  %></div>
+              <div class = "text-muted">フォロワー</div>
+            </div>
+          </div>
+          <div class = "my-3 user-text"><%= @user.introduction %></div>
+          <div>
+            <% if @user == current_user %>
+              <div class = "py-2">
+                <%= link_to "プロフィールを編集する", edit_user_path(@user) , class:"btn btn-outline-secondary btn-block"%>
+              </div>
+              <div class = "py-2">
+                <%= link_to "ブックマークした投稿はこちら", article_bookmarks_path(@user.id) , class:"btn btn-outline-secondary btn-block"%>
+              </div>
+            <% else %>
+              <div id = "follow_btn">
+                <%= render "public/relationships/follow_btn", user: @user %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+</dvi>

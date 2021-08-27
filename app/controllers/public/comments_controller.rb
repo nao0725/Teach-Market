@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
     @comment_new = Comment.new
     @comment.article_id = @article.id
     if @comment.save
+      @comment = Comment.new
       notification = Notification.new()
       notification.create_comment_notification(current_user, @comment, @article.user.id, @article.id)
     else
