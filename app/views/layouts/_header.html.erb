@@ -40,12 +40,12 @@
           </li>
 
           <li class="nav-item active">
-            <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+            <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-door-open" %>
           </li>
 
         <% elsif admin_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+            <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-door-open" %>
           </li>
 
         <% else %>
