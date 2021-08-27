@@ -1,86 +1,73 @@
 <div class = "title text-center">アプリの使い方</div>
-  <div class = "container">
-
-    <div class = "pl-5">
-      <div class = "justify-content-start d-flex py-5">
-        <div class = "leftbox">
-          <h1 class = "help-title">
-            記事を探す
-          </h1>
-          <p class = "help-txt text-muted">
-           ブックマーク順や評価順、タグ検索など様々な<br>
-           角度から記事を探すことができます。気になる<br>
+ <div class="py-5">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-7 pt-5">
+         <h2 class="pb-4">
+           <i class="fas fa-search-plus mr-3"></i>
+           記事を探す
+         </h2>
+         <p class="lead text-muted">
+            ブックマーク順や評価順、タグ検索など様々な
+           角度から記事を探すことができます。気になる
            記事を元に行動してみましょう。
-          </p>
-        </div>
-        <div>
-          <%= image_tag asset_path("search.png", alt: "検索の画像"), class: "help-img-left" %>
-        </div>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag asset_path("search.png", alt: "検索の画像"), class: "help-img-left" %>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class = "pr-5">
-      <div class = "justify-content-end d-flex py-5">
-        <div>
-           <%= image_tag asset_path("post.png", alt: "投稿の画像"), class: "help-img-right" %>
-        </div>
-              <div class = "rightbox">
-          <h1 class = "help-title">
-           アウトプットする
-          </h1>
-          <p class = "help-txt text-muted">
-            ブックマーク順や評価順、タグ検索など職場<br>
-            でうまくいった仕組みやあなたの仕事のノウ<br>
-            ハウを記事として投稿しましょう。たくさん<br>
-            記事を投稿するとのランキングに名前が表示<br>
-            されます。
-          </p>
-        </div>
+ <div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 order-md-2 pt-5">
+        <h2 class="pb-4">
+          <i class="fas fa-pencil-alt mr-2"></i>
+          アウトプットする
+        </h2>
+        <p class="lead text-muted">
+          ブックマーク順や評価順、タグ検索など職場
+          でうまくいった仕組みやあなたの仕事のノウ
+          ハウを記事として投稿しましょう。たくさん
+          記事を投稿するとのランキングに名前が表示
+          されます。
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+         <%= image_tag asset_path("post.png", alt: "投稿の画像"), class: "help-img-right" %>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class = "pl-5">
-      <div class = "justify-content-start d-flex py-5">
-        <div class = "leftbox">
-          <h1 class = "help-title">
-             記事をストックする
-          </h1>
-          <p class = "help-txt text-muted">
-            記事をブックマークすることで後で読むことが<br>
-            できます。ブックマークした投稿をマイページ <br>
+<div class="py-5">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-7 pt-5">
+         <h2 class="pb-4">
+          <i class="fas fa-folder-plus mr-2"></i>
+          記事をストックする
+         </h2>
+         <p class="lead text-muted">
+            記事をブックマークすることで後で読むことが
+            できます。ブックマークした投稿をマイページ
            から見ることができます。
-          </p>
-        </div>
-        <div>
-          <%= image_tag asset_path("bookmark.png", alt: "栞の画像"), class: "help-img-left" %>
-        </div>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag asset_path("bookmark.png", alt: "栞の画像"), class: "help-img-left" %>
       </div>
     </div>
-
-     <div class = "pr-5">
-      <div class = "justify-content-end d-flex py-5">
-        <div>
-          <%= image_tag asset_path("following.png", alt: "フォローの画像"), class: "help-img-right" %>
-        </div>
-              <div class = "rightbox">
-          <h1 class = "help-title">
-            フォローする
-          </h1>
-          <p class = "help-txt text-muted">
-            ユーザーをフォローすることでフォローした<br>
-            ユーザーのみの投稿を表示できます。同じ<br>
-            業種、職種の方をフォローしてみましょう。
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class = "text-center pb-5">
+  </div>
+</div>
+  <div class = "text-center pb-5">
     <% if user_signed_in? %>
       <%= link_to "HOMEへ戻る", home_path, class: "navbar-brand link" %>
     <% else %>
       <%= link_to "TOPへ戻る", root_path, class: "navbar-brand link" %>
     <% end %>
-    </div>
-
   </div>
+

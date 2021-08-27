@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
 
   #作成日時の降順で絞り込み
-  default_scope -> {order(create_at: :desc)}
+  default_scope -> {order(created_at: :desc)}
   belongs_to :article, optional: true
   belongs_to :comment, optional: true
 
