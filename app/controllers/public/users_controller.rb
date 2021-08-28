@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    redirect_to request.referer if current_user.id == User.guest.id
   end
 
   def update
