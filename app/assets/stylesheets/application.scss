@@ -39,6 +39,11 @@ body {
     color: black ;
 }
 
+// エラーメッセージ
+.error-txt{
+  list-style: none;
+}
+
 // fontawesomeの色の変更
 .fas{
   color: #516C9D ;
@@ -66,7 +71,6 @@ body {
 
 // フラッシュメッセージ
 .notifications {
-  color: $white;
   text-align: center;
   .notice {
     background-color: lightBlue;

@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
-   before_action :authenticate_user!, except: [:index]
-   before_action :set_user, except: [:index]
-   before_action :correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, except: [:index]
+  before_action :set_user, except: [:index]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     redirect_to new_user_registration_path
@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    redirect_to request.referer if current_user.id == User.guest.id
   end
 
   def update
@@ -36,5 +37,4 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to user_path(current_user) unless @user == current_user
   end
-
 end

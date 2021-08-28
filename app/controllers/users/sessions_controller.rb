@@ -4,8 +4,6 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_user, only: [:create]
 
-
-
   # GET /resource/sign_in
   def new
     session.delete('devise.omniauth_data')
@@ -32,16 +30,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
 
-   #退会後のログインを阻止
-   def reject_user
+  # 退会後のログインを阻止
+  def reject_user
     @user = User.find_by(nickname: params[:user][:nickname])
     if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
         flash[:error] = "退会済みです。"
         redirect_to new_user_session_path
       end
     else
       flash[:error] = "必須項目を入力してください。"
     end
-   end
+  end
 end

@@ -1,14 +1,13 @@
 class Public::CommentsController < ApplicationController
-
   def create
     @article = Article.find(params[:article_id])
-    @comments = @article.comments
+    @comments = @article.comments.order('created_at desc')
     @comment = current_user.comments.new(comment_params)
     @comment_new = Comment.new
     @comment.article_id = @article.id
     if @comment.save
       @comment = Comment.new
-      notification = Notification.new()
+      notification = Notification.new
       notification.create_comment_notification(current_user, @comment, @article.user.id, @article.id)
     else
       redirect_to request.referer
@@ -20,7 +19,7 @@ class Public::CommentsController < ApplicationController
     @comments = @article.comments
     if Comment.find_by(id: params[:id], article_id: params[:article_id]).destroy
     else
-    redirect_to request.referer
+      redirect_to request.referer
     end
   end
 
@@ -29,5 +28,4 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment_content, :article_id, :user_id, :rate)
   end
-
 end

@@ -30,11 +30,14 @@
   <body>
 
     <%= render "layouts/header" %>
-    
+
     <div class = "notifications">
-     <% flash.each do |key, value| %>
-       <%= content_tag(:div, value, class: key) %>
-     <% end %>
+      <% if flash[:notice] %>
+        <p class = "notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class = "alert"><%= flash[:alert] %></p>
+      <% else %>
+      <% end %>
     </div>
 
     <main>
@@ -48,6 +51,20 @@
     </span>
 
     <%= render "layouts/footer" %>
+
+    <script>
+      $(document).on("turbolinks:load", function() {
+      $('div.rate').empty();
+      $('div.rate').raty({
+          size: 14,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+        });
+      });
+    </script>
 
   </body>
 </html>

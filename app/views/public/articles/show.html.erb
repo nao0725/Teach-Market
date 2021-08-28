@@ -3,7 +3,7 @@
   <div class = "row pb-5 ">
     <div class = "col-2">
       <div class = "text-center detail-font">
-        <% if @user == current_user %>
+        <% if @article.user == current_user %>
           <div class = "py-2">
             <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
           </div>
@@ -22,7 +22,7 @@
     <div class = "col-10">
       <div class = "article-text rounded-lg border-dark">
         <div class  = "text-muted article-header">
-          <%= link_to @article.user.name, user_path(@article.user.id), class: "link text-muted"%>さんが
+          <%= link_to @article.user.nickname, user_path(@article.user.id), class: "link text-muted"%>さんが
           <%= @article.user.created_at.strftime("%Y年%m月%d日") %>に投稿
         </div>
         <div class = "article-title font-weight-bold"><%= @article.title %></div>
@@ -35,7 +35,7 @@
             <% end %>
           </div>
           <div class = "d-flex float-right">
-            <%= render "public/articles/rate", article: @article %>
+            <%= render "public/articles/rate", score: @article.avg_score %>
             <div class = "mt-1 ml-2"><%= @article.avg_score %>点</div>
           </div>
         </div>

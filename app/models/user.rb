@@ -31,55 +31,51 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-   #SNS認証時に使用
-   def self.find_for_oauth(auth)
+  # SNS認証時に使用
+  def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-  
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        name:     auth.info.name,
-        nickname: auth.info.nickname,
-        email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
-    end
-  
+
+    user ||= User.create(
+      uid: auth.uid,
+      provider: auth.provider,
+      name: auth.info.name,
+      nickname: auth.info.nickname,
+      email: User.dummy_email(auth),
+      password: Devise.friendly_token[0, 20]
+    )
+
     user
-   end
-  
-    #プロフィール画像
-    attachment :profile_image
-  
-  
-    # 退会したユーザーの再ログインを防止
-    def active_for_authentication?
-      super && (self.is_valid == true)
+  end
+
+  # プロフィール画像
+  attachment :profile_image
+
+  # 退会したユーザーの再ログインを防止
+  def active_for_authentication?
+    super && (is_valid == true)
+  end
+
+  # ゲストログインの設定
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.nickname = "guest"
+      user.name = "guest"
+      user.password = SecureRandom.urlsafe_base64
     end
-  
-    # ゲストログインの設定
-    def self.guest
-      find_or_create_by!(email: 'guest@example.com') do |user|
-        user.nickname = "guest"
-        user.name = "guest"
-        user.password = SecureRandom.urlsafe_base64
-      end
-    end
-  
-    # バリデーション
-    validates :name, presence: true, length: {in: 2..10}, uniqueness: { case_sensitive: false }
-    validates :nickname, presence: true, length: {in: 2..10}, uniqueness: true
-    validates :introduction, length: {maximum: 50}
-  
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
-  
-    private
-  
-    # SNS認証
-    def self.dummy_email(auth)
-      "#{auth.uid}-#{auth.provider}@example.com"
-    end
-  
+  end
+
+  # バリデーション
+  validates :name, presence: true, length: { in: 2..10 }, uniqueness: { case_sensitive: false }
+  validates :nickname, presence: true, length: { in: 2..10 }, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } }
+
+  private
+
+  # SNS認証
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
 end

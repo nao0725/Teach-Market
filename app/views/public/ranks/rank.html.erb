@@ -23,22 +23,22 @@
         <div class="content-area">
           <div class="content show">
             <table class = "text-center  table table-bordered p-2">
-              <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
-                <%= render "public/ranks/index", user: user, i: i %>
+              <% @today_ranks.each.with_index(1) do |user, i| %>
+                <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
           </div>
           <div class="content">
              <table class = "text-center table table-bordered p-2">
-              <% @week_user_post_ranks.each.with_index(1) do |user, i| %>
-                <%= render "public/ranks/index", user: user, i: i %>
+              <% @week_ranks.each.with_index(1) do |user, i| %>
+                <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
           </div>
           <div class="content">
             <table class = "text-center table table-bordered p-2">
-              <% @month_user_post_ranks.each.with_index(1) do |user, i| %>
-                <%= render "public/ranks/index", user: user, i: i %>
+              <% @month_ranks.each.with_index(1) do |user, i| %>
+                <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
           </div>

@@ -1,13 +1,2 @@
-      <div id="rate_<%= article.id %>"></div>
-        <script>
-          $('#rate_<%= article.id %>').empty();
-          $('#rate_<%= article.id %>').raty({
-            size: 14,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= article.avg_score %>,
-          });
-        </script>
+  <div class="rate" data-score="<%= score %>"></div>
+
