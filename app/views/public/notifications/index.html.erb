@@ -4,7 +4,9 @@
     <% @notifications.each do |notification| %>
        <%= render "notifications", notification: notification %>
     <% end %>
+  <div class="pt-3">
     <%= paginate @notifications %>
+  </div>
   <% else %>
     <h5 class = "text-center py-5">通知はありません。</h5>
   <% end %>

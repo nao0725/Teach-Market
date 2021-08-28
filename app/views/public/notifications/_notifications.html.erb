@@ -1,21 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <dvi class="col-8">
+      <div class = "text-center ">
+        <div class="card">
+          <% case notification.action %>
+          <% when "follow" then %>
+            <p class = "notification-txt">
+              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんがあなたをフォローしました。
+            </p>
 
-<div class = "text-center">
-    <% case notification.action %>
-      <% when "follow" then %>
-       <p class = "notification-txt">
-         <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんがあなたをフォローしました。
-       </p>
-       
-      <% when "bookmark" then %>
-        <p class = "notification-txt">
-         <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-         <%= link_to notification.article.title, notification.article %>の記事をブックマークしました。
-        </p>
-       
-      <% when "comment" then %>
-        <p class = "notification-txt">
-          <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-          <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
-        </p>
-    <% end %>
+          <% when "bookmark" then %>
+            <p class = "notification-txt">
+              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to notification.article.title, notification.article %>の記事をブックマークしました。
+            </p>
+
+          <% when "comment" then %>
+            <p class = "notification-txt">
+              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
+            </p>
+          <% end %>
+        </dvi>
+      </div>
+    </div>
+  </div>
 </div>

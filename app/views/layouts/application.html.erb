@@ -32,9 +32,12 @@
     <%= render "layouts/header" %>
 
     <div class = "notifications">
-     <% flash.each do |key, value| %>
-       <%= content_tag(:div, value, class: key) %>
-     <% end %>
+      <% if flash[:notice] %>
+        <p class = "notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class = "alert"><%= flash[:alert] %></p>
+      <% else %>
+      <% end %>
     </div>
 
     <main>
