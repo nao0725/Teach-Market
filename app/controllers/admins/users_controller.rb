@@ -1,7 +1,7 @@
 class Admins::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :edit, :admins]
-   before_action :set_user, except: [:index ,:admins]
-   before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, except: [:index, :admins]
+  before_action :correct_user, only: [:edit, :update]
 
   def admins
     redirect_to new_admin_registration_path
@@ -40,5 +40,4 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to user_path(current_user) unless @user == current_user
   end
-
 end

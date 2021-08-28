@@ -36,9 +36,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       if (data = request.env['omniauth.auth'])
         session['devise.omniauth_data'] = {
-            email: data['info']['email'],
-            provider: data['provider'],
-            uid: data['uid']
+          email: data['info']['email'],
+          provider: data['provider'],
+          uid: data['uid'],
         }
       end
       redirect_to new_user_registration_url

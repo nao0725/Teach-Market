@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-  before_action :set_article, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -20,9 +20,9 @@ class Public::ArticlesController < ApplicationController
     @article.user = current_user
     tag_list = params[:article][:tag_name].split("/")
     if @article.save
-       @article.tags_save(tag_list)
-       flash.now[:notice] =  "投稿されました"
-       redirect_to home_path
+      @article.tags_save(tag_list)
+      flash.now[:notice] = "投稿されました"
+      redirect_to home_path
     else
       @user = current_user
       flash.now[:alert] = "投稿に失敗しました"
@@ -41,7 +41,7 @@ class Public::ArticlesController < ApplicationController
       redirect_to article_path
     else
       @user = current_user
-       flash.now[:notice] = "投稿の更新に失敗しました"
+      flash.now[:notice] = "投稿の更新に失敗しました"
       render :edit
     end
   end
@@ -60,5 +60,4 @@ class Public::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
   end
-
 end
