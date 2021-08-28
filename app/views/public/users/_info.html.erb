@@ -21,7 +21,7 @@
     <div>
       <% if user == current_user %>
         <%= link_to "マイページへ", user_path(user) , class:"btn btn-outline-secondary btn-block"%>
-        <%= link_to "アウトプットする", _path(user) , class:"btn btn-outline-secondary btn-block"%>
+        <%= link_to "アウトプットする", new_article_path , class:"btn btn-outline-secondary btn-block"%>
       <% end %>
     </div>
   </div>
