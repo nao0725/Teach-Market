@@ -40,7 +40,7 @@ class Notification < ApplicationRecord
   def create_comment_notification(current_user, comment_id, user_id, article_id)
    temp_ids = Comment.select(:user_id).where(article_id: article_id).where.not(user_id: current_user.id).distinct
    temp_ids.each do |temp_id|
-    save_comment_notification(current_user, comment_id, temp_id["user_id"])
+    save_comment_notification(current_user, comment_id, temp_id["user_id"], article_id)
    end
    save_comment_notification(current_user, comment_id, user_id, article_id) if temp_ids.blank?
   end

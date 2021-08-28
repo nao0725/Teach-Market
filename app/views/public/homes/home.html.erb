@@ -77,10 +77,10 @@
       <div class = "pb-3"><%= render "public/users/info", user: @user %></div>
         <div class = "card text-center">
           <div class = "rank-title">本日のアウトプットランキング</div>
-          <% if @today_user_post_ranks.exists? %>
+          <% if @today_ranks.present? %>
             <table class = "text-center table table-bordered p-2">
-              <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
-                 <%= render "public/ranks/index", user: user, i: i %>
+              <% @today_ranks.each.with_index(1) do |user, i| %>
+                 <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
             <div class = "rank-link py-3"><%= link_to "週間・月間のランキングはこちら", rank_path, class: "link"%></div>

@@ -5,7 +5,7 @@
   <div class = "shadow text-center">
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-    <%= render "layouts/error_messages", model: f.object %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field py-2">
       <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ユーザー名" %>

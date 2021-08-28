@@ -1,17 +1,27 @@
 class Public::RanksController < ApplicationController
 
-  # def rank
-  #   @user = User.find(params[:id])
-  #   @articles = @user.articles
-  #   @today_user_post_ranks = @articles.created_today
-  #   @week_user_post_ranks = @articles.created_this_week
-  #   @month_user_post_ranks = @articles.created_this_month
-  # end
-
-
   def rank
-    @today_user_post_ranks = User.where(id: Article.group(:user_id).where(created_at: Time.current.all_day).order('count(user_id) asc').limit(10).pluck(:user_id))
-    @month_user_post_ranks = User.where(id: Article.group(:user_id).where(created_at: Time.current.all_month).order('count(user_id) asc').limit(10).pluck(:user_id))
-    @week_user_post_ranks  = User.where(id: Article.group(:user_id).where(created_at: Time.current.all_week).order('count(user_id) asc').limit(10).pluck(:user_id))
+    @today_post_ranks_user = Article.group(:user_id).where(created_at: Time.current.all_day).order('count(user_id) desc').limit(10).pluck(:user_id) #今日投稿した記事
+    @today_ranks = []
+    @today_post_ranks_user.each{ |user_id|
+      @today_ranks.push({"user" => User.find(user_id), 
+                        "count" => Article.where(created_at: Time.current.all_day).where(user_id: user_id).count})
+    }
+    
+    @week_post_ranks_user = Article.group(:user_id).where(created_at: Time.current.all_week).order('count(user_id) desc').limit(10).pluck(:user_id) #今日投稿した記事
+    @week_ranks = []
+    @week_post_ranks_user.each{ |user_id|
+      @week_ranks.push({"user" => User.find(user_id), 
+                        "count" => Article.where(created_at: Time.current.all_week).where(user_id: user_id).count})
+    }
+    
+    @month_post_ranks_user = Article.group(:user_id).where(created_at: Time.current.all_month).order('count(user_id) desc').limit(10).pluck(:user_id) #今日投稿した記事
+    @month_ranks = []
+    @month_post_ranks_user.each{ |user_id|
+      @month_ranks.push({"user" => User.find(user_id), 
+                        "count" => Article.where(created_at: Time.current.all_month).where(user_id: user_id).count})
+    }
+
+    
   end
 end

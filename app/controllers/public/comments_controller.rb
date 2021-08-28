@@ -2,7 +2,7 @@ class Public::CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comments = @article.comments
+    @comments = @article.comments.order('created_at desc')
     @comment = current_user.comments.new(comment_params)
     @comment_new = Comment.new
     @comment.article_id = @article.id

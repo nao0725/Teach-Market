@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get "/help" => "homes#help"
     get "/home" => "homes#home"
     get "/search" => "homes#search"
-    get "/rank" => "ranks#rank"
+    get "/rank/" => "ranks#rank"
 
     get "unsubscribe/:name" => "homes#unsubscribe", as: "confirm_unsubscribe"
     patch ":id/withdraw/:name" => "homes#withdraw", as: "withdraw_user"
