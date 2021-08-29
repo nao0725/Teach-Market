@@ -40,18 +40,26 @@
           <div class = "user-nickname"><%= @user.nickname %></div>
           <div class = "info-border"></div>
           <div class = "d-flex justify-content-around ml-4 pb-3">
+            
             <div class= "user-box">
               <div><%= @user.articles.count %></div>
               <div class = "text-muted">投稿数</div>
             </div>
-            <div class = "user-box">
-              <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
-              <div class = "text-muted">フォロー</div>
+            
+            <div class="user-box">
+              <div class = "follow_count">
+                <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
+              </div>
+                <div class = "text-muted">フォロー</div>
             </div>
-            <div class = "user-box">
-              <div><%= link_to @user.followers.count, user_followers_path(@user.id), class: "link"  %></div>
-              <div class = "text-muted">フォロワー</div>
+
+            <div class="user-box">
+              <div class = "follower_count ">
+                <div><%= link_to @user.followers.count, user_followers_path(@user.id), class: "link"%></div>
+              </div>
+                <div class = "text-muted">フォロワー</div>
             </div>
+            
           </div>
           <div class = "my-3 user-text"><%= @user.introduction %></div>
           <div>

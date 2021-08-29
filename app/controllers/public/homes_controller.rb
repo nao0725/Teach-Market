@@ -8,7 +8,7 @@ class Public::HomesController < ApplicationController
   def home
     @user = current_user
     @articles = Article.all.page(params[:page]).per(10).
-      order(created_at: "desc")
+                order(created_at: "desc")
     @bookmarks = Article.find(Bookmark.group(:article_id).
                         order(Arel.sql("count(article_id) desc")).
                         pluck(:article_id))
@@ -16,9 +16,8 @@ class Public::HomesController < ApplicationController
                       order(Arel.sql("avg(rate) desc")).
                       pluck(:article_id))
     @follow_articles = Article.where(user_id: [current_user.following_ids]).
-      order(created_at: "desc").
-      page(params[:page]).per(10)
-
+                              order(created_at: "desc").
+                              page(params[:page]).per(10)
     @today_post_ranks_user = Article.group(:user_id).where(created_at: Time.current.all_day).order('count(user_id) desc').limit(10).pluck(:user_id)
     @today_ranks = []
     @today_post_ranks_user.each do |user_id|
