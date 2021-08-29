@@ -2,10 +2,8 @@
 <div class = "title text-center">Follow</div>
   <% if @users.exists? %>
 <% @users.each do |user| %>
-<div class="follow-box">
-  <div class="follow-index">
 <div class="row row-eq-height">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-12 mb-3 text-center">
       <div class="card grow">
         <div class="card-body">
           <h4 class="card-title">
@@ -22,8 +20,6 @@
         </div>
       </div>
     </div>
-      </div>
-</div>
     <% end %>
      <% else %>
       <p class = "text-center">ユーザーはいません</p>
