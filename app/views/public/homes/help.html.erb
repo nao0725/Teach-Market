@@ -63,3 +63,108 @@
     </div>
   </div>
 </div>
+
+<div class="container pt-5">
+  <h3 class="text-center pb-4">
+    <i class="fas fa-tools text-muted mr-3"></i>
+    その他にもたくさんの機能があります
+  </h3>
+  <div class="row mb-3">
+    <div class="col-md-4 mb-3">
+      <div class="card grow">
+        <div class="card-body">
+          <h4>
+            <i class="fab fa-twitter mr-2"></i>
+            SNSログイン
+          </h4>
+          <p class="lead text-muted">
+            Twitterアカウントで<br>
+            簡単にログインが可能です。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card grow">
+        <div class="card-body">
+          <h4>
+            <i class="far fa-star mr-2"></i>
+            評価レビュー
+          </h4>
+          <p class="lead text-muted">
+            記事に対して5段階で<br>
+            評価を付けることができます。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card grow">
+        <div class="card-body">
+          <h4>
+            <i class="fas fa-crown mr-2"></i>
+            ランキング
+          </h4>
+          <p class="lead text-muted">
+            投稿数に応じて月・週・日別に<br>
+            順位が分かります。
+          </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-eq-height">
+      <div class="col-md-4 mb-3">
+        <div class="card grow">
+          <div class="card-body">
+            <h4>
+              <i class="far fa-comment mr-2"></i>
+              コメント
+            </h4>
+            <p class="lead text-muted">
+              記事に対してコメントを<br>
+              残すことができます。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card grow">
+          <div class="card-body">
+            <h4>
+              <i class="fas fa-retweet mr-2"></i>
+              SNSシェア
+            </h4>
+            <p class="lead text-muted">
+              TwitterやFacebooKに投稿内容を
+              シェアすることができます。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card grow">
+          <div class="card-body">
+            <h4>
+              <i class="far fa-handshake mr-2"></i>
+              フォロー
+            </h4>
+            <p class="lead text-muted">
+              ユーザーをフォローすることで<br>
+              フォローする。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "text-center pb-5">
+    <% if user_signed_in? %>
+      <%= link_to "HOMEへ戻る", home_path, class: "navbar-brand link" %>
+    <% else %>
+      <%= link_to "TOPへ戻る", root_path, class: "navbar-brand link" %>
+    <% end %>
+  </div>
+
+
