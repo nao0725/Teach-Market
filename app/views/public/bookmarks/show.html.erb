@@ -40,6 +40,9 @@
         </div>
       </div>
     <% end %>
+      <div class = "pagination-sm py-3">
+       <%= paginate @bookmarks %>
+      </div>
   <% else %>
     <h5 class = "text-center py-5">Bookmarkした投稿はありません</h5>
   <% end %>
