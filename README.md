@@ -13,7 +13,7 @@
 「どのようなやり方をすれば、成果が上がるかわからない」  
 「新たに挑戦する職種や業界に不安がある」  
 
-そのような悩みを抱えている方に向けて「Teach Market」を作成しました。
+そのような悩みを抱えている方に向けて「Teach　Market」を作成しました。
 
 このアプリは、以下の使い道があります。
 
@@ -96,8 +96,7 @@
 
 
 ## 🔨設計書
-* [ワイヤーフレーム](https://app.diagrams.net/#Hnao0725%2FTeach-Market%2Fmain%2F%E3%80%90PF%E7%94%A8%E3%80%91%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%EF%BC%86ER%E5%9B%B3.drawio)  
-* [ER図](https://app.diagrams.net/?libs=general;er#Hnao0725%2FTeach-Market%2Fmain%2FER%E5%9B%B3.drawio)  
+* [ER図](https://drive.google.com/file/d/1B185DuGwsnpNo9yjG0awdqL2sQn2BM55/view?usp=sharing)  
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1A5KM2_L5cCc9Z5HoCv-Sb53mCVr2KMUcpVeb3-B8L-8/edit#gid=1680649053)  
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1kVK594ee1MZnoaQOUkd6coFeEyLxNwgPHwDcOj0Ogz0/edit#gid=2133469642)  
 
