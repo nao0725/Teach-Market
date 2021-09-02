@@ -3,17 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-// SNSシェアボタンのCSS
-$size: 24px;
-.social-share-button {
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-  }
-}
-
 // 投稿フォーム
 .form{
   padding: 0 10px;
@@ -25,7 +14,7 @@ $size: 24px;
 }
 
 .article-header{
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .article-title{

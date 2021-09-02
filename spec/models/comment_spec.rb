@@ -1,21 +1,30 @@
 require 'rails_helper'
 
-# RSpec.describe Comment, type: :model do
-#   subject { comment.valid? }
+RSpec.describe Comment, type: :model do
+  before do
+    @comment = FactoryBot.build(:comment)
+  end
 
-#   let(:user){create(:user)}
-#   let!(:comment){ build(:article, user_id: user.id)}
-
-#   describe "モデルのテスト" do
-#     it "有効なcommentの場合は保存されるか" do
-#       expect(build(:comment)).to be_valid
-#     end
-#   end
-
-#   describe "バリデーションのテスト" do
-#     it "空白の場合エラーメッセージが返ってくるか" do
-#       comment.comment_content = ""
-#       is_expected.to eq false
-#     end
-#   end
-# end
+  describe "バリデーションのテスト" do
+    context "投稿できない場合" do
+      
+      it "コメントと評価が空では投稿できない" do
+        @comment.comment_content = ""
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Rateは数値で入力してください")
+      end
+      
+      it "ユーザーが紐付いていなければコメントできない" do
+        @comment.user = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Userを入力してください")
+      end
+      
+      it "記事が紐付いていなければコメントできない" do
+        @comment.article = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Articleを入力してください")
+      end
+    end
+  end
+end

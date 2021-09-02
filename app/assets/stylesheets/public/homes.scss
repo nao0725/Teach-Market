@@ -58,7 +58,6 @@
 }
 
 
-
 // トップへ戻るボタン
 #back {
   position: fixed;
@@ -75,7 +74,7 @@
 .tab-position{
   position: sticky;
   top: calc(56px + 24px + 16px);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .tab-area {
@@ -92,7 +91,6 @@
   }
 }
 .content-area {
-  font-size: 30px;
   .content {
     display: none;
   }
