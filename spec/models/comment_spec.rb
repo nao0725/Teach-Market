@@ -8,7 +8,7 @@ RSpec.describe Comment, type: :model do
   describe "バリデーションのテスト" do
     context "投稿できない場合" do
       
-      it "コメントが空では投稿できない" do
+      it "コメントと評価が空では投稿できない" do
         @comment.comment_content = ""
         @comment.valid?
         expect(@comment.errors.full_messages).to include("Rateは数値で入力してください")
@@ -18,6 +18,12 @@ RSpec.describe Comment, type: :model do
         @comment.user = nil
         @comment.valid?
         expect(@comment.errors.full_messages).to include("Userを入力してください")
+      end
+      
+      it "記事が紐付いていなければコメントできない" do
+        @comment.article = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Articleを入力してください")
       end
     end
   end

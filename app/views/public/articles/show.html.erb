@@ -26,7 +26,7 @@
           <%= @article.user.created_at.strftime("%Y年%m月%d日") %>に投稿
         </div>
         <div class = "article-title font-weight-bold"><%= @article.title %></div>
-        <div class = "py-1"><%= @article.sub_title %></div>
+        <div class = "py-1 article-header"><%= @article.sub_title %></div>
         <div class = "article-header text-muted">
           <div class = "mt-2">
             <i class = "fas fa-tags"></i>
