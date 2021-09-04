@@ -4,7 +4,7 @@ RSpec.describe Comment, type: :model do
   before do
     @comment = FactoryBot.build(:comment)
   end
-
+  
   describe "バリデーションのテスト" do
     context "投稿できない場合" do
       
