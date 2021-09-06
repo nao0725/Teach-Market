@@ -30,6 +30,7 @@ class Public::HomesController < ApplicationController
 
   def search
     @user = current_user
+    @search = Article.search(params[:keyword])
     @today_user_post_ranks = User.where(id: Article.group(:user_id).
                                  where(created_at: Time.current.all_day).
                                  order('count(user_id) desc').limit(3).
