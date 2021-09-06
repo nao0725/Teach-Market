@@ -1,5 +1,11 @@
 <% if article.bookmarked_by?(current_user) %>
-  <%= link_to "", article_bookmarks_path(article), method: :delete, remote: true, class: "fas fa-bookmark" %></td>
+    <div class = "d-flex">
+      <div><%= link_to "", article_bookmarks_path(article), method: :delete, remote: true, class: "fas fa-bookmark" %></div>
+      <div class = "ml-2"><%= article.bookmarks.count %>件</div>
+    </div>
 <% else %>
-  <%= link_to "", article_bookmarks_path(article), method: :post, remote: true, class: "far fa-bookmark" %></td>
+   <div class = "d-flex">
+      <div><%= link_to "", article_bookmarks_path(article), method: :post, remote: true, class: "far fa-bookmark" %></div>
+      <div class = "ml-2"><%= article.bookmarks.count %>件</div>
+   </div>
 <% end %>
