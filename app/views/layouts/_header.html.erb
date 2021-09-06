@@ -7,60 +7,65 @@
       <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-            <div id="search-wrap">
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "キーワードで検索", class: "search-text"%>
-                <%= button_tag type: "submit", class: "btn btn-default" do %>
-                  <i class="fas fa-search"></i>
-                <% end %>
-              <% end %>
-            </div>
-
-          <li class="nav-item">
-            <%= link_to "", user_path(current_user), class: "nav-link far fa-user " %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "", new_article_path, class: "nav-link fas fa-pencil-alt" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "", help_path, class: "nav-link far fa-question-circle " %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "", notifications_path, class: "nav-link far fa-bell" %> <!--通知が来たらオレンジ色にアイコンが表示されるように設定する-->
-          </li>
-
-          <li class="nav-item active">
-            <%= link_to "", destroy_user_session_path, method: :delete, class: "nav-link fas fa-door-open" %>
-          </li>
-
-        <% elsif admin_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-door-open" %>
-          </li>
-
-        <% else %>
-
-          <li class="nav-item">
-            <%= link_to "", new_user_registration_path, class: "nav-link fas fa-user-plus" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "", new_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "", help_path, class: "nav-link far fa-question-circle" %>
-          </li>
-
+    <% if user_signed_in? %>
+      <div id="search-wrap" class="pt-1">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword,placeholder: "キーワードで検索", class: "search-text"%>
+          <%= button_tag type: "submit", class: "btn btn-default" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
         <% end %>
-      </ul>
-    </div>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="globalMenuSp">
+        <ul>
+          <li><%= link_to " マイページ", user_path(current_user), class: "far fa-user mr-2 " %></li>
+          <li><%= link_to " アウトプット", new_article_path, class: "fas fa-pencil-alt" %></li>
+          <li><%= link_to " アプリの使い方", help_path, class: "far fa-question-circle " %></li>
+          <li><%= link_to " 通知一覧", notifications_path, class: "far fa-bell" %></li>
+          <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-door-open" %></li>
+        </ul>
+      </nav>
+
+    <% elsif admin_signed_in? %>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="globalMenuSp">
+        <ul>
+          <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "fas fa-door-open" %></li>
+        </ul>
+      </nav>
+
+    <% else %>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="globalMenuSp">
+        <ul>
+          <li><%= link_to " 新規登録", new_user_registration_path, class: "fas fa-user-plus" %></li>
+          <li><%= link_to " ログイン", new_user_session_path, class: "fas fa-sign-in-alt" %></li>
+          <li><%= link_to " アプリの使い方", help_path, class: "nav-link far fa-question-circle" %></li>
+        </ul>
+      </nav>
+
+   <% end %>
+
   </nav>

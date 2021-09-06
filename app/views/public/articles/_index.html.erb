@@ -27,9 +27,6 @@
         <div id="bookmark_button_<%= article.id %>">
           <%= render "public/bookmarks/bookmark", article: article %>
         </div>
-        <div class = "ml-2">
-          <%= article.bookmarks.count%>件
-        </div>
       </div>
       <div class = "d-flex">
         <%= render "public/articles/rate", score: article.avg_score %>

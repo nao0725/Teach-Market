@@ -23,6 +23,7 @@
 // Markdownで使用
 // require("../codeblock")
 
+// TOPへ戻る
 $(function() {
   $("#back a").on("click",function(event){
     $("body, html").animate({
@@ -32,4 +33,14 @@ $(function() {
   });
 });
 
-
+// ハンバーガーメニュー
+$(document).on("turbolinks:load", function() {
+    $('.hamburger').click(function() {
+        $(this).toggleClass('active');
+        if ($(this).hasClass('active')) {
+            $('.globalMenuSp').addClass('active');
+        } else {
+            $('.globalMenuSp').removeClass('active');
+        }
+    });
+});
