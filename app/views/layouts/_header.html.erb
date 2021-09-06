@@ -6,9 +6,9 @@
     <% else %>
       <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
     <% end %>
-    
+
     <% if user_signed_in? %>
-      <div id="search-wrap">
+      <div id="search-wrap" class="pt-1">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword,placeholder: "キーワードで検索", class: "search-text"%>
           <%= button_tag type: "submit", class: "btn btn-default" do %>
@@ -19,13 +19,13 @@
     <% end %>
 
     <% if user_signed_in? %>
-    
+
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
+
       <nav class="globalMenuSp">
         <ul>
           <li><%= link_to " マイページ", user_path(current_user), class: "far fa-user mr-2 " %></li>
@@ -35,15 +35,15 @@
           <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-door-open" %></li>
         </ul>
       </nav>
-    
+
     <% elsif admin_signed_in? %>
-    
+
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
+
       <nav class="globalMenuSp">
         <ul>
           <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "fas fa-door-open" %></li>
@@ -51,13 +51,13 @@
       </nav>
 
     <% else %>
-   
+
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
+
       <nav class="globalMenuSp">
         <ul>
           <li><%= link_to " 新規登録", new_user_registration_path, class: "fas fa-user-plus" %></li>
@@ -65,7 +65,7 @@
           <li><%= link_to " アプリの使い方", help_path, class: "nav-link far fa-question-circle" %></li>
         </ul>
       </nav>
-   
+
    <% end %>
 
   </nav>
