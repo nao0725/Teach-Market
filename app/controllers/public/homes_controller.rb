@@ -31,19 +31,24 @@ class Public::HomesController < ApplicationController
   def search
     @user = current_user
     @search = (params[:keyword])
-    @today_user_post_ranks = User.where(id: Article.group(:user_id).
-                                 where(created_at: Time.current.all_day).
-                                 order('count(user_id) desc').limit(3).
-                                 pluck(:user_id))
     @article = Article.new
     @articles = Article.search(params[:keyword]).
       page(params[:page]).per(10)
+    @today_post_ranks_user = Article.group(:user_id).where(created_at: Time.current.all_day).order('count(user_id) desc').limit(10).pluck(:user_id)
+    @today_ranks = []
+    @today_post_ranks_user.each do |user_id|
+      @today_ranks.push({
+        "user" => User.find(user_id),
+        "count" => Article.where(created_at: Time.current.all_day).where(user_id: user_id).count,
+      })
+    end
     @bookmarks = Article.order(:bookmarks_count).search(params[:keyword])
     @reviews = Article.joins(:comments).
       search(params[:keyword]).
       order(Arel.sql("AVG(comments.rate) DESC")).
       group(Arel.sql("comments.article_id"))
     @follow_articles = Article.where(user_id: [current_user.following_ids]).
+      search(params[:keyword]).
       order(created_at: "desc").
       page(params[:page]).per(10)
   end
