@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Article, type: :model do
   subject { article.valid? }
 
   let(:user) { create(:user) }
