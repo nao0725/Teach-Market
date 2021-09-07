@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   end
   
   #エラーページ出力の設定
-  # unless Rails.env.production?
   unless Rails.env.development?
     rescue_from Exception,                      with: :_render_500
     rescue_from ActiveRecord::RecordNotFound,   with: :_render_404

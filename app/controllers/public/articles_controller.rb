@@ -19,10 +19,18 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     tag_list = params[:article][:tag_name].split("/")
-    if @article.save
+    if tag_list == []
+      tag = Tag.new()
+      tag.tag_name = ""
+      tag.save
+      
+      @user = current_user
+      flash.now[:alert] = "投稿に失敗しました"
+      render :new
+    elsif @article.save
       @article.tags_save(tag_list)
       flash.now[:notice] = "投稿されました"
-      redirect_to home_path
+      redirect_to article_path(@article)
     else
       @user = current_user
       flash.now[:alert] = "投稿に失敗しました"
