@@ -1,7 +1,6 @@
 <div class="container">
   <div class = "title text-center">"<%= @search %>"の検索結果はこちら</div>
     <div class = "row pb-5">
-      <% if @articles.exists? %>
       <div class = "col-2">
         <div class = "tab-position">
           <div class = "card">
@@ -30,42 +29,58 @@
         <div class="content-area">
           <!--新規投稿順-->
           <div class="content show">
-            <% @articles.each do |article| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @articles.exists? %>
+              <% @articles.each do |article| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h5 class = "text-center py-5">該当する記事は見つかりませんでした。</p>
             <% end %>
-            <div class = "pagination-sm">
-              <%= paginate @articles %>
-            </div>
           </div>
-  
+
           <!--タイムライン順-->
           <div class="content">
-            <% @follow_articles.each do |article| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @follow_articles.exists? %>
+              <% @follow_articles.each do |article| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h5 class = "text-center py-5">該当する記事は見つかりませんでした。</p>
             <% end %>
-            <div class = "pagination-sm">
-              <%= paginate @articles %>
-            </div>
           </div>
-  
+
           <!--ブックマーク数順-->
           <div class="content">
-            <% @bookmarks.each.with_index(1) do |article, i| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @bookmarks.exists? %>
+              <% @bookmarks.each.with_index(1) do |article, i| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h5 class = "text-center py-5">該当する記事は見つかりませんでした。</p>
             <% end %>
-            <div class = "pagination-sm">
-              <%= paginate @articles %>
-            </div>
           </div>
-  
+
           <!--評価の高い順-->
           <div class="content">
+          <% if @reviews.exists? %>
             <% @reviews.each.with_index(1) do |article, i| %>
               <%= render "public/articles/index", article: article %>
             <% end %>
             <div class = "pagination-sm">
               <%= paginate @articles %>
             </div>
+          <% else %>
+            <h5 class = "text-center py-5">該当する記事は見つかりませんでした。</p>
+          <% end %>
           </div>
         </div>
       </div>
@@ -74,7 +89,7 @@
       <div class = "pb-3"><%= render "public/users/info", user: @user %></div>
         <div class = "card text-center">
           <div class = "rank-title">本日のアウトプットランキング</div>
-          <% if @today_user_post_ranks.exists? %>
+          <% if @today_user_post_ranks.present? %>
             <table class = "text-center table table-bordered p-2">
               <% @today_user_post_ranks.each.with_index(1) do |user, i| %>
                  <%= render "public/ranks/index", user: user, i: i %>
@@ -86,10 +101,6 @@
           <% end %>
         </div>
       </div>
-      
-      <% else %>
-        <h5 class = "text-center py-5">該当する記事は見つかりませんでした。</p>
-      <% end %>
     </div>
   </div>
 </div>
