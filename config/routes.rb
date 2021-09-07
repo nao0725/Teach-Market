@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users, controllers: {
     sessions: "users/sessions",
     passwords: "users/passwords",
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks",
   }
 
+  #ゲストログイン用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
     passwords: "admins/passwords",
     registrations: "admins/registrations",
   }
+  
+  #ルーティングエラー対策
+  get "admins" => "admins/users#admins"
 
   scope module: :public do
     root to: "homes#top"
@@ -44,6 +49,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users, except: [:new, :create]
   end
-
-  get "admins" => "admins/users#admins"
+  
+  #404/505エラーページ
+  get "*not_found" => "application#routing_error"
+  post "*not_found" => "application#routing_error"
 end
