@@ -16,12 +16,14 @@ RSpec.describe Article, type: :model do
     context "titleカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         article.title = ""
-        is_expected.to eq false
+        article.valid?
+        expect(article.errors[:title]).to include("を入力してください")
       end
 
       it "長さが1文字以下の場合エラーメッセージが返ってくるか" do
         article.title = Faker::Lorem.characters(number: 1)
-        is_expected.to eq false
+        article.valid?
+        expect(article.errors[:title]).to include("は2文字以上で入力してください")
       end
 
       it "長さが2文字以上ある場合成功するか" do
@@ -31,7 +33,8 @@ RSpec.describe Article, type: :model do
 
       it "長さが21文字以上の場合エラーメッセージが返ってくるか" do
         article.title = Faker::Lorem.characters(number: 21)
-        is_expected.to eq false
+        article.valid?
+        expect(article.errors[:title]).to include("は20文字以内で入力してください")
       end
 
       it "長さが20文字以下である場合成功するか" do
@@ -43,7 +46,8 @@ RSpec.describe Article, type: :model do
     context "bodyのカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         article.body = ""
-        is_expected.to eq false
+        article.valid?
+        expect(article.errors[:body]).to include("を入力してください")
       end
     end
   end
@@ -52,6 +56,12 @@ RSpec.describe Article, type: :model do
     context "Userモデルとの関係" do
       it "N:1となっている" do
         expect(Article.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+    
+    context "Bookmarkモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Article.reflect_on_association(:bookmarks).macro).to eq :has_many
       end
     end
   end

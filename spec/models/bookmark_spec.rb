@@ -20,4 +20,18 @@ RSpec.describe Bookmark, type: :model do
       other_bookmark.valid?
     end
   end
+  
+  describe "アソシエーションのテスト" do
+    context "Userモデルとの関係" do
+      it "N:1となっている" do
+        expect(Bookmark.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+    
+    context "Articleモデルとの関係" do
+      it "N:1となっている" do
+        expect(Bookmark.reflect_on_association(:article).macro).to eq :belongs_to
+      end
+    end
+  end
 end
