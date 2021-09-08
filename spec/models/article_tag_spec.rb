@@ -8,4 +8,18 @@ RSpec.describe ArticleTag, type: :model do
       expect(build(:article_tag)).to be_valid
     end
   end
+  
+   describe "アソシエーションのテスト" do
+    context "Tagモデルとの関係" do
+      it "N:1となっている" do
+        expect(ArticleTag.reflect_on_association(:tag).macro).to eq :belongs_to
+      end
+    end
+    
+    context "Articleモデルとの関係" do
+      it "N:1となっている" do
+        expect(ArticleTag.reflect_on_association(:article).macro).to eq :belongs_to
+      end
+    end
+  end
 end

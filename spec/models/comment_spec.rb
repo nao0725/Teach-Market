@@ -27,4 +27,24 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
+  
+  describe "アソシエーションのテスト" do
+    context "Articleモデルとの関係" do
+      it "N:1となっている" do
+        expect(Comment.reflect_on_association(:article).macro).to eq :belongs_to
+      end
+    end
+    
+    context "Userモデルとの関係" do
+      it "N:1となっている" do
+        expect(Comment.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+    
+    context "Notificationモデルとの関係" do
+      it "1:となっている" do
+        expect(Comment.reflect_on_association(:notifications).macro).to eq :has_many
+      end
+    end
+  end
 end

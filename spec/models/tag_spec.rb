@@ -18,4 +18,18 @@ RSpec.describe Tag , type: :model do
       end
     end
   end
+  
+  describe "アソシエーションのテスト" do
+    context "ArticleTTagモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Tag.reflect_on_association(:article_tags).macro).to eq :has_many
+      end
+    end
+    
+    context "Articleモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Tag.reflect_on_association(:articles).macro).to eq :has_many
+      end
+    end
+  end
 end
