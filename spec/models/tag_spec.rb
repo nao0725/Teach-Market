@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Tag , type: :model do
   let(:tag) { FactoryBot.create(:tag) }
+  
+  describe "モデルのテスト" do
+    it "有効なTagの場合は保存されるか" do
+      expect(build(:tag)).to be_valid
+    end
+  end
 
   describe "バリデーションのテスト" do
     context "tag_nameカラムのテスト" do

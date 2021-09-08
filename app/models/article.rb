@@ -18,8 +18,6 @@ class Article < ApplicationRecord
       article_tags_records.destroy_all
     end
     
-
-
     tag_list.each do |tag|
       inspected_tag = Tag.where(tag_name: tag).first_or_create
       tags << inspected_tag
