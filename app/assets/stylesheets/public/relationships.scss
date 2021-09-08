@@ -2,3 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.follow_btn{
+  border: 1px solid #555;
+	border-radius:25px;
+  min-width:210px;
+  padding: 9px;
+  text-align: center;
+	display: inline-block;
+  text-decoration: none;
+  color: #333;
+  outline: none;
+}
+
