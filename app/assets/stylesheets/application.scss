@@ -277,3 +277,56 @@ nav.globalMenuSp.active {
     from{box-shadow: inset -3px 0px 0px #888;}
     to{box-shadow: inset -3px 0px 0px transparent;}
 }
+
+
+/*ボタンの表示するテキストが切り替わる*/
+.btntextchange{
+    /*テキストの基点とするためrelativeを指定*/
+	position: relative;
+    /*ボタンの形状*/
+	border: 1px solid #555;
+	border-radius:25px;
+    min-width:210px;
+	padding: 20px;
+    text-align: center;
+	display: inline-block;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+    /*アニメーションの指定*/
+    transition: all .2s;
+}
+
+/*hoverした際の変化*/
+.btntextchange:hover{
+  background:#333;
+  color:#fff;
+}
+
+.btntextchange span{
+    /*絶対配置でテキストの位置を決める*/
+	position: absolute;
+	left: 50%;
+	top:50%;
+    transform:translate(-50%,-50%);
+    /*アニメーションの指定*/
+    transition: all .5s;
+  /*ブロック要素にしてテキスト折り返しなし*/
+	display: block;
+	white-space: nowrap;
+}
+
+/*差し替わるテキストの設定*/
+.btntextchange span:nth-child(2){
+	opacity:0;/*透過0に*/
+}
+
+/*hoverするとテキストが入れ替わる設定*/
+.btntextchange:hover span:nth-child(1){
+	opacity:0;/*透過0に*/
+}
+
+.btntextchange:hover span:nth-child(2){
+	opacity:1;/*不透明に*/
+}
+

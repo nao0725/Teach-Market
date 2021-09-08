@@ -20,8 +20,12 @@
     <div class = "my-3"><%= user.introduction %></div>
     <div>
       <% if user == current_user %>
-        <%= link_to "マイページへ", user_path(user) , class:"btn btn-outline-secondary btn-block"%>
-        <%= link_to "アウトプットする", new_article_path , class:"btn btn-outline-secondary btn-block"%>
+        <%= link_to user_path(user) do %>
+          <div class="btntextchange"><span><i class="fas fa-house-user"></i></span><span>マイページ</span></div>
+        <% end %>
+        <%= link_to new_article_path do %>
+          <div class="btntextchange"><span><i class="fas fa-pencil-alt"></i></span><span>アウトプットする</span></div>
+        <% end %>
       <% end %>
     </div>
   </div>

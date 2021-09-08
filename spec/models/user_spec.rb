@@ -16,12 +16,14 @@ RSpec.describe User, type: :model do
     context "nameカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         user.name = ""
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:name]).to include("を入力してください")
       end
 
       it "長さが1文字以下の場合エラーメッセージが返ってくるか" do
         user.name = Faker::Lorem.characters(number: 1)
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:name]).to include("は2文字以上で入力してください")
       end
 
       it "長さが2文字以上ある場合成功するか" do
@@ -31,7 +33,8 @@ RSpec.describe User, type: :model do
 
       it "長さが11文字以上の場合エラーメッセージが返ってくるか" do
         user.name = Faker::Lorem.characters(number: 11)
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:name]).to include("は10文字以内で入力してください")
       end
 
       it "長さが10文字以下である場合成功するか" do
@@ -48,12 +51,14 @@ RSpec.describe User, type: :model do
     context "nicknameのカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         user.nickname = ""
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:nickname]).to include("を入力してください")
       end
 
       it "長さが1文字以下の場合エラーメッセージが返ってくるか" do
         user.nickname = Faker::Lorem.characters(number: 1)
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:nickname]).to include("は2文字以上で入力してください")
       end
 
       it "長さが2文字以上ある場合成功するか" do
@@ -63,7 +68,8 @@ RSpec.describe User, type: :model do
 
       it "長さが11文字以上の場合エラーメッセージが返ってくるか" do
         user.nickname = Faker::Lorem.characters(number: 11)
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:nickname]).to include("は10文字以内で入力してください")
       end
 
       it "長さが10文字以下である場合成功するか" do
@@ -85,14 +91,16 @@ RSpec.describe User, type: :model do
 
       it "長さが51文字以上の場合はエラーメッセージが返ってくるか" do
         user.introduction = Faker::Lorem.characters(number: 51)
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:body])
       end
     end
 
     context "emailのカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         user.email = ""
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:email]).to include("を入力してください", "は不正な値です")
       end
 
       it "一意性があるかどうか" do
@@ -104,7 +112,8 @@ RSpec.describe User, type: :model do
     context "passwordのカラムのテスト" do
       it "空白の場合エラーメッセージが返ってくるか" do
         user.password = ""
-        is_expected.to eq false
+        user.valid?
+        expect(user.errors[:password]).to include("を入力してください")
       end
     end
   end
@@ -113,6 +122,18 @@ RSpec.describe User, type: :model do
     context "Articleモデルとの関係" do
       it "1:Nとなっている" do
         expect(User.reflect_on_association(:articles).macro).to eq :has_many
+      end
+    end
+    
+    context "Bookmarkモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:bookmarks).macro).to eq :has_many
+      end
+    end
+    
+    context "Commentモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
   end

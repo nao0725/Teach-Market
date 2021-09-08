@@ -23,7 +23,6 @@ class Public::ArticlesController < ApplicationController
       tag = Tag.new()
       tag.tag_name = ""
       tag.save
-      
       @user = current_user
       flash.now[:alert] = "投稿に失敗しました"
       render :new
