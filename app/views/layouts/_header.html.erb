@@ -19,7 +19,11 @@
     <% end %>
 
     <% if user_signed_in? %>
-
+    
+      <!--通知アイコン-->
+      <%= render "public/notifications/circle" %>
+      
+    
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -31,7 +35,6 @@
           <li><%= link_to " マイページ", user_path(current_user), class: "far fa-user mr-2 " %></li>
           <li><%= link_to " アウトプット", new_article_path, class: "fas fa-pencil-alt" %></li>
           <li><%= link_to " アプリの使い方", help_path, class: "far fa-question-circle " %></li>
-          <li><%= link_to " 通知一覧", notifications_path, class: "far fa-bell" %></li>
           <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-door-open" %></li>
         </ul>
       </nav>

@@ -5,3 +5,18 @@
 .notification-txt {
   padding-top: 10px;
 }
+
+// 通知未確認を知らせるアイコン
+.n-circle {
+  // font-size : 1px;
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+.bellmark{
+  position: fixed;
+    right: 90px;
+    top: 22px;
+}
