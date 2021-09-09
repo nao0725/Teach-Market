@@ -6,21 +6,24 @@
           <% case notification.action %>
           <% when "follow" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんがあなたをフォローしました。
+              <%= link_to notification.visitor.nickname, user_path(notification.visitor) %>さんがあなたをフォローしました。
             </p>
 
           <% when "bookmark" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to notification.visitor.nickname, user_path(notification.visitor) %>さんが
               <%= link_to notification.article.title, notification.article %>の記事をブックマークしました。
             </p>
 
           <% when "comment" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to notification.visitor.nickname, user_path(notification.visitor) %>さんが
               <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
             </p>
           <% end %>
+          <div class="text-muted text-right float-right">
+             <%= time_ago_in_words(notification.created_at).upcase %>前
+           </div>
         </dvi>
       </div>
     </div>
