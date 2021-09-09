@@ -92,27 +92,11 @@ body {
   background: #93c9ff;
 }
 
-// 通知未確認を知らせるアイコン
-.n-circle {
-  font-size : 1px;
+/*検索窓のエリア*/
+ #search {
   position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
-}
-
-// SNSシェアボタン
-$size: 28px;
-.social-share-button {
-    display: flex;
-    flex-direction: column;
-    padding-left: 50px;
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-    margin: 10px 0;
-  }
+    top:12px;
+    right:115px;
 }
 
 /*　ハンバーガーボタン */

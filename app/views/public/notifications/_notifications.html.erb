@@ -1,26 +1,36 @@
 <div class="container">
   <div class="row justify-content-center">
     <dvi class="col-8">
-      <div class = "text-center ">
         <div class="card">
           <% case notification.action %>
           <% when "follow" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんがあなたをフォローしました。
+              <%= link_to user_path(notification.visitor) do %>
+                <%= attachment_image_tag notification.visitor, :profile_image, fallback: "no-image.png", size:'40x40', class: "rounded-circle"%>
+                <%= notification.visitor.nickname %>
+              <% end %>さんがあなたをフォローしました。
             </p>
 
           <% when "bookmark" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to user_path(notification.visitor) do %>
+                <%= attachment_image_tag notification.visitor, :profile_image, fallback: "no-image.png", size:'40x40', class: "rounded-circle"%>
+                <%= notification.visitor.nickname %>
+              <% end %>さんが
               <%= link_to notification.article.title, notification.article %>の記事をブックマークしました。
             </p>
 
           <% when "comment" then %>
             <p class = "notification-txt">
-              <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+              <%= link_to user_path(notification.visitor) do %>
+                <%= attachment_image_tag notification.visitor, :profile_image, fallback: "no-image.png", size:'40x40', class: "rounded-circle"%>
+                <%= notification.visitor.nickname %>
+              <% end %>さんが
               <%= link_to notification.article.title, notification.article %>の記事にコメントしました。
             </p>
           <% end %>
+          <div class="text-muted text-right float-right">
+             <%= time_ago_in_words(notification.created_at).upcase %>前
         </dvi>
       </div>
     </div>
