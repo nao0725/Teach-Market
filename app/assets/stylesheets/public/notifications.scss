@@ -8,7 +8,7 @@
 
 // 通知未確認を知らせるアイコン
 .n-circle {
-  // font-size : 1px;
+  font-size : 1px;
   position: absolute;
   padding-left: 1rem;
   padding-top: 0rem;
@@ -16,6 +16,13 @@
 }
 
 .bellmark{
+   position: fixed;
+    right: 90px;
+    top: 24px;
+  font-size: 11px;
+}
+
+.checked_bellmark{
   position: fixed;
     right: 90px;
     top: 22px;
