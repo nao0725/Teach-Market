@@ -92,19 +92,11 @@ body {
   background: #93c9ff;
 }
 
-
-// SNSシェアボタン
-$size: 28px;
-.social-share-button {
-    display: flex;
-    flex-direction: column;
-    padding-left: 50px;
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-    margin: 10px 0;
-  }
+/*検索窓のエリア*/
+ #search {
+  position: absolute;
+    top:12px;
+    right:115px;
 }
 
 /*　ハンバーガーボタン */

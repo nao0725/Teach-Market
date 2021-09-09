@@ -8,22 +8,12 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <div id="search-wrap" class="pt-1">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword,placeholder: "キーワードで検索", class: "search-text"%>
-          <%= button_tag type: "submit", class: "btn btn-default" do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% if user_signed_in? %>
-    
+      <!--検索フォーム-->
+      <%= render "public/homes/search" %>
+      
       <!--通知アイコン-->
       <%= render "public/notifications/circle" %>
       
-    
       <div class="hamburger">
         <span></span>
         <span></span>

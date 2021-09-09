@@ -3,6 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+// SNSシェアボタン
+$size: 28px;
+.social-share-button {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    margin: 10px 0;
+  }
+}
+
 // 投稿フォーム
 .form{
   padding: 0 10px;
