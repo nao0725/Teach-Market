@@ -10,6 +10,18 @@ describe "ユーザーログイン前のテスト" do
       it "URLが正しい" do
         expect(current_path).to eq '/'
       end
+      
+      it "「今すぐ始める」リンクが表示される" do
+        expect(page).to have_link "今すぐ始める"
+      end
+      
+      it "「既に会員の方はこちら」リンクが表示される" do
+        expect(page).to have_link "既に会員の方はこちら"
+      end
+      
+      it "「ゲストログイン」リンクが表示される" do
+        expect(page).to have_link "ゲストログイン"
+      end
     end
   end
 end
