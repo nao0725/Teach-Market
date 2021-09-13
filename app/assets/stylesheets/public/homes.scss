@@ -69,6 +69,12 @@
   height: 50px;
 }
 
+.post_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  font-size: 25px;
+}
 
 // HOMEのタブ切り替え表示
 .tab-position{
@@ -98,3 +104,5 @@
     display: block;
   }
 }
+
+
