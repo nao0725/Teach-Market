@@ -91,7 +91,5 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
-  
-  # require 'selenium-webdriver'
-  # Selenium::WebDriver::Chrome.driver_path = "Teach_Market/chromedriver.exe"
+
 end
