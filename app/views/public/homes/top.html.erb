@@ -20,6 +20,24 @@
         </div>
       </div>
 
+      <div class="top-heading">こんな悩みを持つあなたへ</div>
+      <div class = "top-section">
+          <div class="row text-center">
+            <div class="d-flex justify-content-center">
+              <div class="col-md-4">
+                <div><%= image_tag asset_path("top-img.jpg", alt: "悩んでいる人の画像"), size:'200x200', class: "rounded-circle" %></div>
+                <p class="text-muted">「どのようなやり方をすれば、成果が上がるかわからない」</p>
+              </div>
+
+              <div class="col-md-4">
+                <div><%= image_tag asset_path("top-img2.jpg", alt: "悩んでいる人の画像"), size:'200x200', class: "rounded-circle" %></div>
+                <p class="text-muted">「新たに挑戦する職種や業界に不安がある」</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       <div class="top-heading">このアプリでできること</div>
         <div class = "top-section">
           <div class="row text-center">
@@ -56,31 +74,6 @@
           </div>
           <div class="pt-5 d-flex justify-content-center">
             <%= link_to "詳細はこちらをクリック", help_path, class: "text-muted top-txt" %>
-          </div>
-        </div>
-
-        <div class="top-heading">こんな悩みを解決できます</div>
-        <div class = "top-section">
-          <div class="row text-center">
-            <div class="d-flex justify-content-center">
-              <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                  <i class="fas fa-circle fa-stack-2x "></i>
-                  <i class="fas fas fa-search fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">気になる記事を見つける</h4>
-                <p class="text-muted">タイトルやタグを自由に入力してあなたの気になる記事を検索をすることができます。</p>
-              </div>
-
-              <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                  <i class="fas fa-circle fa-stack-2x "></i>
-                  <i class="fas fas fa-pen fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">学んだことを共有する</h4>
-                <p class="text-muted">投稿フォームからMarkdown記法で仕事で得た知識やノウハウをアウトプットすることができます。</p>
-              </div>
-            </div>
           </div>
         </div>
 
