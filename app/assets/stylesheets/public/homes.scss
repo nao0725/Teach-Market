@@ -32,13 +32,22 @@
 .top-heading{
   text-align: center;
   padding-top: 90px;
-  font-size: 32px;
+  font-size: 36px;
+}
+
+.top-heading::after{
+  content: "";
+  display: block;
+  width: 1000px;
+  height: 2px;
+  margin: 12px auto 24px auto;
+  background-color: #DEDEDE;
 }
 
 .top-txt{
   padding: 30px;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .top-section{
