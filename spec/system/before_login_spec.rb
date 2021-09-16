@@ -29,10 +29,22 @@ describe "ユーザーログイン前のテスト" do
     before do
       visit "/help"
     end
-    
+
     context "表示内容の確認" do
       it "URLが正しい" do
         expect(current_path).to eq '/help'
+      end
+    end
+  end
+
+  describe "ヘッダーのテスト(ログイン前)" do
+    before do
+      visit root_path
+    end
+    
+    context "表示の確認" do
+      it "タイトルが表示される" do
+        expect(page).to have_content "TeachMarket"
       end
     end
   end
