@@ -1,19 +1,21 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+  <div class="pl-3">
     <% if user_signed_in? %>
       <%= link_to "TeachMarket", home_path, class: "navbar-brand" %>
     <% else %>
       <%= link_to "TeachMarket", root_path, class: "navbar-brand" %>
     <% end %>
+  </div>
 
     <% if user_signed_in? %>
       <!--検索フォーム-->
       <%= render "public/homes/search" %>
-      
+
       <!--通知アイコン-->
       <%= render "public/notifications/circle" %>
-      
+
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -55,10 +57,9 @@
         <ul>
           <li><%= link_to " 新規登録", new_user_registration_path, class: "fas fa-user-plus" %></li>
           <li><%= link_to " ログイン", new_user_session_path, class: "fas fa-sign-in-alt" %></li>
+          <li><%= link_to " ゲストログイン", users_guest_sign_in_path, method: :post, class: "fas fa-users" %></li>
           <li><%= link_to " アプリの使い方", help_path, class: "nav-link far fa-question-circle" %></li>
         </ul>
       </nav>
-
    <% end %>
-
   </nav>

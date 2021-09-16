@@ -1,7 +1,7 @@
     <div class = "row top-img">
       <div class = "top-visual col-lg-8">
         <h1 class = "top-title">TeachMarket</h1>
-        <p>社会人のための仕事術共有SNS</p>
+        <h5>社会人のための仕事術共有SNS</h5>
       </div>
       <p class = "top-btn">
         <%= link_to "今すぐ始める", new_user_registration_path, class:"btn btn-outline-light btn-sm mb-3 d-flex flex-sm-column" %>
@@ -23,16 +23,18 @@
       <div class="top-heading">こんな悩みを持つあなたへ</div>
       <div class = "top-section">
           <div class="row text-center">
-            <div class="d-flex justify-content-center">
-              <div class="col-md-4">
-                <div><%= image_tag asset_path("top-img.jpg", alt: "悩んでいる人の画像"), size:'200x200', class: "rounded-circle" %></div>
-                <p class="text-muted">「どのようなやり方をすれば、成果が上がるかわからない」</p>
-              </div>
+            <div class="col-md-6">
+              <div><%= image_tag asset_path("top-img.jpg", alt: "悩んでいる人の画像"), size:'250x200', class: "rounded-circle" %></div>
+              <p class="text-muted pt-4 top-txt">
+                「どのようなやり方をすれば、成果が上がるのかわからない」
+              </p>
+            </div>
 
-              <div class="col-md-4">
-                <div><%= image_tag asset_path("top-img2.jpg", alt: "悩んでいる人の画像"), size:'200x200', class: "rounded-circle" %></div>
-                <p class="text-muted">「新たに挑戦する職種や業界に不安がある」</p>
-              </div>
+            <div class="col-md-6">
+              <div><%= image_tag asset_path("top-img2.jpg", alt: "悩んでいる人の画像"), size:'200x200', class: "rounded-circle" %></div>
+              <p class="text-muted pt-4 top-txt">
+                「新たに挑戦する職種や業界に不安がある」
+              </p>
             </div>
           </div>
         </div>
@@ -47,7 +49,7 @@
                 <i class="fas fa-circle fa-stack-2x "></i>
                 <i class="fas fas fa-search fa-stack-1x fa-inverse"></i>
               </span>
-              <h3 class="my-3">気になる記事を見つける</h3>
+              <h3 class="pt-4">気になる記事を見つける</h3>
               <p class="text-muted top-txt">タイトルやタグを自由に入力してあなたの気になる記事を検索をすることができます。</p>
             </div>
 
@@ -56,7 +58,7 @@
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fas fa-folder-plus fa-stack-1x fa-inverse"></i>
               </span>
-              <h3 class="my-3">記事を保存する</h3>
+              <h3 class="pt-4">記事を保存する</h3>
               <p class="text-muted top-txt">
                 気になる記事をブックマークする事ができます。
                 また、ブックマーク記事一覧も表示できます。
@@ -68,22 +70,35 @@
                 <i class="fas fa-circle fa-stack-2x "></i>
                 <i class="fas fas fa-pen fa-stack-1x fa-inverse"></i>
               </span>
-              <h3 class="my-3">学んだことを共有する</h3>
+              <h3 class="pt-4">学んだことを共有する</h3>
               <p class="text-muted top-txt">投稿フォームからMarkdown記法で仕事で得た知識やノウハウをアウトプットすることができます。</p>
             </div>
           </div>
-          <div class="pt-5 d-flex justify-content-center">
-            <%= link_to "詳細はこちらをクリック", help_path, class: "text-muted top-txt" %>
-          </div>
         </div>
+        <div class="d-flex justify-content-center">
+          <%= link_to "  詳細はこちらをクリック", help_path, class: "text-muted top-txt fas fa-angle-double-right" %>
+        </div>
+
 
         <div class = "display: flex">
           <div class = "top-heading">さあ、始めよう！！</div>
           <p class="text-center top-txt text-muted">登録は１分で完了します</p>
-          <div class = "top-txt">
-            <%= link_to "新規会員登録", new_user_registration_path, class:"btn btn-outline-success btn-sm mb-3 d-flex flex-sm-column" %>
-            <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary btn-sm mb-3 d-flex flex-sm-column" %>
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-info btn-sm mb-3 d-flex flex-sm-column" %>
+          <div class = "text-center">
+            <div class="py-1">
+              <%= link_to new_user_registration_path do %>
+                <div class="btntext w-50">新規会員登録</div>
+              <% end %>
+            </div>
+            <div class="py-1">
+              <%= link_to new_user_session_path do %>
+                <div class="btntext w-50 px-3">ログイン</div>
+              <% end %>
+            </div>
+            <div class="py-1 mb-5">
+              <%= link_to users_guest_sign_in_path, method: :post do %>
+                <div class="btntext w-50 px-3">ゲストログイン</div>
+              <% end %>
+            </div>
           </div>
         </div>
     </div>
