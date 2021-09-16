@@ -78,15 +78,27 @@
         <div class="pt-3 d-flex justify-content-center">
           <%= link_to "  詳細はこちらをクリック", help_path, class: "text-muted top-txt fas fa-angle-double-right" %>
         </div>
-        
+
 
         <div class = "display: flex">
           <div class = "top-heading">さあ、始めよう！！</div>
           <p class="text-center top-txt text-muted">登録は１分で完了します</p>
-          <div class = "top-txt">
-            <%= link_to "新規会員登録", new_user_registration_path, class:"btn btn-outline-success btn-sm mb-3 d-flex flex-sm-column" %>
-            <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary btn-sm mb-3 d-flex flex-sm-column" %>
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-outline-info btn-sm mb-3 d-flex flex-sm-column" %>
+          <div class = "text-center">
+            <div class="py-1">
+              <%= link_to new_user_registration_path do %>
+                <div class="btntext w-50">新規会員登録</div>
+              <% end %>
+            </div>
+            <div class="py-1">
+              <%= link_to new_user_session_path do %>
+                <div class="btntext w-50 px-3">ログイン</div>
+              <% end %>
+            </div>
+            <div class="py-1 mb-5">
+              <%= link_to users_guest_sign_in_path, method: :post do %>
+                <div class="btntext w-50 px-3">ゲストログイン</div>
+              <% end %>
+            </div>
           </div>
         </div>
     </div>
