@@ -1,6 +1,6 @@
       <div id="search">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword,placeholder: "キーワードで検索"%>
+          <%= f.text_field :keyword, placeholder: "キーワードで検索" %>
           <%= button_tag type: "submit", class: "btn btn-default" do %>
             <i class="fas fa-search pt-1" style="font-size: 20px;"></i>
           <% end %>
