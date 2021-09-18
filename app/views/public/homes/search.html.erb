@@ -33,7 +33,7 @@
               <% @articles.each do |article| %>
                 <%= render "public/articles/index", article: article %>
               <% end %>
-              <div class = "pagination-sm">
+              <div class = "pagination-sm py-3">
                 <%= paginate @articles %>
               </div>
             <% else %>
@@ -47,7 +47,7 @@
               <% @follow_articles.each do |article| %>
                 <%= render "public/articles/index", article: article %>
               <% end %>
-              <div class = "pagination-sm">
+              <div class = "pagination-sm py-3">
                 <%= paginate @articles %>
               </div>
             <% else %>
@@ -75,7 +75,7 @@
             <% @reviews.each.with_index(1) do |article, i| %>
               <%= render "public/articles/index", article: article %>
             <% end %>
-            <div class = "pagination-sm">
+            <div class = "pagination-sm py-3">
               <%= paginate @articles %>
             </div>
           <% else %>
