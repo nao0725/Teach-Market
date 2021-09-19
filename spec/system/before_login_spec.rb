@@ -23,9 +23,27 @@ describe "ユーザーログイン前のテスト" do
         expect(page).to have_link "ゲストログイン"
       end
     end
+    
+    context "リンク内容の確認" do
+      subject {current_path}
+      
+      it "詳細はこちらをクリックのリンクを押すとヘルプのページに遷移する" do
+        click_on "詳細はこちらをクリック"
+        is_expected.to eq "/help"
+      end
+      it "新規会員登録のリンクを押すと新規登録画面に遷移する" do
+        click_on "新規会員登録", match: :prefer_exact
+        is_expected.to eq "/users/sign_up"
+      end
+      it "ログインのリンクを押すとログイン画面に遷移する" do
+        click_on "ログイン", match: :prefer_exact
+        is_expected.to eq "/users/sign_in"
+      end
+    end
   end
+end
 
-  describe "ヘルプ画面のテスト" do
+describe "ヘルプ画面のテスト" do
     before do
       visit "/help"
     end
@@ -61,11 +79,26 @@ describe "ユーザーログイン前のテスト" do
       subject {current_path}
       
       it "新規会員登録のリンクを押すと新規登録画面に遷移する" do
-        signup_link = find_all('a')[1].native.inner_text
-        signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_on "新規会員登録", match: :first
         is_expected.to eq "/users/sign_up"
       end
+      it "ログインのリンクを押すとログイン画面に遷移する" do
+        click_on "ログイン", match: :first
+        is_expected.to eq "/users/sign_in"
+      end
+      it "アプリの使い方のリンクを押すとヘルプのページに遷移する" do
+        click_on "アプリの使い方"
+        is_expected.to eq "/help"
+      end
+    end
+    
+    describe "ユーザー新規登録のテスト" do
+      before do
+        visit new_user_registration_path
+      end
+      
+      context "表示の確認"
+      it ""do
+      end
     end
   end
-end
