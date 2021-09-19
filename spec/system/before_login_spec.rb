@@ -23,9 +23,27 @@ describe "ユーザーログイン前のテスト" do
         expect(page).to have_link "ゲストログイン"
       end
     end
+    
+    context "リンク内容の確認" do
+      subject {current_path}
+      
+      it "詳細はこちらをクリックのリンクを押すとヘルプのページに遷移する" do
+        click_on "詳細はこちらをクリック"
+        is_expected.to eq "/help"
+      end
+      it "新規会員登録のリンクを押すと新規登録画面に遷移する" do
+        click_on "新規会員登録", match: :prefer_exact
+        is_expected.to eq "/users/sign_up"
+      end
+      it "ログインのリンクを押すとログイン画面に遷移する" do
+        click_on "ログイン", match: :prefer_exact
+        is_expected.to eq "/users/sign_in"
+      end
+    end
   end
+end
 
-  describe "ヘルプ画面のテスト" do
+describe "ヘルプ画面のテスト" do
     before do
       visit "/help"
     end
@@ -61,11 +79,59 @@ describe "ユーザーログイン前のテスト" do
       subject {current_path}
       
       it "新規会員登録のリンクを押すと新規登録画面に遷移する" do
-        signup_link = find_all('a')[1].native.inner_text
-        signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_on "新規会員登録", match: :first
         is_expected.to eq "/users/sign_up"
       end
+      it "ログインのリンクを押すとログイン画面に遷移する" do
+        click_on "ログイン", match: :first
+        is_expected.to eq "/users/sign_in"
+      end
+      it "アプリの使い方のリンクを押すとヘルプのページに遷移する" do
+        click_on "アプリの使い方"
+        is_expected.to eq "/help"
+      end
+    end
+    
+    describe "ユーザー新規登録のテスト" do
+      before do
+        visit new_user_registration_path
+      end
+      
+      context "表示の確認" do
+        it "URLが正しい" do
+          expect(current_path).to eq "/users/sign_up"
+        end
+        it "TeachMarketへようこそ！ と表示される" do
+          expect(page).to have_content "TeachMarketへようこそ！"
+        end
+        it "お名前フォームが表示される" do
+          expect(page).to have_field "user[name]"
+        end
+        it "メールアドレスフォームが表示される" do
+          expect(page).to have_field "user[email]"
+        end
+        it "パスワードフォームが表示される" do
+          expect(page).to have_field "user[password]"
+        end
+        it "パスワード(確認用)が表示される" do
+          expect(page).to have_field "user[password_confirmation]"
+        end
+        it "「登録する」が表示される" do
+          expect(page).to have_button "登録する"
+        end
+      end
+      
+      context "新規登録成功のテスト" do
+        before do
+          fill_in "user[name]", with: Faker::Lorem.characters(number: 10)
+          fill_in "user[email]", with: Faker::Internet.email
+          fill_in "user[password]", with: "password"
+          fill_in "user[password_confirmation]", with: "password"
+        end
+        
+        it " 新規登録が正しく実行される" do
+          expect{click_button "登録する"}.to change(User.all :count).by(1)
+        end
+      end
     end
   end
-end
