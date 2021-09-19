@@ -97,8 +97,28 @@ describe "ヘルプ画面のテスト" do
         visit new_user_registration_path
       end
       
-      context "表示の確認"
-      it ""do
+      context "表示の確認" do
+        it "URLが正しい" do
+          expect(current_path).to eq "/users/sign_up"
+        end
+        it "TeachMarketへようこそ！ と表示される" do
+          expect(page).to have_content "TeachMarketへようこそ！"
+        end
+        it "お名前フォームが表示される" do
+          expect(page).to have_field "user[name]"
+        end
+        it "メールアドレスフォームが表示される" do
+          expect(page).to have_field "user[email]"
+        end
+        it "パスワードフォームが表示される" do
+          expect(page).to have_field "user[password]"
+        end
+        it "パスワード(確認用)が表示される" do
+          expect(page).to have_field "user[password_confirmation]"
+        end
+        it "「登録する」が表示される" do
+          expect(page).to have_button "登録する"
+        end
       end
     end
   end
