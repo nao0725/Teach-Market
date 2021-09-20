@@ -331,3 +331,18 @@ nav.globalMenuSp.active {
   background:#333;
   color:#fff;
 }
+
+
+// SNSシェアボタン
+$size: 32px;
+.social-share-button {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    margin: 16px 0;
+  }
+}

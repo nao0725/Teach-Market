@@ -11,7 +11,7 @@
             <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
           </div>
         <% end %>
-        <div id="bookmark_button_<%= @article.id %>" class = "bookmarks">
+        <div id="bookmark_button_<%= @article.id %>" class = "bookmarks py-2">
           <%= render "public/bookmarks/bookmark", article: @article  %>
         </div>
         <div class = "py-2">

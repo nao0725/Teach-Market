@@ -33,10 +33,6 @@ class Article < ApplicationRecord
     end
   end
 
-  # ユーザーの投稿数ランキング
-  scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
-  scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) } # 今週
-  scope :created_this_month, -> { where(created_at: time.beginning_of_month..time.end_of_month) } # 前週
 
   # 複数検索できるように設定
   def self.search(search_word)
