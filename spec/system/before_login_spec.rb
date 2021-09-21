@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "ユーザーログイン前のテスト" do
+  
   describe "TOP画面のテスト" do
     before do
       visit root_path
@@ -129,9 +130,40 @@ describe "ヘルプ画面のテスト" do
           fill_in "user[password_confirmation]", with: "password"
         end
         
-        it " 新規登録が正しく実行される" do
-          expect{click_button "登録する"}.to change(User.all :count).by(1)
+        # it " 新規登録が正しく実行される" do
+        #   expect { click_button "登録する" }.to change(User.all, :count).by(1)
+        # end
+        
+        it "新規登録後、HOMEに遷移する" do 
+          click_button "登録する"
+          expect(current_path).to eq "/users"
         end
       end
+    end
+    
+    describe "ユーザーログイン" do
+       let(:user) { create(:user) }
+       
+       before do
+         visit new_user_session_path
+       end
+       
+       context "表示内容の確認" do
+         it "URLが正しい" do
+            expect(current_path).to eq "/users/sign_in"
+         end
+         it "「TeachMarketへログイン」と表示される" do
+            expect(page).to have_content "TeachMarketへログイン"
+         end
+         it "nicknameフォームが表示される" do
+            expect(page).to have_field "user[nickname]"
+         end
+         it "passwordフォームが表示される" do
+            expect(page).to have_field "user[password]"
+         end
+         it "「TeachMarketにログイン」ボタンが表示される" do
+            expect(page).to have_button "TeachMarketにログイン"
+         end
+       end
     end
   end
