@@ -1,14 +1,14 @@
 <div class="container">
 <div class = "title text-center">
   <% if @user == current_user %>
-    <div class = "title text-center">My Follows List</div>
+    <div>My Follows List</div>
   <% else %>
-    <div class = "title text-center"><%= @user.nickname %>さんのFollows List</div>
+    <div><%= @user.nickname %>さんのFollows List</div>
   <% end %>
 </div>
   <% if @users.exists? %>
-<% @users.each do |user| %>
-<div class="row row-eq-height">
+    <% @users.each do |user| %>
+      <div class="row row-eq-height">
     <div class="col-md-12 mb-3 text-center">
       <div class="card grow">
         <div class="card-body">
@@ -19,7 +19,7 @@
             <% end %>
           </h4>
           <p class="card-text"><%= user.introduction %></p>
-            <div id = "follow_btn">
+            <div id = "follow_btn_<%= user.id %>">
               <p><%= render "public/relationships/follow_btn", user: user %></p>
             </div>
           </div>
@@ -27,9 +27,9 @@
       </div>
     </div>
     <% end %>
-     <% else %>
-      <p class = "text-center">ユーザーはいません</p>
-      <% end %>
-  </div>
+  <% else %>
+    <p class = "text-center">ユーザーはいません</p>
+  <% end %>
+</div>
 
 
