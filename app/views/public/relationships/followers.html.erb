@@ -1,9 +1,9 @@
 <div class="container">
 <div class = "title text-center">
   <% if @user == current_user %>
-    <div class = "title text-center">My Followers List</div>
+    <div>My Followers List</div>
   <% else %>
-    <div class = "title text-center"><%= @user.nickname %>さんのFollowers List</div>
+    <div><%= @user.nickname %>さんのFollowers List</div>
   <% end %>
 </div>
   <% if @users.exists? %>
@@ -19,7 +19,7 @@
                   <% end %>
                 </h4>
                 <p class="card-text"><%= user.introduction %></p>
-                  <div id = "follow_btn">
+                  <div id = "follow_btn_<%= user.id %>">
                     <p><%= render "public/relationships/follow_btn", user: user %></p>
                   </div>
                 </div>
@@ -31,5 +31,5 @@
       <p class = "text-center">ユーザーはいません</p>
   <% end %>
 </div>
-  
+
 
