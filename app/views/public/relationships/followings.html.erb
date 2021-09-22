@@ -1,5 +1,11 @@
 <div class="container">
-<div class = "title text-center">Follow</div>
+<div class = "title text-center">
+  <% if @user == current_user %>
+    <div class = "title text-center">My Follows List</div>
+  <% else %>
+    <div class = "title text-center"><%= @user.nickname %>さんのFollows List</div>
+  <% end %>
+</div>
   <% if @users.exists? %>
 <% @users.each do |user| %>
 <div class="row row-eq-height">
@@ -25,5 +31,5 @@
       <p class = "text-center">ユーザーはいません</p>
       <% end %>
   </div>
-  
+
 
