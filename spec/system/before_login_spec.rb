@@ -92,8 +92,9 @@ describe "ヘルプ画面のテスト" do
         is_expected.to eq "/help"
       end
     end
+  end
 
-    describe "ユーザー新規登録のテスト" do
+  describe "ユーザー新規登録のテスト" do
       before do
         visit new_user_registration_path
       end
@@ -137,7 +138,7 @@ describe "ヘルプ画面のテスト" do
           end.to change(User, :count).by(1)
         end
         
-            it "新規登録後、HOMEに遷移する" do 
+        it "新規登録後、HOMEに遷移する" do 
           click_button "登録する"
           expect(current_path).to eq "/home.1"
         end
@@ -164,9 +165,23 @@ describe "ヘルプ画面のテスト" do
          it "passwordフォームが表示される" do
             expect(page).to have_field "user[password]"
          end
-         it "「TeachMarketにログイン」ボタンが表示される" do
+        it "「TeachMarketにログイン」ボタンが表示される" do
             expect(page).to have_button "TeachMarketにログイン"
+        end
+       end
+       context "ログイン成功のテスト" do
+         before do
+          fill_in "user[nickname]", with: user.nickname
+          fill_in "user[password]", with: user.password
+          click_button "TeachMarketにログイン"
+         end
+         
+         it "ログイン後のリダイレクト先が、HOMEになっている" do
+           expect(current_path).to eq "/home.1"
          end
        end
+       
+       describe "ログイン失敗のテスト"
+       
     end
-  end
+  
