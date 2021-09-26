@@ -192,5 +192,31 @@ describe "ヘルプ画面のテスト" do
            expect(current_path).to eq "/users/sign_in"
          end
        end
+       
+       describe "ヘッダーのテスト:ログインしている場合" do
+         let(:user){create(:user)}
+         
+         before do
+           visit new_user_session_path
+           fill_in "user[nickname]", with: user.nickname
+           fill_in "user[password]", with: user.password
+           click_button "TeachMarketにログイン"
+         end
+         
+         context "ヘッダーの表示" do
+           it "タイトルが表示されている" do
+             expect(page).to have_content "TeachMarket"
+           end
+           it "検索フォームの表示" do
+             expect(page).to have_field "keyword"
+           end
+          # it "検索ボタンの表示" do
+          #   expect(page).to have_button "submit"
+          # end
+          # it "通知アイコンの表示" do
+          #   expect(page).to eq "/notifications"
+          # end
+         end
+       end
     end
   
