@@ -181,7 +181,16 @@ describe "ヘルプ画面のテスト" do
          end
        end
        
-       describe "ログイン失敗のテスト"
-       
+       describe "ログイン失敗のテスト" do
+         before do
+           fill_in "user[nickname]", with: ""
+           fill_in "user[password]", with: ""
+           click_button "TeachMarketにログイン"
+         end
+         
+         it "ログインに失敗し、ログイン画面にリダイレクトされる" do
+           expect(current_path).to eq "/users/sign_in"
+         end
+       end
     end
   
