@@ -29,12 +29,16 @@
         <div class="content-area">
           <!--新規投稿順-->
           <div class="content show">
-            <% @articles.each do |article| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @articles.exists? %>
+              <% @articles.each do |article| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm py-3">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h6 class = "text-center py-5">投稿された記事はまだありません。</h6>
             <% end %>
-            <div class = "pagination-sm py-3">
-              <%= paginate @articles %>
-            </div>
           </div>
 
           <!--タイムライン順-->
@@ -53,22 +57,30 @@
 
           <!--ブックマーク数順-->
           <div class="content">
-            <% @bookmarks.each.with_index(1) do |article, i| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @bookmarks.present? %>
+              <% @bookmarks.each.with_index(1) do |article, i| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm py-3">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h6 class = "text-center py-5">投稿された記事はまだありません。</h6>
             <% end %>
-            <div class = "pagination-sm py-3">
-              <%= paginate @articles %>
-            </div>
           </div>
 
           <!--評価の高い順-->
           <div class="content">
-            <% @reviews.each.with_index(1) do |article, i| %>
-              <%= render "public/articles/index", article: article %>
+            <% if @reviews.present? %>
+              <% @reviews.each.with_index(1) do |article, i| %>
+                <%= render "public/articles/index", article: article %>
+              <% end %>
+              <div class = "pagination-sm py-3">
+                <%= paginate @articles %>
+              </div>
+            <% else %>
+              <h6 class = "text-center py-5">投稿された記事はまだありません。</h6>
             <% end %>
-            <div class = "pagination-sm py-3">
-              <%= paginate @articles %>
-            </div>
           </div>
         </div>
       </div>
