@@ -24,13 +24,27 @@
           <div class="content show">
             <table class = "text-center  table table-bordered p-2">
               <% @today_ranks.each.with_index(1) do |user, i| %>
+                <thead>
+                  <tr class = "rank-header">
+                    <th>ランキング</th>
+                    <th>ユーザー名</th>
+                    <th>投　稿　数</th>
+                  </tr>
+                </thead>
                 <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
           </div>
           <div class="content">
-             <table class = "text-center table table-bordered p-2">
+            <table class = "text-center table table-bordered p-2">
               <% @week_ranks.each.with_index(1) do |user, i| %>
+                <thead>
+                  <tr class = "rank-header">
+                    <th>ランキング</th>
+                    <th>ユーザー名</th>
+                    <th>投　稿　数</th>
+                  </tr>
+                </thead>
                 <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
@@ -38,6 +52,13 @@
           <div class="content">
             <table class = "text-center table table-bordered p-2">
               <% @month_ranks.each.with_index(1) do |user, i| %>
+                <thead>
+                  <tr class = "rank-header">
+                    <th>ランキング</th>
+                    <th>ユーザー名</th>
+                    <th>投　稿　数</th>
+                  </tr>
+                </thead>
                 <%= render "public/ranks/index", user: user['user'], count: user['count'], i: i %>
               <% end %>
             </table>
