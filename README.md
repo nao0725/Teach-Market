@@ -1,8 +1,9 @@
 # Teach Market
 
-<img width="1680" alt="スクリーンショット 2021-08-30 9 41 03" src="https://user-images.githubusercontent.com/78492401/131271103-58475e7a-4c55-4b46-921d-2327eab65924.png">
+<img width="1680" alt="スクリーンショット 2021-09-30 14 34 56" src="https://user-images.githubusercontent.com/78492401/135393433-e67d8f2d-f81e-48dc-be1d-7fed5138028d.png">
 
-### サイトURL:http://teachmarket.work/
+
+### サイトURL:https://teachmarket.work/
 
 ## 📚　サイト概要
 
@@ -48,6 +49,15 @@
 
 
 ### 実装機能
+
+#### 技術的なポイント
+
+* gem "redcarpet"を使用したマークダウン記法
+* 検索機能をgemなしで追加(Article,Tagの２つのモデルから検索可) 
+* SNS認証機能実装によるログイン簡略化
+* GitHub Actionsによる自動デプロイ
+* Certbotを使用したhttps化
+　
 
 #### 基本機能
 
