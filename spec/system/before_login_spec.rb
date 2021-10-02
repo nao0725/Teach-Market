@@ -210,12 +210,28 @@ describe "ヘルプ画面のテスト" do
            it "検索フォームの表示" do
              expect(page).to have_field "keyword"
            end
-          # it "検索ボタンの表示" do
-          #   expect(page).to have_button "submit"
-          # end
-          # it "通知アイコンの表示" do
-          #   expect(page).to eq "/notifications"
-          # end
+         end
+       end
+       
+       describe "ユーザーログアウト" do
+         let(:user) { create(:user) }
+         
+         before do
+           visit new_user_session_path
+            
+           fill_in "user[nickname]", with: user.nickname
+           fill_in "user[password]", with: user.password
+           click_button "TeachMarketにログイン"
+           click_link href: destroy_user_session_path
+          end
+          
+         context " ログアウト機能のテスト" do
+           it "正しくログアウトできている: ログアウト後のリダイレクト先においてHelp画面へのリンクが存在する" do
+             expect(page).to have_link "", href: "/help"
+           end
+           it "ログアウト後のリダイレクト先がTOP画面になっている" do
+             expect(current_path).to eq "/"
+           end
          end
        end
     end
