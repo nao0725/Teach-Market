@@ -9,6 +9,7 @@ class Public::ArticlesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @article.comments
+    @user = User.guest
   end
 
   def new
