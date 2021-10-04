@@ -7,9 +7,11 @@
           <div class = "py-2">
             <%= link_to "", edit_article_path(@article), class: "fas fa-edit" %>
           </div>
-          <div class = "py-2">
-            <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
-          </div>
+          <% unless @article.user == @user %>
+            <div class = "py-2">
+              <%= link_to "", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "far fa-trash-alt" %>
+            </div>
+          <% end %>
         <% end %>
         <div id="bookmark_button_<%= @article.id %>" class = "bookmarks py-2">
           <%= render "public/bookmarks/bookmark", article: @article  %>
