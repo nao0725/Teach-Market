@@ -21,6 +21,16 @@ describe "ユーザーログイン後のテスト" do
         click_link "TeachMarket"
         is_expected.to eq "/home"
       end
+      
+      it "マイページを押すとユーザー詳細画面に遷移する" do
+        click_on "マイページ", match: :first
+        is_expected.to eq "/users/2"
+      end
+      
+      it "アウトプットを押すと投稿画面に遷移する" do
+        click_link "アウトプット"
+        is_expected.to eq "/articles/new"
+      end
     end
   end
 end
