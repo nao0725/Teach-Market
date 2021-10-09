@@ -33,4 +33,16 @@ describe "ユーザーログイン後のテスト" do
       end
     end
   end
+  
+  describe "HOME画面のテスト" do
+    before do
+      visit home_path
+    end
+    
+    context "表示内容の確認" do
+      it "URLが正しい" do
+        expect(current_path).to eq "/home"
+      end
+    end
+  end
 end
