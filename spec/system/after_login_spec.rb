@@ -33,4 +33,32 @@ describe "ユーザーログイン後のテスト" do
       end
     end
   end
+  
+  describe "HOME画面のテスト" do
+    before do
+      visit home_path
+    end
+    
+    context "表示内容の確認" do
+      it "URLが正しい" do
+        expect(current_path).to eq "/home"
+      end
+      it "投稿したユーザー名のリンク先が正しい" do
+        expect(page).to have_link "", href: user_path(article.user)
+        expect(page).to have_link "", href: user_path(other_article.user)
+      end
+      it "自分の投稿と他人の投稿の投稿日が表示される" do
+        expect(page).to have_content article.created_at.strftime("%Y年%m月%d日") 
+        expect(page).to have_content other_article.created_at.strftime("%Y年%m月%d日") 
+      end 
+      it "自分の投稿と他人の投稿のタイトルのリンク先が正しい" do
+        expect(page).to have_link "", href: article_path(article)
+        expect(page).to have_link "", href: article_path(other_article)
+      end
+      it "投稿のサブタイトルが表示される" do
+        expect(page).to have_content article.sub_title
+        expect(page).to have_content other_article.sub_title
+      end
+    end
+  end
 end
