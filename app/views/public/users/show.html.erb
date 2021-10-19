@@ -36,7 +36,7 @@
     <div class = "col-3">
       <div class = "card pt-5">
         <div class = "text-center">
-          <div class = "my-1"><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'150x150', class: "rounded-circle"%></div>
+          <div class = "my-1"><%= attachment_image_tag @user, :profile_image, format: 'jpeg',fallback: "no-image.png", size:'150x150', class: "rounded-circle"%></div>
           <div class = "user-nickname"><%= @user.nickname %></div>
           <div class = "info-border"></div>
           <div class = "d-flex justify-content-around ml-4 pb-3">

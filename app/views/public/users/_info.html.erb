@@ -1,6 +1,6 @@
 <div class = "card">
   <div class = "text-center">
-    <div class = "my-3"><%= attachment_image_tag user, :profile_image, fallback: "no-image.png", size:'80x80', class: "rounded-circle"%></div>
+    <div class = "my-3"><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no-image.png", size:'80x80', class: "rounded-circle"%></div>
     <div class = "username"><%= user.nickname %></div>
     <div class = "info-border"></div>
     <div class = "d-flex justify-content-around ml-4 pb-3">
