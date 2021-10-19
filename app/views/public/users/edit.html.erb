@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "title text-center">
     <div>
-      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", size:'55x55', class: "rounded-circle"%>
+      <%= attachment_image_tag @user, :profile_image, format: 'jpeg',fallback: "no-image.png", size:'55x55', class: "rounded-circle"%>
       <%= @user.nickname %> プロフィール編集
     </div>
   </div>

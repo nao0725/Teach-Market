@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, with: :_render_404
   end
 
-  def routing_error
-    raise ActionController::RoutingError, params[:path]
-  end
+  # def routing_error
+  #   raise ActionController::RoutingError, params[:path]
+  # end
 
   protected
 
