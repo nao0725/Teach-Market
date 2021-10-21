@@ -234,36 +234,6 @@ nav.globalMenuSp.active {
 }
 
 
-// エラーページ
-
-#error_page{
-    display: table;
-    width: 100%;
-    text-align: center;
-    color: #888;
-    margin: 0;
-}
-
-.fof{
-    display: table-cell;
-    padding-top: 150px;
-    vertical-align: middle;
-    font-family: 'Lato', sans-serif;
-}
-
-.fof h1{
-    font-size: 120px;
-    display: inline-block;
-    padding-right: 12px;
-    animation: type .5s alternate infinite;
-}
-
-@keyframes type{
-    from{box-shadow: inset -3px 0px 0px #888;}
-    to{box-shadow: inset -3px 0px 0px transparent;}
-}
-
-
 /*ボタンの表示するテキストが切り替わる*/
 .btntextchange{
     /*テキストの基点とするためrelativeを指定*/
@@ -346,3 +316,4 @@ $size: 32px;
     margin: 16px 0;
   }
 }
+
