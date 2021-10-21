@@ -50,7 +50,5 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create]
   end
 
-  # #404/505エラーページ
-  get "*not_found" => "application#routing_error"
-  post "*not_found" => "application#routing_error"
+
 end
