@@ -5,6 +5,7 @@ class Article < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  
 
   # 既にブックマークしていないか確認
   def bookmarked_by?(user)
@@ -17,7 +18,7 @@ class Article < ApplicationRecord
       article_tags_records = ArticleTag.where(article_id: id)
       article_tags_records.destroy_all
     end
-    
+
     tag_list.each do |tag|
       inspected_tag = Tag.where(tag_name: tag).first_or_create
       tags << inspected_tag
@@ -41,6 +42,10 @@ class Article < ApplicationRecord
       "%#{search_word}%", "%#{search_word}%", "%#{search_word}%", "%#{search_word}%",
     ]).distinct
   end
+  
+  #公開ステータスの設定
+  enum article_status: { "下書きにする": 0, "公開する": 1 }
+  
 
   validates :title, presence: true, length: { in: 2..20 }
   validates :body, presence: true
