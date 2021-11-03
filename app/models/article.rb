@@ -44,7 +44,10 @@ class Article < ApplicationRecord
   end
   
   #公開ステータスの設定
-  enum article_status: { "下書きにする": 0, "公開する": 1 }
+  enum article_status: {
+    "下書きにする": 0,
+    "公開する": 1
+  }
   
 
   validates :title, presence: true, length: { in: 2..20 }

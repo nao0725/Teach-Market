@@ -6,6 +6,11 @@ class Public::ArticlesController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def user_index
+    @user = User.find(params[:id])
+    @articles = @user.articles
+  end
+
   def show
     @comment = Comment.new
     @comments = @article.comments
@@ -66,6 +71,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
+    params.require(:article).permit(:title, :body, :sub_title, :article_status, tags_attributes: [:tag_name])
   end
 end

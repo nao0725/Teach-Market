@@ -44,6 +44,8 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
+
+    get "articles/user/:id" => "articles#user_index", as: "user_articles"
   end
 
   namespace :admins do
