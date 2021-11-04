@@ -15,9 +15,9 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
-  def status_update
+  def update_status
     @article = Article.find(params[:article_id])
-    @article.update(article_params)
+    @article.update_status!
     redirect_to request.referer, notice: "ステータスを更新しました"
   end
 

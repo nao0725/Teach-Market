@@ -46,6 +46,14 @@ class Article < ApplicationRecord
   #公開ステータスの設定
   enum article_status: { draft: 0, published: 1 }
 
+  def update_status!
+    if draft?
+      published!
+    else
+      draft!
+    end
+  end
+
   validates :title, presence: true, length: { in: 2..20 }
   validates :body, presence: true
   validates :article_status, inclusion: { in: Article.article_statuses.keys }

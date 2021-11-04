@@ -34,9 +34,8 @@
 
                <div class="float-left pt-2">
                 <% if current_user == @user %>
-                  <%= form_with(model: Article.new, url: article_status_path(article), method: :patch, local: true) do |f| %>
-                    <%= f.select :article_status, Article.article_statuses.map { |k, v| [t("article.article_status.#{k}"), k] }, selected: article.article_status %>
-                    <%= f.submit "更新" %>
+                  <%= link_to  article_update_status_path(article), method: :patch  do %>
+                   <div class="link" ><%= article.article_status %></div>
                   <% end %>
                 <% end %>
                </div>

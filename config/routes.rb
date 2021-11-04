@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
       get "/user/:id" => "articles#user_articles", as: "index"
-      patch "/user/:id" => "articles#status_update", as: "status"
+      patch :update_status
     end
 
     resources :users, only: [:index, :show, :edit, :update] do
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get "followers" => "relationships#followers", as: "followers"
     end
 
- 
+
   end
 
   namespace :admins do
