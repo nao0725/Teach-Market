@@ -8,7 +8,11 @@ class Public::ArticlesController < ApplicationController
 
   def user_articles
     @user = User.find(params[:id])
-    @articles = @user.articles.page(params[:page]).per(10).published
+    if current_user == @user
+      @articles = @user.articles.page(params[:page]).per(10)
+    else
+      @articles = @user.articles.page(params[:page]).per(10).published
+    end
   end
 
   def status_update
