@@ -1,3 +1,11 @@
+
+  <% if @user == current_user %>
+    <div class = "title text-center">投稿一覧</div>
+  <% else %>
+    <div class = "title text-center"><%= @user.nickname %>さんの投稿一覧</div>
+  <% end %>
+
+   <div class="container">
       <% if @articles.exists? %>
         <% @articles.each do |article| %>
           <div class="card">
@@ -24,6 +32,14 @@
                   <% end %>
                 </h6>
 
+               <div class="float-left pt-2">
+                <% if current_user == @user %>
+                  <%= form_with(model: Article.new, url: user_articles_path, method: :patch, local: true) do |f| %>
+                    <%= f.select :article_status, Article.article_statuses.map { |k, v| [t("article.article_status.#{k}"), k] }, selected: article.article_status %>
+                    <%= f.submit "更新" %>
+                  <% end %>
+                <% end %>
+               </div>
 
                <div class = "home-footer justify-content-end">
                 <div class = "d-flex mr-3 mt-1">
@@ -40,4 +56,18 @@
             </div>
           </div>
         <% end %>
+        <div class = "pagination-sm py-3">
+          <%= paginate @articles %>
+        </div>
+      <% else %>
+      <div class = "text-center pt-5">
+        <div class "lead">
+          記事はまだありません。<br>
+          あなたの仕事のノウハウをアウトプットしよう!<br>
+        </div>
+        <div class = "pt-3">
+          <%= link_to "アウトプットする", new_article_path , class:"btn btn-outline-secondary w-50"%>
+        </div>
+      </div>
       <% end %>
+    </div>

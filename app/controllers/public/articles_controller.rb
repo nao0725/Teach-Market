@@ -6,9 +6,18 @@ class Public::ArticlesController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_index
+  def user_articles
+    @user = User.find(params[:id])
+    @articles = @user.articles.page(params[:page]).per(10)
+  end
+
+  def status_update
     @user = User.find(params[:id])
     @articles = @user.articles
+    @articles.each do | article |
+      article.update(article_params)
+    end
+    redirect_to request.referer, notice: "ステータスを更新しました"
   end
 
   def show
