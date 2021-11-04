@@ -2,13 +2,13 @@ class Public::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.published
     @user = User.find(params[:id])
   end
 
   def user_articles
     @user = User.find(params[:id])
-    @articles = @user.articles.page(params[:page]).per(10)
+    @articles = @user.articles.page(params[:page]).per(10).published
   end
 
   def status_update

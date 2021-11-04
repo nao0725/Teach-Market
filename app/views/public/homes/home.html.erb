@@ -29,6 +29,7 @@
         <div class="content-area">
           <!--新規投稿順-->
           <div class="content show">
+            
             <% if @articles.exists? %>
               <% @articles.each do |article| %>
                 <%= render "public/articles/index", article: article %>
@@ -105,6 +106,7 @@
           <% else %>
             <p class = "rank-text">投稿者はいません</p>
           <% end %>
+        
         </div>
       </div>
     </div>
