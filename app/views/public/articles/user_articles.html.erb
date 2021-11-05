@@ -34,9 +34,9 @@
 
                <div class="float-left pt-2">
                 <% if current_user == @user %>
-                  <%= link_to  article_update_status_path(article), method: :patch  do %>
-                   <button class="btn btn-secondary btn-sm" ><%= article.article_status_i18n %></button>
-                  <% end %>
+                    <%= link_to article_update_status_path(article), method: :patch do %>
+                     <button class="btn btn-secondary btn-sm" ><%= article.status_btn %></button>
+                    <% end %>
                 <% end %>
                </div>
 

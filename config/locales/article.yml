@@ -2,5 +2,5 @@ ja:
   enums:
     article:
       article_status:
-        draft: '下書きにする'
-        published: '公開する'
+        draft: '下書き'
+        published: '公開'
