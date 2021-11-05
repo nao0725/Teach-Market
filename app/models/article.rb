@@ -46,12 +46,12 @@ class Article < ApplicationRecord
   #公開ステータスの設定
   enum article_status: { draft: 0, published: 1 }
 
-  #ステータスを変更するボタンの
+  #ステータスを変更するボタンの設定
   def status_btn
     if draft?
-      "下書き保存する"
-    else
       "公開する"
+    else
+      "下書きに戻す"
     end
   end
 
