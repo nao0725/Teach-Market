@@ -11,16 +11,14 @@ class Article < ApplicationRecord
     bookmarks.where(user_id: user).exists?
   end
 
-  # 複数のタグ付け機能で実装
   def tags_save(tag_list)
-    if !tags.nil?
-      article_tags_records = ArticleTag.where(article_id: id)
-      article_tags_records.destroy_all
-    end
-    
-    tag_list.each do |tag|
-      inspected_tag = Tag.where(tag_name: tag).first_or_create
-      tags << inspected_tag
+    ActiveRecord::Base.transaction do
+      tag_list.each do |tag|
+        inspected_tag = Tag.where(tag_name: tag).first_or_create
+        self.tags << inspected_tag
+      end
+    rescue ActiveRecord::RecordInvalid
+      false
     end
   end
 
