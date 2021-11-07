@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @articles = Article.all
@@ -13,44 +13,35 @@ class Public::ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article_form = ArticleForm.new
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
-    tag_list = params[:article][:tag_name].split("/")
-    if tag_list == []
-      tag = Tag.new()
-      tag.tag_name = ""
-      tag.save
-      @user = current_user
-      flash.now[:alert] = "投稿に失敗しました"
-      render :new
-    elsif @article.save
-      @article.tags_save(tag_list)
+    @article_form = ArticleForm.new(article_params)
+    if @article_form.valid?
+      @article_form.save
       flash.now[:notice] = "投稿されました"
-      redirect_to article_path(@article)
+      redirect_to article_path(@article_form)
     else
-      @user = current_user
       flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end
 
   def edit
+    @article_form = ArticleForm.new(article: @article)
   end
 
+
   def update
-    if @article.update(article_params)
-      tag_list = params[:article][:tag_name].split("/")
-      @article.tags_save(tag_list)
-      flash.now[:notice] = "投稿が更新されました"
-      redirect_to article_path
+    @article_form = ArticleForm.new(article_params, article: @article)
+    if @article_form.valid?
+      @qrticle_form.save
+      flash.now[:notice] = "更新されました"
+      redirect_to article_path(@article_form)
     else
-      @user = current_user
-      flash.now[:notice] = "投稿の更新に失敗しました"
-      render :edit
+      flash.now[:alert] = "更新に失敗しました"
+      render :new
     end
   end
 
@@ -68,4 +59,5 @@ class Public::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
   end
+
 end

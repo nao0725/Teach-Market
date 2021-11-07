@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    post "articles/new" => "articles#new", as: "article_new"
 
     resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]

@@ -1,5 +1,16 @@
 
-      <%= form_with(model: article, local: true) do |f| %>
+      <%= form_with(model: @article_form, local: true) do |f| %>
+        <% if @article_form.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@article_form.errors.count, "error") %> prohibited this article_form being saved:</h2>
+            <ul>
+              <% @article_form.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
         </div>
