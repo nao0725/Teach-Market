@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-  before_action :set_article, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_article, only: [:show, :edit, :update, :destroy ]
 
   def index
     @articles = Article.all
@@ -18,10 +18,11 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article_form = ArticleForm.new(article_params)
+    tag_list = params[:article][:tag_name].split('/')
     if @article_form.valid?
-      @article_form.save
+      @article_form.save(tag_list)
       flash.now[:notice] = "投稿されました"
-      redirect_to article_path(@article_form)
+      redirect_to home_path
     else
       flash.now[:alert] = "投稿に失敗しました"
       render :new
@@ -32,13 +33,13 @@ class Public::ArticlesController < ApplicationController
     @article_form = ArticleForm.new(article: @article)
   end
 
-
   def update
     @article_form = ArticleForm.new(article_params, article: @article)
+    tag_list = params[:article][:tag_name].split('/')
     if @article_form.valid?
-      @qrticle_form.save
+      @article_form.save(tag_list)
       flash.now[:notice] = "更新されました"
-      redirect_to article_path(@article_form)
+      redirect_to article_path(@article)
     else
       flash.now[:alert] = "更新に失敗しました"
       render :new
@@ -53,11 +54,11 @@ class Public::ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.includes(:tags).find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
+    params.require(:article).permit(:title, :body, :sub_title, :user_id, :article_id, :tag_name, :tag_id).merge(user_id: current_user.id)
   end
 
 end
