@@ -17,9 +17,8 @@ class ArticleForm
     super(attributes)
   end
 
- def save(tag_list)
-
-    ActiveRecord::Base.transaction do
+  ActiveRecord::Base.transaction do
+    def save(tag_list)
       @article.update(title: title, body: body, sub_title: sub_title, user_id: user_id)
 
       current_tags = @article.tags.pluck(:tag_name) unless @article.tags.nil?
@@ -36,7 +35,7 @@ class ArticleForm
         article_tag_relation = ArticleTag.where(article_id: @article.id, tag_id: article_tag.id).first_or_initialize
         article_tag_relation.update(article_id: @article.id, tag_id: article_tag.id)
       end
-
+      
     end
   end
 
