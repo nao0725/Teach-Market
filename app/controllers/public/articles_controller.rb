@@ -37,7 +37,7 @@ class Public::ArticlesController < ApplicationController
     if @article_form.valid?
       @article_form.save(tag_list)
       flash.now[:notice] = "投稿されました"
-      redirect_to home_path
+      redirect_to article_index_path(current_user)
     else
       flash.now[:alert] = "投稿に失敗しました"
       render :new
