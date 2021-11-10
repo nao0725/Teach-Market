@@ -1,16 +1,33 @@
 class Article < ApplicationRecord
   belongs_to :user
-  has_many :article_tags
+  has_many :article_tags, dependent: :destroy
   has_many :tags, through: :article_tags, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+
 
   # 既にブックマークしていないか確認
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
 
+<<<<<<< HEAD
+=======
+  # 複数のタグ付け機能で実装
+  def tags_save(tag_list)
+    if !tags.nil?
+      article_tags_records = ArticleTag.where(article_id: id)
+      article_tags_records.destroy_all
+    end
+
+    tag_list.each do |tag|
+      inspected_tag = Tag.where(tag_name: tag).first_or_create
+      tags << inspected_tag
+    end
+  end
+
+>>>>>>> 81ba9ecfe6d33e12f1b4a4a8dace905398851de0
   # 星評価の平均値を表示
   def avg_score
     if comments.empty?
@@ -29,6 +46,27 @@ class Article < ApplicationRecord
     ]).distinct
   end
 
+  #公開ステータスの設定
+  enum article_status: { draft: 0, published: 1 }
+
+  #ステータスを変更するボタンの設定
+  def status_btn
+    if draft?
+      "公開する"
+    else
+      "下書きに戻す"
+    end
+  end
+
+  def update_status!
+    if draft?
+      published!
+    else
+      draft!
+    end
+  end
+
   validates :title, presence: true, length: { in: 2..20 }
   validates :body, presence: true
+  validates :article_status, inclusion: { in: Article.article_statuses.keys }
 end

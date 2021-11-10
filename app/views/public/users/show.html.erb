@@ -5,47 +5,19 @@
 <% end %>
 
 <dvi class = "container">
-  <div class = "sub_title pb-3">
-    <% if @user == current_user %>
-      <h3>自分の投稿記事</h3>
-    <% else %>
-      <h3><%= @user.nickname %>さんの投稿記事</h3>
-    <% end %>
-  </div>
-  <div class = "row px-5 justify-content-center">
-    <div class = "col-6">
-      <% if @articles.exists? %>
-        <% @articles.each do |article| %>
-          <%= render "public/articles/index", article: article %>
-        <% end %>
-        <div class = "pagination-sm pt-3">
-          <%= paginate @articles %>
-       </div>
-      <% else %>
-      <div class = "text-center pt-5">
-        <div class "lead">
-          記事はまだありません。<br>
-          あなたの仕事のノウハウをアウトプットしよう!<br>
-        </div>
-        <div class = "pt-3">
-          <%= link_to "アウトプットする", new_article_path , class:"btn btn-outline-secondary w-50"%>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <div class = "col-3">
-      <div class = "card pt-5">
+  <div class="text-center px-5">
+    <div class = "card pt-5">
         <div class = "text-center">
           <div class = "my-1"><%= attachment_image_tag @user, :profile_image, format: 'jpeg',fallback: "no-image.png", size:'150x150', class: "rounded-circle"%></div>
           <div class = "user-nickname"><%= @user.nickname %></div>
           <div class = "info-border"></div>
           <div class = "d-flex justify-content-around ml-4 pb-3">
-            
+
             <div class= "user-box">
               <div><%= @user.articles.count %></div>
               <div class = "text-muted">投稿数</div>
             </div>
-            
+
             <div class="user-box">
               <div class = "follow_count">
                 <div><%= link_to @user.followings.count, user_followings_path(@user.id), class: "link" %></div>
@@ -59,10 +31,16 @@
               </div>
                 <div class = "text-muted">フォロワー</div>
             </div>
-            
+
           </div>
           <div class = "my-3 user-text"><%= @user.introduction %></div>
           <div>
+            <div class = "py-2">
+              <%= link_to article_index_path(@user) do %>
+                 <div class="btntextchange"><span><i class="fas fa-book-open"></i></span><span>投稿一覧</span></div>
+              <% end %>
+            </div>
+
             <% if @user == current_user %>
               <div class = "py-2">
                 <%= link_to  edit_user_path(@user) do %>
@@ -70,7 +48,7 @@
                 <% end %>
               </div>
               <div class = "py-2">
-                <%= link_to article_bookmarks_path(@user.id) do %>
+                <%= link_to article_bookmarks_path(@user) do %>
                    <div class="btntextchange"><span><i class="far fa-bookmark"></i></span><span>ブックマークした投稿</span></div>
                 <% end %>
               </div>
@@ -82,6 +60,5 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </dvi>
