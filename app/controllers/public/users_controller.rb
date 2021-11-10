@@ -8,7 +8,6 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @articles = @user.articles.page(params[:page]).per(5)
   end
 
   def edit
