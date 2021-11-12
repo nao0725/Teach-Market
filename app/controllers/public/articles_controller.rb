@@ -22,6 +22,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def show
+    @article_form = ArticleForm.new(article_params)
     @comment = Comment.new
     @comments = @article.comments
     @user = User.guest
@@ -37,7 +38,7 @@ class Public::ArticlesController < ApplicationController
     if @article_form.valid?
       @article_form.save(tag_list)
       flash.now[:notice] = "投稿されました"
-      redirect_to article_index_path(current_user)
+      redirect_to article_path(@article_form)
     else
       flash.now[:alert] = "投稿に失敗しました"
       render :new
@@ -54,7 +55,7 @@ class Public::ArticlesController < ApplicationController
     if @article_form.valid?
       @article_form.save(tag_list)
       flash.now[:notice] = "更新されました"
-      redirect_to article_path(@article)
+      redirect_to article_detail_path(@article_form)
     else
       flash.now[:alert] = "更新に失敗しました"
       render :new
@@ -74,6 +75,7 @@ class Public::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :sub_title, :user_id, :article_id, :tag_name, :tag_id).merge(user_id: current_user.id)
+
   end
 
 end

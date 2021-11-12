@@ -22,12 +22,12 @@ class ArticleForm
       @article.update(title: title, body: body, sub_title: sub_title, user_id: user_id)
 
       current_tags = @article.tags.pluck(:tag_name) unless @article.tags.nil?
-      old_tags = current_tags - tag_list
+      # old_tags = current_tags - tag_list
       new_tags = tag_list - current_tags
 
-      old_tags.each do |old_name|
-        @article.tags.delete Tag.find_by(tag_name: old_name)
-      end
+      # old_tags.each do |old_name|
+      #   @article.tags.delete Tag.find_by(tag_name: old_name)
+      # end
 
       new_tags.each do |new_name|
         article_tag = Tag.find_or_create_by(tag_name: new_name)
@@ -35,7 +35,7 @@ class ArticleForm
         article_tag_relation = ArticleTag.where(article_id: @article.id, tag_id: article_tag.id).first_or_initialize
         article_tag_relation.update(article_id: @article.id, tag_id: article_tag.id)
       end
-      
+
     end
   end
 
@@ -49,6 +49,7 @@ class ArticleForm
 
   def default_attributes
     {
+      id: article.id,
       title: article.title,
       body: article.body,
       sub_title: article.sub_title,
