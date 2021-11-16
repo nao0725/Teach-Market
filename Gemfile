@@ -83,7 +83,6 @@ gem 'omniauth', "~> 1.9.1"
 gem 'omniauth-twitter'
 gem 'social-share-button'
 gem 'counter_culture', '~> 2.0'
-gem 'enum_help'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
