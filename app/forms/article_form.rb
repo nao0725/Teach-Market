@@ -43,13 +43,16 @@ class ArticleForm
     article
   end
 
+  def select_id
+    
+  end
+
   private
 
   attr_reader :article, :tag
 
   def default_attributes
     {
-      id: article.id,
       title: article.title,
       body: article.body,
       sub_title: article.sub_title,
