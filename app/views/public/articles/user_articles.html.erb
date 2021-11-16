@@ -32,14 +32,6 @@
                   <% end %>
                 </h6>
 
-               <div class="float-left pt-2">
-                <% if current_user == @user %>
-                    <%= link_to article_update_status_path(article), method: :patch do %>
-                     <button class="btn btn-secondary btn-sm" ><%= article.status_btn %></button>
-                    <% end %>
-                <% end %>
-               </div>
-
                <div class = "home-footer justify-content-end">
                 <div class = "d-flex mr-3 mt-1">
                   <div class="bookmark_button_<%= article.id %>">

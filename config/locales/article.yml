@@ -1,6 +1,0 @@
-ja:
-  enums:
-    article:
-      article_status:
-        draft: '下書き'
-        published: '公開'

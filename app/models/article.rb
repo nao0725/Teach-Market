@@ -43,25 +43,6 @@ class Article < ApplicationRecord
     ]).distinct
   end
 
-  #公開ステータスの設定
-  enum article_status: { draft: 0, published: 1 }
-
-  #ステータスを変更するボタンの設定
-  def status_btn
-    if draft?
-      "公開する"
-    else
-      "下書きに戻す"
-    end
-  end
-
-  def update_status!
-    if draft?
-      published!
-    else
-      draft!
-    end
-  end
 
   validates :title, presence: true, length: { in: 2..20 }
   validates :body, presence: true
