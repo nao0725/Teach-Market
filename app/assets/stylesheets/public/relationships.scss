@@ -10,8 +10,12 @@
   text-align: center;
 	display: inline-block;
   text-decoration: none;
-  color: #333;
+  background-color: white;
   outline: none;
 }
 
+.follow_btn-layout:hover{
+  background:#333;
+  color:#fff;
+}
 

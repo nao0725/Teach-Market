@@ -8,7 +8,6 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @articles = @user.articles.page(params[:page]).per(5)
   end
 
   def edit
@@ -22,6 +21,17 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
+
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+  end
+
 
   private
 

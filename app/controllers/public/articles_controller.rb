@@ -2,8 +2,23 @@ class Public::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.published
     @user = User.find(params[:id])
+  end
+
+  def user_articles
+    @user = User.find(params[:id])
+    if current_user == @user
+      @articles = @user.articles.page(params[:page]).per(10)
+    else
+      @articles = @user.articles.page(params[:page]).per(10).published
+    end
+  end
+
+  def update_status
+    @article = Article.find(params[:article_id])
+    @article.update_status!
+    redirect_to request.referer, notice: "ステータスを更新しました"
   end
 
   def show
@@ -66,6 +81,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :sub_title, tags_attributes: [:tag_name])
+    params.require(:article).permit(:title, :body, :sub_title, :article_status, tags_attributes: [:tag_name])
   end
 end

@@ -9,11 +9,15 @@
         <div class = "text-muted">投稿数</div>
       </div>
       <div class = "info-box">
-        <div><%= link_to user.followings.count, user_followings_path(user.id), class: "link" %></div>
+        <div class="following_count">
+          <div><%= link_to @user.following.count, following_user_path(@user.id), class: "link" %></div>
+        </div>
         <div class = "text-muted">フォロー</div>
       </div>
       <div class = "info-box">
-        <div><%= link_to user.followers.count, user_followers_path(user.id), class: "link"  %></div>
+       <div class="follower_count">
+          <div><%= link_to @user.followers.count, followers_user_path(@user.id), class: "link"%></div>
+        </div>
         <div class = "text-muted">フォロワー</div>
       </div>
     </div>

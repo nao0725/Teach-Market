@@ -37,18 +37,20 @@ Rails.application.routes.draw do
     resources :articles do
       resource :bookmarks, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
+      get "/user/:id" => "articles#user_articles", as: "index"
+      patch :update_status
     end
 
     resources :users, only: [:index, :show, :edit, :update] do
-      resource :relationships, only: [:create, :destroy]
-      get "followings" => "relationships#followings", as: "followings"
-      get "followers" => "relationships#followers", as: "followers"
+      member do
+          get :following, :followers
+      end
     end
+    resources:relationships, only: [:create, :destroy]
   end
 
   namespace :admins do
     resources :users, except: [:new, :create]
   end
-
 
 end
