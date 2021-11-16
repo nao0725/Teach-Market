@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     resources :articles do
       resource :bookmarks, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
+      get "/user/:id" => "articles#user_articles", as: "index"
+      patch :update_status
     end
 
     resources :users, only: [:index, :show, :edit, :update] do
