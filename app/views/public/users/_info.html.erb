@@ -10,17 +10,15 @@
       </div>
       <div class = "info-box">
         <div class="following_count">
-          <%= link_to following_user_path(user.id) do %>
-            <h5 style="color: black;">フォロー<%= user.following.count %>人</h5>
-          <% end %>
+          <div><%= link_to @user.following.count, following_user_path(@user.id), class: "link" %></div>
         </div>
+        <div class = "text-muted">フォロー</div>
       </div>
       <div class = "info-box">
-        <div class="follower_count">
-          <%= link_to followers_user_path(user.id) do %>
-            <h5 style="color: black;">フォロワー<%= user.followers.count %>人</h5>
-          <% end %>
+       <div class="follower_count">
+          <div><%= link_to @user.followers.count, followers_user_path(@user.id), class: "link"%></div>
         </div>
+        <div class = "text-muted">フォロワー</div>
       </div>
     </div>
     <div class = "my-3"><%= user.introduction %></div>
