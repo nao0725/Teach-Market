@@ -105,8 +105,6 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    enum_help (0.0.17)
-      activesupport (>= 3.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
     factory_bot (6.2.0)
@@ -384,7 +382,6 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
-  enum_help
   factory_bot_rails
   faker
   font-awesome-sass (~> 5.13)
