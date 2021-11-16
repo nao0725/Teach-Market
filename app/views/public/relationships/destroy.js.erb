@@ -1,1 +1,3 @@
 $("#follow_form").html("<%= j(render("public/users/follow")) %>");
+$(".following_count").html('<%= link_to @user.following.count, following_user_path(@user.id), class: "link" %>');
+$(".follower_count").html('<%= link_to @user.followers.count, followers_user_path(@user.id), class: "link" %>');

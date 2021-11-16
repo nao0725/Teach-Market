@@ -9,14 +9,14 @@
         <div class = "text-muted">投稿数</div>
       </div>
       <div class = "info-box">
-        <div class="follower">
+        <div class="following_count">
           <%= link_to following_user_path(user.id) do %>
             <h5 style="color: black;">フォロー<%= user.following.count %>人</h5>
           <% end %>
         </div>
       </div>
       <div class = "info-box">
-        <div class="follower">
+        <div class="follower_count">
           <%= link_to followers_user_path(user.id) do %>
             <h5 style="color: black;">フォロワー<%= user.followers.count %>人</h5>
           <% end %>
