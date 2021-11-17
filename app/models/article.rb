@@ -46,5 +46,4 @@ class Article < ApplicationRecord
 
   validates :title, presence: true, length: { in: 2..20 }
   validates :body, presence: true
-  validates :article_status, inclusion: { in: Article.article_statuses.keys }
 end
