@@ -19,9 +19,11 @@
                   <% end %>
                 </h4>
                 <p class="card-text"><%= user.introduction %></p>
-                  <div id = "follow_btn_<%= user.id %>">
-                    <p><%= render "public/users/follow_form", user: user %></p>
-                  </div>
+                  <% if user != current_user %>
+                    <div id = "follow_form_<%= user.id %>">
+                      <p><%= render "public/users/follow_form", user: user %></p>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
