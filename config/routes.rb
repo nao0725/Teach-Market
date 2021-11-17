@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get "/user/:id" => "articles#user_articles", as: "index"
       patch :update_status
     end
+    post "articles/new" => "articles#new", as: "article_new"
 
     resources :users, only: [:index, :show, :edit, :update] do
       member do
