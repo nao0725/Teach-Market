@@ -1,15 +1,15 @@
 
       <%= form_with(model: article, local: true) do |f| %>
         <div class="form-group">
-          <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
+          <%= f.text_field :title, placeholder: "タイトルを入力しましょう (30字まで)", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :tag_name, placeholder:"タイトルに関連するタグごとに / で区切って入力しよう", class: "form-control" %>
+          <%= f.text_field :tag_name, placeholder:"タイトルに関連するタグごとに / で区切って入力しましょう", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :sub_title, placeholder: "この記事を書く目的を明確にしよう", class: "form-control" %>
+          <%= f.text_field :sub_title, placeholder: "この記事を書く目的を明確にしましょう", class: "form-control" %>
         </div>
 
         <div class = "row">
@@ -17,7 +17,7 @@
             <div class="form-group code-block">
               <label class="control-label">本文</label>
               <%= f.text_area :body, id: 'user_answer_code',
-                  placeholder: "あなたの仕事のノウハウをMarkdown記法を使ってアウトプットしよう!" ,
+                  placeholder: "あなたの仕事のノウハウをMarkdown記法を使ってアウトプットしましょう!" ,
                   class: "form-control", size:'10x30' %>
             </div>
           </div>
